@@ -92,7 +92,8 @@ std::vector<std::pair<std::wstring, int>> PersonData::GetPersons() {
     result.push_back(std::make_pair<std::wstring, int>(L"ĞéÖñ", 0x31));
     result.push_back(std::make_pair<std::wstring, int>(L"»¨Ìú¸É", 0x34));
     result.push_back(std::make_pair<std::wstring, int>(L"Ô¬³ĞÖ¾", 0x36));
-    result.push_back(std::make_pair<std::wstring, int>(L"¹ù¾¸", 0x37));
+    result.push_back(std::make_pair<std::wstring, int>(L"¹ù¾¸1", 0x1E));
+    result.push_back(std::make_pair<std::wstring, int>(L"¹ù¾¸2", 0x37));
     result.push_back(std::make_pair<std::wstring, int>(L"³Â¼ÒÂå", 0x4B));
     result.push_back(std::make_pair<std::wstring, int>(L"ÕÅÕÙÖØ", 0x50));
     result.push_back(std::make_pair<std::wstring, int>(L"»ô¶¼", 0x54));
