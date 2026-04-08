@@ -61,6 +61,8 @@ public:
 	static std::vector<std::pair<std::wstring, int>> GetXiuLian(int code);
 	static std::vector<std::pair<std::wstring, int>> GetWuGong(int code);
 
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong();
 
 
 public:

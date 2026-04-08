@@ -195,8 +195,18 @@ void InjectorImpl::init_lua_code_injected() {
         return;
     }
     DisableStrictMode(lua_state_);
-    std::string code = k_init_lua_code;
+    std::string code = k_init_lua_code0;
     int lua_ret; std::string errmsg;
+    std::tie(lua_ret, errmsg) = lua_dostring_ex(lua_state_, code.c_str());
+    LOG_INFO() << "init_lua_code_injected0, lua_ret=" << lua_ret
+        << ", errmsg=" << lua_ret;
+    if (lua_ret == LUA_INIT_FAILED) {
+        return;
+    }
+    if (lua_ret != LUA_OK) {
+        return;
+    }
+    code = k_init_lua_code;
     std::tie(lua_ret, errmsg) = lua_dostring_ex(lua_state_, code.c_str());
     LOG_INFO() << "init_lua_code_injected, lua_ret=" << lua_ret
         << ", errmsg=" << lua_ret;

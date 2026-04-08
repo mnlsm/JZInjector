@@ -3,7 +3,7 @@
 #include "injector_impl.h"
 #include "Common.h"
 
-const char* k_init_lua_code = R"(
+const char* k_init_lua_code0 = R"(
     jyqxz_trace_log = 0;
     jyqxz_baoxi_dengji = 0;
     jyqxz_baoxi_wugong = 0;
@@ -13,10 +13,59 @@ const char* k_init_lua_code = R"(
     jyqxz_baoxi_maxvalue_dict = {};
     jyqxz_person_cheatdata_dict = {};
 
+    jyqxz_trace_data_on_load = 1;
+
+    function War_PrintTrace(str)
+        if jyqxz_trace_log > 0 then
+            lib.Debug(str);
+        end
+    end        
+    
+    function traceAllPersonData()
+       War_PrintTrace("----traceAllPersonData Begin------");
+       for k, v in pairs(JY.Person) do
+           if type(k) == "number" and k == math.floor(k) and k > 0 then
+              War_PrintTrace(string.format("result.push_back(std::make_pair<std::wstring, int>(L\"%s\", 0x%02X));",
+                  v["\208\213\195\251"], k));
+           end
+       end  
+       War_PrintTrace("----traceAllPersonData End------");     
+    end   
+
+    function traceAllWuPinData()
+       War_PrintTrace("----traceAllWuPinData Begin------");
+       for k, v in pairs(JY.Thing) do
+          War_PrintTrace(string.format("s_datas[%d] = L\"%s\";", 
+              k,
+              v["\195\251\179\198"]
+           ));
+       end  
+       War_PrintTrace("----traceAllWuPinData End------");     
+    end 
+
+    function traceAllWuGongData()
+       War_PrintTrace("----traceAllWuGongData Begin------");
+       for k, v in pairs(JY.Wugong) do
+          War_PrintTrace(string.format("s_datas[%d] = L\"%s\";", 
+              k,
+              v["\195\251\179\198"]
+           ));
+       end  
+       War_PrintTrace("----traceAllWuGongData End------");     
+    end 
+
+
+)";
+
+const char* k_init_lua_code = R"(
+
 Raw_LoadRecord = LoadRecord;
 
 LoadRecord = function(id)
     Raw_LoadRecord(id);
+    if jyqxz_trace_data_on_load > 0 then
+       return;
+    end
     local data = Byte.create(24)
     Byte.loadfile(data, CC.R_IDXFilename[0], 0, 24)
     local idx = {}
@@ -67,6 +116,10 @@ LoadRecord = function(id)
       War_PrintTrace(string.format("index=%d, id=%02X, count=%d", newnum + 1, newthing[newnum][1], newthing[newnum][2]));
     end
     War_PrintTrace("----------------------------------------------------------------------------------------------");
+    --traceAllPersonData();
+    --traceAllWuPinData();
+    --traceAllWuGongData();
+    jyqxz_trace_data_on_load = jyqxz_trace_data_on_load + 1;
 end
       
 Raw_War_AddPersonLevel = War_AddPersonLevel;
@@ -328,6 +381,8 @@ function Fucker_AdjustWuPins()
     Fucker_AdjustWuPin(0xd1, 9999);
     Fucker_AdjustWuPin(0xd2, 9999);
     Fucker_AdjustWuPin(0x0c, 9999);
+    Fucker_AdjustWuPin(32, 9999);
+    --Fucker_AdjustWuPin(8, 9999);
     War_PrintTrace("Fucker_AdjustWuPins End");
 end
 
@@ -345,12 +400,6 @@ function Fucker_AdjustWuPin(id, count)
     end
     JY.Base["\206\239\198\183" .. thnum + 1] = id;
     JY.Base["\206\239\198\183\202\253\193\191" .. thnum + 1] = count;
-end
-
-function War_PrintTrace(str)
-    if jyqxz_trace_log > 0 then
-        lib.Debug(str);
-    end
 end
 
 function Fucker_GetEnvData()

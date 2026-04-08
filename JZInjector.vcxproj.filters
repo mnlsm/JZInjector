@@ -13,6 +13,9 @@
     <Filter Include="ui">
       <UniqueIdentifier>{4c58f40c-dd14-48e0-8914-079a19cfde5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{48dff80c-1645-4ddf-a390-b8f8e0b20ed9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\jyconst_raw.lua">
@@ -53,7 +56,6 @@
     <ClInclude Include="pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ui\PropertyItem.h">
       <Filter>ui</Filter>
     </ClInclude>
@@ -74,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="CheatData.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>res</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,10 +114,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="JZInjector.rc" />
+    <Image Include="res\PropertyTree.bmp">
+      <Filter>res</Filter>
+    </Image>
+    <Image Include="res\Q.ico">
+      <Filter>res</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\Q.ico" />
-    <Image Include="res\PropertyTree.bmp" />
+    <ResourceCompile Include="JZInjector.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

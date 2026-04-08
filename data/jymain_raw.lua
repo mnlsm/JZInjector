@@ -240,12 +240,12 @@ function Game_Start()
       DrawString(menux, menuy, "\199\235\201\212\186\242...", C_RED, CC.StartMenuFontSize * 1.3)
       ShowScreen()
       JY.SubScene = CC.NewGameSceneID
-      JY.Scene[JY.SubScene]["\195\251\179\198"] = JY.Person[0].姓名 .. "\190\211"
+      JY.Scene[JY.SubScene]["\195\251\179\198"] = JY.Person[0].濮撳悕 .. "\190\211"
       if CC.SceneNameRen == 1 then
         JY.Scene[JY.SubScene]["\195\251\179\198"] = CC.SceneName
       end
-      JY.Base.人X1 = CC.NewGameSceneX
-      JY.Base.人Y1 = CC.NewGameSceneY
+      JY.Base.浜篨1 = CC.NewGameSceneX
+      JY.Base.浜篩1 = CC.NewGameSceneY
       JY.MyPic = CC.NewPersonPic
       lib.ShowSlow(50, 1)
       JY.Status = GAME_SMAP
@@ -334,29 +334,29 @@ function Game_Start()
         DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * 2, CC.StartMenuY, "\199\235\201\212\186\242...", C_RED, CC.StartMenuFontSize * 1.3)
         ShowScreen()
         LoadRecord(r)
-        if 0 < JY.Base.无用 then
+        if 0 < JY.Base.鏃犵敤 then
           if JY.Status == GAME_MMAP then
             lib.UnloadMMap()
             lib.PicInit()
           end
           lib.ShowSlow(50, 1)
           JY.Status = GAME_SMAP
-          JY.SubScene = JY.Base.无用
+          JY.SubScene = JY.Base.鏃犵敤
           JY.MmapMusic = -1
           JY.MyPic = GetMyPic()
           Init_SMap(1)
           Game_Cycle()
           break
         end
-        if JY.Base.无用 == 0 then
-          if JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
+        if JY.Base.鏃犵敤 == 0 then
+          if JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
             if JY.Status == GAME_MMAP then
               lib.UnloadMMap()
               lib.PicInit()
             end
             lib.ShowSlow(50, 1)
             JY.Status = GAME_SMAP
-            JY.SubScene = JY.Base.无用
+            JY.SubScene = JY.Base.鏃犵敤
             JY.MmapMusic = -1
             JY.MyPic = GetMyPic()
             Init_SMap(1)
@@ -391,8 +391,8 @@ function NewGame()
   if #CC.NewPersonName > 8 then
     CC.NewPersonName = "\208\236\208\161\207\192"
   end
-  JY.Person[0].姓名 = CC.NewPersonName
-  JY.Person[0].外号 = "\204\236\207\194\198\230\196\208\215\211"
+  JY.Person[0].濮撳悕 = CC.NewPersonName
+  JY.Person[0].澶栧彿 = "\204\236\207\194\198\230\196\208\215\211"
   JY.Person[0]["\215\202\214\202"] = InputNum("\199\235\202\228\200\235\215\202\214\202", 1, 100)
   while true do
     JY.Person[0]["\196\218\193\166\208\212\214\202"] = Rnd(2)
@@ -411,7 +411,7 @@ function NewGame()
     JY.Person[0]["\176\181\198\247\188\188\199\201"] = Rnd(10) + 21
     JY.Person[0]["\201\250\195\252\212\246\179\164"] = Rnd(5) + 3
     JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] = JY.Person[0]["\201\250\195\252\212\246\179\164"] * 3 + 29
-    JY.Person[0].生命 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
+    JY.Person[0].鐢熷懡 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
     JY.Person[0]["\196\218\193\166"] = JY.Person[0]["\196\218\193\166\215\238\180\243\214\181"]
     Cls()
     local fontsize = 1.5 * CC.NewGameFontSize
@@ -462,7 +462,7 @@ function NewGame()
       i = i + 1
     end
     
-    if JY.Person[0].姓名 == "szlzw" then
+    if JY.Person[0].濮撳悕 == "szlzw" then
       DrawString(CC.ScreenW / 2 - fontsize * 5, CC.ScreenH / 2 + fontsize * 2, "szlzw\163\172\196\227\210\209\190\173\179\172\201\241\193\203\163\161", C_GOLD, CC.StartMenuFontSize, 1)
       ShowScreen()
       WaitKey()
@@ -481,9 +481,9 @@ function NewGame()
       JY.Person[0]["\176\181\198\247\188\188\199\201"] = 30
       JY.Person[0]["\201\250\195\252\212\246\179\164"] = 7
       JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] = JY.Person[0]["\201\250\195\252\212\246\179\164"] * 3 + 29
-      JY.Person[0].生命 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
+      JY.Person[0].鐢熷懡 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
       JY.Person[0]["\196\218\193\166"] = JY.Person[0]["\196\218\193\166\215\238\180\243\214\181"]
-      JY.Person[0].外号 = "\179\172\201\241"
+      JY.Person[0].澶栧彿 = "\179\172\201\241"
       JY.Person[0]["\196\218\193\166\208\212\214\202"] = 2
       if CC.JS == 1 then
         JY.Wugong[30]["\206\180\214\1701"] = 8
@@ -492,7 +492,7 @@ function NewGame()
     else
       Cls()
       WhoAmI()
-      DrawString(x1, y1, JY.Person[0].姓名 .. ",\202\244\208\212\194\250\210\226\194\240?", C_GOLD, fontsize)
+      DrawString(x1, y1, JY.Person[0].濮撳悕 .. ",\202\244\208\212\194\250\210\226\194\240?", C_GOLD, fontsize)
       i = 0
       y1 = y1 + h
       DrawAttrib("\196\218\193\166", "\196\218\193\166")
@@ -535,7 +535,7 @@ function NewGame()
       end
     end
   end
-  if CC.BanBen == 1 and CC.JS == 1 and JY.Person[0].姓名 ~= "szlzw" then
+  if CC.BanBen == 1 and CC.JS == 1 and JY.Person[0].濮撳悕 ~= "szlzw" then
     SelPerson()
   end
 end
@@ -626,14 +626,14 @@ function SelPerson()
     JY.Selpstr[2] = {"\185\165\187\247\193\166", -1}
     JY.Selpstr[3] = {"\183\192\211\249\193\166", 2}
     JY.Selpstr[4] = {"\199\225\185\166", 2}
-    JY.Person[0].外号 = "\200\173\176\212"
+    JY.Person[0].澶栧彿 = "\200\173\176\212"
     JY.Wugong[30]["\206\180\214\1701"] = 1
     DrawStrBoxWaitKey("\200\173\176\212\161\250\198\198\183\192\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 2 then
     JY.Selpstr[1] = {"\211\249\189\163\196\220\193\166", 1}
     JY.Selpstr[2] = {"\185\165\187\247\193\166", 2}
     JY.Selpstr[3] = {"\183\192\211\249\193\166", -2}
-    JY.Person[0].外号 = "\189\163\196\167"
+    JY.Person[0].澶栧彿 = "\189\163\196\167"
     JY.Wugong[30]["\206\180\214\1701"] = 2
     DrawStrBoxWaitKey("\189\163\196\167\161\250\202\200\209\170\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 3 then
@@ -641,14 +641,14 @@ function SelPerson()
     JY.Selpstr[2] = {"\185\165\187\247\193\166", -1}
     JY.Selpstr[3] = {"\183\192\211\249\193\166", 2}
     JY.Selpstr[4] = {"\199\225\185\166", 2}
-    JY.Person[0].外号 = "\181\182\179\213"
+    JY.Person[0].澶栧彿 = "\181\182\179\213"
     JY.Wugong[30]["\206\180\214\1701"] = 3
     DrawStrBoxWaitKey("\181\182\179\213\161\250\210\187\187\247\177\216\201\177\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 4 then
     JY.Selpstr[1] = {"\204\216\202\226\177\248\198\247", 1}
     JY.Selpstr[2] = {"\183\192\211\249\193\166", 4}
     JY.Selpstr[3] = {"\199\225\185\166", -2}
-    JY.Person[0].外号 = "\204\216\191\241"
+    JY.Person[0].澶栧彿 = "\204\216\191\241"
     JY.Wugong[30]["\206\180\214\1701"] = 4
     DrawStrBoxWaitKey("\204\216\191\241\161\250\177\169\187\247\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 5 then
@@ -656,7 +656,7 @@ function SelPerson()
     JY.Selpstr[2] = {"\183\192\211\249\193\166", -2}
     JY.Selpstr[3] = {"\199\225\185\166", -2}
     JY.Selpstr[4] = {"\196\218\193\166\215\238\180\243\214\181", 50}
-    JY.Person[0].外号 = "\201\241\214\250"
+    JY.Person[0].澶栧彿 = "\201\241\214\250"
     JY.Wugong[30]["\206\180\214\1701"] = 5
     DrawStrBoxWaitKey("\201\241\214\250\161\250\204\236\201\241\187\164\204\229\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 6 then
@@ -665,7 +665,7 @@ function SelPerson()
     JY.Selpstr[3] = {"\191\185\182\190\196\220\193\166", 2}
     JY.Selpstr[4] = {"\185\165\187\247\193\166", -1}
     JY.Selpstr[5] = {"\199\225\185\166", 2}
-    JY.Person[0].外号 = "\206\215\209\253"
+    JY.Person[0].澶栧彿 = "\206\215\209\253"
     JY.Wugong[30]["\206\180\214\1701"] = 6
     DrawStrBoxWaitKey("\206\215\209\253\161\250\214\216\201\250\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 7 then
@@ -673,14 +673,14 @@ function SelPerson()
     JY.Selpstr[2] = {"\191\185\182\190\196\220\193\166", 3}
     JY.Selpstr[3] = {"\185\165\187\247\193\166", -1}
     JY.Selpstr[4] = {"\183\192\211\249\193\166", 2}
-    JY.Person[0].外号 = "\182\190\205\245"
+    JY.Person[0].澶栧彿 = "\182\190\205\245"
     JY.Wugong[30]["\206\180\214\1701"] = 7
     DrawStrBoxWaitKey("\182\190\205\245\161\250\180\227\182\190\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
   elseif r == 8 then
     JY.Selpstr[1] = {"\185\165\187\247\193\166", -1}
     JY.Selpstr[2] = {"\183\192\211\249\193\166", 2}
     JY.Selpstr[3] = {"\199\225\185\166", 2}
-    JY.Person[0].外号 = "\187\195\211\176"
+    JY.Person[0].澶栧彿 = "\187\195\211\176"
     JY.Wugong[30]["\206\180\214\1701"] = 9
     DrawStrBoxWaitKey("\187\195\211\176\161\250\211\176\201\177\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
   end
@@ -703,7 +703,7 @@ function Game_Cycle()
       JY.MmapMusic = 16
       JY.Status = GAME_MMAP
       Init_MMap()
-      lib.DrawMMap(JY.Base.人X, JY.Base.人Y, GetMyPic())
+      lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, GetMyPic())
       lib.ShowSlow(50, 0)
     elseif JY.Status == GAME_MMAP then
       Game_MMap()
@@ -789,7 +789,7 @@ end
 
 function Init_MMap()
   lib.PicInit()
-  lib.LoadMMap(CC.MMapFile[1], CC.MMapFile[2], CC.MMapFile[3], CC.MMapFile[4], CC.MMapFile[5], CC.MWidth, CC.MHeight, JY.Base.人X, JY.Base.人Y)
+  lib.LoadMMap(CC.MMapFile[1], CC.MMapFile[2], CC.MMapFile[3], CC.MMapFile[4], CC.MMapFile[5], CC.MWidth, CC.MHeight, JY.Base.浜篨, JY.Base.浜篩)
   lib.PicLoadFile(CC.MMAPPicFile[1], CC.MMAPPicFile[2], 0)
   lib.PicLoadFile(CC.HeadPicFile[1], CC.HeadPicFile[2], 1)
   if CC.LoadThingPic == 1 then
@@ -835,7 +835,7 @@ function Game_MMap()
       JY.AtTime = lib.GetTime()
       JY.SBZ = 1
     elseif keypress == VK_RETURN then
-      if JY.Base.人X == 138 and JY.Base.人Y == 138 and JY.Person[0].姓名 == "szlzw" then
+      if JY.Base.浜篨 == 138 and JY.Base.浜篩 == 138 and JY.Person[0].濮撳悕 == "szlzw" then
         JY.WD = JY.WD + 1
       else
         JY.WD = 0
@@ -859,8 +859,8 @@ function Game_MMap()
       else
         mx = mx - 0.01
       end
-      mx = math.modf(mx) + JY.Base.人X
-      my = math.modf(my) + JY.Base.人Y
+      mx = math.modf(mx) + JY.Base.浜篨
+      my = math.modf(my) + JY.Base.浜篩
       if ktype == 2 then
         if 0 < lib.GetMMap(mx, my, 3) then
           for i = 0, 4 do
@@ -888,15 +888,15 @@ function Game_MMap()
       end
       if ktype == 3 or ktype == 2 and JY.KT == 1 then
         if CC.MMapAdress[0] ~= nil then
-          mx = CC.MMapAdress[3] - JY.Base.人X
-          my = CC.MMapAdress[4] - JY.Base.人Y
+          mx = CC.MMapAdress[3] - JY.Base.浜篨
+          my = CC.MMapAdress[4] - JY.Base.浜篩
           CC.MMapAdress[0] = nil
         else
           AutoMoveTab = {
             [0] = 0
           }
-          mx = mx - JY.Base.人X
-          my = my - JY.Base.人Y
+          mx = mx - JY.Base.浜篨
+          my = my - JY.Base.浜篩
         end
         walkto(mx, my)
       end
@@ -922,7 +922,7 @@ function Game_MMap()
   local x, y
   
   local function CanMove(nd, nnd)
-    local nx, ny = JY.Base.人X + CC.DirectX[nd + 1], JY.Base.人Y + CC.DirectY[nd + 1]
+    local nx, ny = JY.Base.浜篨 + CC.DirectX[nd + 1], JY.Base.浜篩 + CC.DirectY[nd + 1]
     if nnd ~= nil then
       nx, ny = nx + CC.DirectX[nnd + 1], ny + CC.DirectY[nnd + 1]
     end
@@ -936,41 +936,41 @@ function Game_MMap()
   local x, y
   if direct ~= -1 then
     AddMyCurrentPic()
-    x = JY.Base.人X + CC.DirectX[direct + 1]
-    y = JY.Base.人Y + CC.DirectY[direct + 1]
+    x = JY.Base.浜篨 + CC.DirectX[direct + 1]
+    y = JY.Base.浜篩 + CC.DirectY[direct + 1]
     JY.Base["\200\203\183\189\207\242"] = direct
   else
-    x = JY.Base.人X
-    y = JY.Base.人Y
+    x = JY.Base.浜篨
+    y = JY.Base.浜篩
   end
   JY.SubScene = CanEnterScene(x, y)
   if lib.GetMMap(x, y, 3) == 0 and lib.GetMMap(x, y, 4) == 0 then
-    JY.Base.人X = x
-    JY.Base.人Y = y
+    JY.Base.浜篨 = x
+    JY.Base.浜篩 = y
   end
-  JY.Base.人X = limitX(JY.Base.人X, 10, CC.MWidth - 10)
-  JY.Base.人Y = limitX(JY.Base.人Y, 10, CC.MHeight - 10)
-  if CC.MMapBoat[lib.GetMMap(JY.Base.人X, JY.Base.人Y, 0)] == 1 then
+  JY.Base.浜篨 = limitX(JY.Base.浜篨, 10, CC.MWidth - 10)
+  JY.Base.浜篩 = limitX(JY.Base.浜篩, 10, CC.MHeight - 10)
+  if CC.MMapBoat[lib.GetMMap(JY.Base.浜篨, JY.Base.浜篩, 0)] == 1 then
     JY.Base["\179\203\180\172"] = 1
   else
     JY.Base["\179\203\180\172"] = 0
   end
   local pic = GetMyPic()
   if CONFIG.FastShowScreen == 1 then
-    if JY.oldMMapX == JY.Base.人X and JY.oldMMapY == JY.Base.人Y then
+    if JY.oldMMapX == JY.Base.浜篨 and JY.oldMMapY == JY.Base.浜篩 then
       if 0 <= JY.oldMMapPic and JY.oldMMapPic ~= pic then
         local rr = ClipRect(Cal_PicClip(0, 0, JY.oldMMapPic, 0, 0, 0, pic, 0))
         if rr ~= nil then
           lib.SetClip(0, 0, CC.ScreenW, CC.ScreenH)
-          lib.DrawMMap(JY.Base.人X, JY.Base.人Y, pic)
+          lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, pic)
         end
       end
     else
       lib.SetClip(0, 0, CC.ScreenW, CC.ScreenH)
-      lib.DrawMMap(JY.Base.人X, JY.Base.人Y, pic)
+      lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, pic)
     end
   else
-    lib.DrawMMap(JY.Base.人X, JY.Base.人Y, pic)
+    lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, pic)
   end
   MSG()
   if CC.OpenTimmerRemind == 1 then
@@ -979,10 +979,10 @@ function Game_MMap()
   AutoSave()
   ShowScreen(CONFIG.FastShowScreen)
   lib.SetClip(0, 0, 0, 0)
-  JY.oldMMapX = JY.Base.人X
-  JY.oldMMapY = JY.Base.人Y
+  JY.oldMMapX = JY.Base.浜篨
+  JY.oldMMapY = JY.Base.浜篩
   JY.oldMMapPic = pic
-  if JY.OLDRKX ~= JY.Base.人X or JY.OLDRKY ~= JY.Base.人Y then
+  if JY.OLDRKX ~= JY.Base.浜篨 or JY.OLDRKY ~= JY.Base.浜篩 then
     JY.OLDRKX = -1
     JY.OLDRKY = -1
   end
@@ -993,10 +993,10 @@ function Game_MMap()
     JY.Status = GAME_SMAP
     JY.MmapMusic = -1
     JY.MyPic = GetMyPic()
-    JY.Base.人X1 = JY.Scene[JY.SubScene]["\200\235\191\218X"]
-    JY.Base.人Y1 = JY.Scene[JY.SubScene]["\200\235\191\218Y"]
-    JY.OLDRKX = JY.Base.人X
-    JY.OLDRKY = JY.Base.人Y
+    JY.Base.浜篨1 = JY.Scene[JY.SubScene]["\200\235\191\218X"]
+    JY.Base.浜篩1 = JY.Scene[JY.SubScene]["\200\235\191\218Y"]
+    JY.OLDRKX = JY.Base.浜篨
+    JY.OLDRKY = JY.Base.浜篩
     Init_SMap(1)
   end
 end
@@ -1039,7 +1039,7 @@ function Game_SMap()
   AutoSave()
   ShowScreen(CONFIG.FastShowScreen)
   lib.SetClip(0, 0, 0, 0)
-  local d_pass = GetS(JY.SubScene, JY.Base.人X1, JY.Base.人Y1, 3)
+  local d_pass = GetS(JY.SubScene, JY.Base.浜篨1, JY.Base.浜篩1, 3)
   if 0 <= d_pass then
     if d_pass ~= JY.OldDPass then
       EventExecute(d_pass, 3)
@@ -1052,7 +1052,7 @@ function Game_SMap()
     JY.OldDPass = -1
   end
   local isout = 0
-  if JY.Scene[JY.SubScene]["\179\246\191\218X1"] == JY.Base.人X1 and JY.Scene[JY.SubScene]["\179\246\191\218Y1"] == JY.Base.人Y1 or JY.Scene[JY.SubScene]["\179\246\191\218X2"] == JY.Base.人X1 and JY.Scene[JY.SubScene]["\179\246\191\218Y2"] == JY.Base.人Y1 or JY.Scene[JY.SubScene]["\179\246\191\218X3"] == JY.Base.人X1 and JY.Scene[JY.SubScene]["\179\246\191\218Y3"] == JY.Base.人Y1 then
+  if JY.Scene[JY.SubScene]["\179\246\191\218X1"] == JY.Base.浜篨1 and JY.Scene[JY.SubScene]["\179\246\191\218Y1"] == JY.Base.浜篩1 or JY.Scene[JY.SubScene]["\179\246\191\218X2"] == JY.Base.浜篨1 and JY.Scene[JY.SubScene]["\179\246\191\218Y2"] == JY.Base.浜篩1 or JY.Scene[JY.SubScene]["\179\246\191\218X3"] == JY.Base.浜篨1 and JY.Scene[JY.SubScene]["\179\246\191\218Y3"] == JY.Base.浜篩1 then
     isout = 1
   end
   if isout == 1 then
@@ -1066,19 +1066,19 @@ function Game_SMap()
     JY.SubScene = -1
     JY.oldSMapX = -1
     JY.oldSMapY = -1
-    lib.DrawMMap(JY.Base.人X, JY.Base.人Y, GetMyPic())
+    lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, GetMyPic())
     lib.ShowSlow(50, 0)
     return
   end
-  if 0 <= JY.Scene[JY.SubScene]["\204\248\215\170\179\161\190\176"] and JY.Base.人X1 == JY.Scene[JY.SubScene]["\204\248\215\170\191\218X1"] and JY.Base.人Y1 == JY.Scene[JY.SubScene]["\204\248\215\170\191\218Y1"] then
+  if 0 <= JY.Scene[JY.SubScene]["\204\248\215\170\179\161\190\176"] and JY.Base.浜篨1 == JY.Scene[JY.SubScene]["\204\248\215\170\191\218X1"] and JY.Base.浜篩1 == JY.Scene[JY.SubScene]["\204\248\215\170\191\218Y1"] then
     JY.SubScene = JY.Scene[JY.SubScene]["\204\248\215\170\179\161\190\176"]
     lib.ShowSlow(50, 1)
     if JY.Scene[JY.SubScene]["\205\226\190\176\200\235\191\218X1"] == 0 and JY.Scene[JY.SubScene]["\205\226\190\176\200\235\191\218Y1"] == 0 then
-      JY.Base.人X1 = JY.Scene[JY.SubScene]["\200\235\191\218X"]
-      JY.Base.人Y1 = JY.Scene[JY.SubScene]["\200\235\191\218Y"]
+      JY.Base.浜篨1 = JY.Scene[JY.SubScene]["\200\235\191\218X"]
+      JY.Base.浜篩1 = JY.Scene[JY.SubScene]["\200\235\191\218Y"]
     else
-      JY.Base.人X1 = JY.Scene[JY.SubScene]["\204\248\215\170\191\218X2"]
-      JY.Base.人Y1 = JY.Scene[JY.SubScene]["\204\248\215\170\191\218Y2"]
+      JY.Base.浜篨1 = JY.Scene[JY.SubScene]["\204\248\215\170\191\218X2"]
+      JY.Base.浜篩1 = JY.Scene[JY.SubScene]["\204\248\215\170\191\218Y2"]
     end
     Init_SMap(1)
     return
@@ -1108,7 +1108,7 @@ function Game_SMap()
       TSInstruce()
     elseif keypress == VK_SPACE or keypress == VK_RETURN then
       if 0 <= JY.Base["\200\203\183\189\207\242"] then
-        local d_num = GetS(JY.SubScene, JY.Base.人X1 + CC.DirectX[JY.Base["\200\203\183\189\207\242"] + 1], JY.Base.人Y1 + CC.DirectY[JY.Base["\200\203\183\189\207\242"] + 1], 3)
+        local d_num = GetS(JY.SubScene, JY.Base.浜篨1 + CC.DirectX[JY.Base["\200\203\183\189\207\242"] + 1], JY.Base.浜篩1 + CC.DirectY[JY.Base["\200\203\183\189\207\242"] + 1], 3)
         if 0 <= d_num then
           EventExecute(d_num, 1)
           JY.oldSMapX = -1
@@ -1120,8 +1120,8 @@ function Game_SMap()
       AutoMoveTab = {
         [0] = 0
       }
-      local x0 = JY.Base.人X1
-      local y0 = JY.Base.人Y1
+      local x0 = JY.Base.浜篨1
+      local y0 = JY.Base.浜篩1
       mx = mx + (x0 - y0) * CC.XScale - CC.ScreenW / 2
       my = my + (x0 + y0) * CC.YScale - CC.ScreenH / 2
       local xx = (mx / CC.XScale + my / CC.YScale) / 2
@@ -1156,28 +1156,28 @@ function Game_SMap()
     AutoMoveTab = {
       [0] = 0
     }
-    if CC.AutoMoveEvent[0] == 1 and 2 >= math.abs(CC.AutoMoveEvent[1] - JY.Base.人X1) and 2 >= math.abs(CC.AutoMoveEvent[2] - JY.Base.人Y1) then
+    if CC.AutoMoveEvent[0] == 1 and 2 >= math.abs(CC.AutoMoveEvent[1] - JY.Base.浜篨1) and 2 >= math.abs(CC.AutoMoveEvent[2] - JY.Base.浜篩1) then
       EventExecute(GetS(JY.SubScene, CC.AutoMoveEvent[1], CC.AutoMoveEvent[2], 3), 1)
       CC.AutoMoveEvent[0] = 0
     end
   end
   if direct ~= -1 then
     AddMyCurrentPic()
-    x = JY.Base.人X1 + CC.DirectX[direct + 1]
-    y = JY.Base.人Y1 + CC.DirectY[direct + 1]
+    x = JY.Base.浜篨1 + CC.DirectX[direct + 1]
+    y = JY.Base.浜篩1 + CC.DirectY[direct + 1]
     JY.Base["\200\203\183\189\207\242"] = direct
   else
-    x = JY.Base.人X1
-    y = JY.Base.人Y1
+    x = JY.Base.浜篨1
+    y = JY.Base.浜篩1
   end
   JY.MyPic = GetMyPic()
   DtoSMap()
   if SceneCanPass(x, y) == true then
-    JY.Base.人X1 = x
-    JY.Base.人Y1 = y
+    JY.Base.浜篨1 = x
+    JY.Base.浜篩1 = y
   end
-  JY.Base.人X1 = limitX(JY.Base.人X1, 1, CC.SWidth - 2)
-  JY.Base.人Y1 = limitX(JY.Base.人Y1, 1, CC.SHeight - 2)
+  JY.Base.浜篨1 = limitX(JY.Base.浜篨1, 1, CC.SWidth - 2)
+  JY.Base.浜篩1 = limitX(JY.Base.浜篩1, 1, CC.SHeight - 2)
 end
 
 function Cal_PicClip(dx1, dy1, pic1, id1, dx2, dy2, pic2, id2)
@@ -1678,23 +1678,23 @@ function System_Set()
             CC.JS = 1
             if JY.SETPD == 1 then
               Cls()
-              if JY.Person[0].外号 == "\200\173\176\212" then
+              if JY.Person[0].澶栧彿 == "\200\173\176\212" then
                 DrawStrBoxWaitKey("\200\173\176\212\161\250\198\198\183\192\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\189\163\196\167" then
+              elseif JY.Person[0].澶栧彿 == "\189\163\196\167" then
                 DrawStrBoxWaitKey("\189\163\196\167\161\250\202\200\209\170\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\181\182\179\213" then
+              elseif JY.Person[0].澶栧彿 == "\181\182\179\213" then
                 DrawStrBoxWaitKey("\181\182\179\213\161\250\210\187\187\247\177\216\201\177\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\204\216\191\241" then
+              elseif JY.Person[0].澶栧彿 == "\204\216\191\241" then
                 DrawStrBoxWaitKey("\204\216\191\241\161\250\177\169\187\247\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\201\241\214\250" then
+              elseif JY.Person[0].澶栧彿 == "\201\241\214\250" then
                 DrawStrBoxWaitKey("\201\241\214\250\161\250\204\236\201\241\187\164\204\229\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\206\215\209\253" then
+              elseif JY.Person[0].澶栧彿 == "\206\215\209\253" then
                 DrawStrBoxWaitKey("\206\215\209\253\161\250\214\216\201\250\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\182\190\205\245" then
+              elseif JY.Person[0].澶栧彿 == "\182\190\205\245" then
                 DrawStrBoxWaitKey("\182\190\205\245\161\250\180\227\182\190\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\187\195\211\176" then
+              elseif JY.Person[0].澶栧彿 == "\187\195\211\176" then
                 DrawStrBoxWaitKey("\187\195\211\176\161\250\211\176\201\177\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
-              elseif JY.Person[0].外号 == "\179\172\201\241" then
+              elseif JY.Person[0].澶栧彿 == "\179\172\201\241" then
                 DrawStrBoxWaitKey("\179\172\201\241\161\250\177\228\201\237\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
               else
                 DrawStrBoxWaitKey("\204\216\202\226\189\199\201\171\161\250\191\170\198\244\202\167\176\220", C_RED, CC.DefaultFont)
@@ -1819,27 +1819,27 @@ function Menu_ReadRecord()
     ShowScreen()
     CleanMemory()
     LoadRecord(r)
-    if 0 < JY.Base.无用 then
+    if 0 < JY.Base.鏃犵敤 then
       if JY.Status == GAME_MMAP then
         lib.UnloadMMap()
         lib.PicInit()
       end
       lib.ShowSlow(50, 1)
       JY.Status = GAME_SMAP
-      JY.SubScene = JY.Base.无用
+      JY.SubScene = JY.Base.鏃犵敤
       JY.MmapMusic = -1
       JY.MyPic = GetMyPic()
       Init_SMap(1)
       return 1, Game_Cycle()
-    elseif JY.Base.无用 == 0 then
-      if JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
+    elseif JY.Base.鏃犵敤 == 0 then
+      if JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
         if JY.Status == GAME_MMAP then
           lib.UnloadMMap()
           lib.PicInit()
         end
         lib.ShowSlow(50, 1)
         JY.Status = GAME_SMAP
-        JY.SubScene = JY.Base.无用
+        JY.SubScene = JY.Base.鏃犵敤
         JY.MmapMusic = -1
         JY.MyPic = GetMyPic()
         Init_SMap(1)
@@ -2021,8 +2021,8 @@ function Menu_Scene()
     Cls()
     return 1
   end
-  local x = JY.Base.人X
-  local y = JY.Base.人Y
+  local x = JY.Base.浜篨
+  local y = JY.Base.浜篩
   local x1 = x
   local y1 = y
   local menu = {}
@@ -2074,20 +2074,20 @@ function Menu_Scene()
     lib.ShowSlow(50, 1)
     local i = 1
     if lib.GetMMap(x1, y1 + i, 3) == 0 and lib.GetMMap(x1, y1 + i, 4) == 0 then
-      JY.Base.人X = x1
-      JY.Base.人Y = y1 + i
+      JY.Base.浜篨 = x1
+      JY.Base.浜篩 = y1 + i
       JY.Base["\200\203\183\189\207\242"] = 0
     elseif lib.GetMMap(x1, y1 - i, 3) == 0 and lib.GetMMap(x1, y1 - i, 4) == 0 then
-      JY.Base.人X = x1
-      JY.Base.人Y = y1 - i
+      JY.Base.浜篨 = x1
+      JY.Base.浜篩 = y1 - i
       JY.Base["\200\203\183\189\207\242"] = 3
     elseif lib.GetMMap(x1 + i, y1, 3) == 0 and lib.GetMMap(x1 + i, y1, 4) == 0 then
-      JY.Base.人X = x1 + i
-      JY.Base.人Y = y1
+      JY.Base.浜篨 = x1 + i
+      JY.Base.浜篩 = y1
       JY.Base["\200\203\183\189\207\242"] = 2
     elseif lib.GetMMap(x1 - i, y1, 3) == 0 and lib.GetMMap(x1 - i, y1, 4) == 0 then
-      JY.Base.人X = x1 - i
-      JY.Base.人Y = y1
+      JY.Base.浜篨 = x1 - i
+      JY.Base.浜篩 = y1
       JY.Base["\200\203\183\189\207\242"] = 1
     end
     Cls()
@@ -2111,7 +2111,7 @@ function Menu_PBBZ()
     if 0 > JY.Base["\182\211\206\233" .. i + 1] then
       break
     end
-    menu[i][1] = JY.Person[JY.Base["\182\211\206\233" .. i + 1]].姓名
+    menu[i][1] = JY.Person[JY.Base["\182\211\206\233" .. i + 1]].濮撳悕
     menu[i][2] = nil
     menu[i][3] = 1
     perid[i] = JY.Base["\182\211\206\233" .. i + 1]
@@ -2394,9 +2394,9 @@ function Show_Position()
   if JY.Status ~= GAME_MMAP then
     return 0
   end
-  DrawStrBoxWaitKey(string.format("\181\177\199\176\206\187\214\195(%d,%d)", JY.Base.人X, JY.Base.人Y), C_ORANGE, CC.StartMenuFontSize)
+  DrawStrBoxWaitKey(string.format("\181\177\199\176\206\187\214\195(%d,%d)", JY.Base.浜篨, JY.Base.浜篩), C_ORANGE, CC.StartMenuFontSize)
   DrawStrBoxWaitKey(string.format("\196\227\207\214\212\218\181\196\198\183\181\194\214\184\202\253\206\170: %d", JY.Person[0]["\198\183\181\194"]), C_ORANGE, CC.StartMenuFontSize)
-  DrawStrBoxWaitKey(string.format("\196\227\207\214\212\218\181\196\201\249\205\251\214\184\202\253\206\170: %d", JY.Person[0].声望), C_ORANGE, CC.StartMenuFontSize)
+  DrawStrBoxWaitKey(string.format("\196\227\207\214\212\218\181\196\201\249\205\251\214\184\202\253\206\170: %d", JY.Person[0].澹版湜), C_ORANGE, CC.StartMenuFontSize)
   return 1
 end
 
@@ -2411,11 +2411,11 @@ function Menu_Status()
   if JY.Status == GAME_WMAP then
     teamnum = 0
     for i = 0, WAR.PersonNum - 1 do
-      if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].死亡 == false then
+      if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].姝讳骸 == false then
         local id = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
         teamnum = teamnum + 1
         menu[teamnum] = {
-          string.format("%-8s %2d\188\182 %4d/%d", JY.Person[id].姓名, JY.Person[id]["\181\200\188\182"], JY.Person[id].生命, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"]),
+          string.format("%-8s %2d\188\182 %4d/%d", JY.Person[id].濮撳悕, JY.Person[id]["\181\200\188\182"], JY.Person[id].鐢熷懡, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"]),
           nil,
           1,
           id
@@ -2429,7 +2429,7 @@ function Menu_Status()
         break
       end
       menu[i] = {
-        string.format("%-8s %2d\188\182 %4d/%d", JY.Person[id].姓名, JY.Person[id]["\181\200\188\182"], JY.Person[id].生命, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"]),
+        string.format("%-8s %2d\188\182 %4d/%d", JY.Person[id].濮撳悕, JY.Person[id]["\181\200\188\182"], JY.Person[id].鐢熷懡, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"]),
         nil,
         1,
         id
@@ -2489,11 +2489,11 @@ function Menu_EmyStatus()
   local emenu = {}
   local teamnum = 0
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i]["\206\210\183\189"] == false and WAR.Person[i].死亡 == false then
+    if WAR.Person[i]["\206\210\183\189"] == false and WAR.Person[i].姝讳骸 == false then
       local eid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
       teamnum = teamnum + 1
       emenu[teamnum] = {
-        string.format("%-8s %2d\188\182 %4d/%d", JY.Person[eid].姓名, JY.Person[eid]["\181\200\188\182"], JY.Person[eid].生命, JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"]),
+        string.format("%-8s %2d\188\182 %4d/%d", JY.Person[eid].濮撳悕, JY.Person[eid]["\181\200\188\182"], JY.Person[eid].鐢熷懡, JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"]),
         nil,
         1,
         eid
@@ -2564,11 +2564,11 @@ function SelectTeamMenu(x, y)
     }
     local id = JY.Base["\182\211\206\233" .. i]
     if 0 <= id then
-      if 0 <= JY.Person[id].生命 then
-        menu[i][1] = JY.Person[id].姓名
+      if 0 <= JY.Person[id].鐢熷懡 then
+        menu[i][1] = JY.Person[id].濮撳悕
         menu[i][3] = 1
       end
-      if JY.Status == GAME_WMAP and 0 >= JY.Person[id].生命 then
+      if JY.Status == GAME_WMAP and 0 >= JY.Person[id].鐢熷懡 then
         menu[i][3] = 0
       end
     end
@@ -2598,7 +2598,7 @@ function ShowPersonStatus(teamid)
     teamnum = 0
     flag = 2
     for i = 0, WAR.PersonNum - 1 do
-      if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].死亡 == false then
+      if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].姝讳骸 == false then
         teamnum = teamnum + 1
         wid[teamnum] = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
       end
@@ -2687,9 +2687,9 @@ function ShowPersonStatus_sub(id, flag)
     local teamnum = GetTeamNum()
     if JY.Status == GAME_WMAP then
       for j = 0, WAR.PersonNum - 1 do
-        if WAR.Person[j]["\206\210\183\189"] == true and WAR.Person[j].死亡 == false then
+        if WAR.Person[j]["\206\210\183\189"] == true and WAR.Person[j].姝讳骸 == false then
           local id1 = WAR.Person[j]["\200\203\206\239\177\224\186\197"]
-          local name = JY.Person[id1].姓名
+          local name = JY.Person[id1].濮撳悕
           if id == id1 then
             DrawString(x1 + size * strll / 2, y1 + h * i, string.format("%s", name), C_WHITE, size)
           else
@@ -2701,7 +2701,7 @@ function ShowPersonStatus_sub(id, flag)
     else
       for j = 1, teamnum do
         local id1 = JY.Base["\182\211\206\233" .. j]
-        local name = JY.Person[id1].姓名
+        local name = JY.Person[id1].濮撳悕
         if id == id1 then
           DrawString(x1 + size * strll / 2, y1 + h * i, string.format("%s", name), C_WHITE, size)
         else
@@ -2712,9 +2712,9 @@ function ShowPersonStatus_sub(id, flag)
     end
   elseif flag == 2 then
     for j = 0, WAR.PersonNum - 1 do
-      if WAR.Person[j]["\206\210\183\189"] == false and WAR.Person[j].死亡 == false then
+      if WAR.Person[j]["\206\210\183\189"] == false and WAR.Person[j].姝讳骸 == false then
         local id1 = WAR.Person[j]["\200\203\206\239\177\224\186\197"]
-        local name = JY.Person[id1].姓名
+        local name = JY.Person[id1].濮撳悕
         if id == id1 then
           DrawString(x1 + size * strll / 2, y1 + h * i, string.format("%s", name), C_WHITE, size)
         else
@@ -2727,7 +2727,7 @@ function ShowPersonStatus_sub(id, flag)
   i = i + 2
   y1 = CC.PersonStateRowPixel * 2 + math.modf(h * 1.5)
   local y0 = math.modf(h * 1.5)
-  if JY.Person[0].姓名 == "szlzw" then
+  if JY.Person[0].濮撳悕 == "szlzw" then
     if existFile(CC.HeadPath .. CC.JSHead .. ".png") then
       JY.Person[0]["\205\183\207\241\180\250\186\197"] = CC.JSHead
     else
@@ -2755,8 +2755,8 @@ function ShowPersonStatus_sub(id, flag)
     local heady = ((7 * h - headh) / 2 + CC.PersonStateRowPixel) / (CONFIG.Zoom / 100)
     lib.PicLoadCache(1, p["\205\183\207\241\180\250\186\197"] * 2, x1 + headx, y0 + heady, 1)
   end
-  DrawString(x1 + size * 2, y1 + h * 5, p.姓名, C_WHITE, size)
-  DrawString(x1, y1 + h * 6, string.format("%s", p.外号), C_GOLD, size)
+  DrawString(x1 + size * 2, y1 + h * 5, p.濮撳悕, C_WHITE, size)
+  DrawString(x1, y1 + h * 6, string.format("%s", p.澶栧彿), C_GOLD, size)
   DrawString(x1 + 10 * size / 2, y1 + h * 6, string.format("%3d", p["\181\200\188\182"]), C_GOLD, size)
   DrawString(x1 + 13 * size / 2, y1 + h * 6, "\188\182", C_ORANGE, size)
   if p["\208\212\177\240"] == 0 then
@@ -2808,7 +2808,7 @@ function ShowPersonStatus_sub(id, flag)
   end
   i = i + 1
   DrawString(x1, y1 + h * i, "\201\250\195\252", C_ORANGE, size)
-  DrawString(x1 + 2 * size, y1 + h * i, string.format("%5d", p.生命), color, size)
+  DrawString(x1 + 2 * size, y1 + h * i, string.format("%5d", p.鐢熷懡), color, size)
   DrawString(x1 + 9 * size / 2, y1 + h * i, "/", C_GOLD, size)
   if p["\214\208\182\190\179\204\182\200"] == 0 then
     color = C_GOLD
@@ -3001,7 +3001,7 @@ function Menu_Doctor()
     }
     local id = JY.Base["\182\211\206\233" .. i]
     if 0 <= id and JY.Person[id]["\210\189\193\198\196\220\193\166"] >= 20 then
-      menu1[i][1] = string.format("%-10s%4d  \204\229\193\166\163\186%3d", JY.Person[id].姓名, JY.Person[id]["\210\189\193\198\196\220\193\166"], JY.Person[id]["\204\229\193\166"])
+      menu1[i][1] = string.format("%-10s%4d  \204\229\193\166\163\186%3d", JY.Person[id].濮撳悕, JY.Person[id]["\210\189\193\198\196\220\193\166"], JY.Person[id]["\204\229\193\166"])
       menu1[i][3] = 1
     end
   end
@@ -3022,7 +3022,7 @@ function Menu_Doctor()
       }
       local id = JY.Base["\182\211\206\233" .. i]
       if 0 <= id then
-        menu2[i][1] = string.format("%-10s %3d %4d/%4d", JY.Person[id].姓名, JY.Person[id]["\202\220\201\203\179\204\182\200"], JY.Person[id].生命, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"])
+        menu2[i][1] = string.format("%-10s %3d %4d/%4d", JY.Person[id].濮撳悕, JY.Person[id]["\202\220\201\203\179\204\182\200"], JY.Person[id].鐢熷懡, JY.Person[id]["\201\250\195\252\215\238\180\243\214\181"])
         menu2[i][3] = 1
       end
     end
@@ -3034,7 +3034,7 @@ function Menu_Doctor()
       if 0 < num or shoushang > JY.Person[id2]["\202\220\201\203\179\204\182\200"] then
         AddPersonAttrib(id1, "\204\229\193\166", -2)
       end
-      DrawStrBoxWaitKey(string.format("%s \202\220\201\203\179\204\182\200\188\245\201\217 %d \201\250\195\252\212\246\188\211 %d", JY.Person[id2].姓名, shoushang - JY.Person[id2]["\202\220\201\203\179\204\182\200"], num), C_ORANGE, CC.StartMenuFontSize)
+      DrawStrBoxWaitKey(string.format("%s \202\220\201\203\179\204\182\200\188\245\201\217 %d \201\250\195\252\212\246\188\211 %d", JY.Person[id2].濮撳悕, shoushang - JY.Person[id2]["\202\220\201\203\179\204\182\200"], num), C_ORANGE, CC.StartMenuFontSize)
     end
   end
   Cls()
@@ -3080,7 +3080,7 @@ function Menu_DecPoison()
     }
     local id = JY.Base["\182\211\206\233" .. i]
     if 0 <= id and JY.Person[id]["\189\226\182\190\196\220\193\166"] >= 20 then
-      menu1[i][1] = string.format("%-10s%4d  \204\229\193\166\163\186%3d", JY.Person[id].姓名, JY.Person[id]["\189\226\182\190\196\220\193\166"], JY.Person[id]["\204\229\193\166"])
+      menu1[i][1] = string.format("%-10s%4d  \204\229\193\166\163\186%3d", JY.Person[id].濮撳悕, JY.Person[id]["\189\226\182\190\196\220\193\166"], JY.Person[id]["\204\229\193\166"])
       menu1[i][3] = 1
     end
   end
@@ -3103,7 +3103,7 @@ function Menu_DecPoison()
       }
       local id = JY.Base["\182\211\206\233" .. i]
       if 0 <= id then
-        menu2[i][1] = string.format("%-10s%5d", JY.Person[id].姓名, JY.Person[id]["\214\208\182\190\179\204\182\200"])
+        menu2[i][1] = string.format("%-10s%5d", JY.Person[id].濮撳悕, JY.Person[id]["\214\208\182\190\179\204\182\200"])
         menu2[i][3] = 1
       end
     end
@@ -3111,7 +3111,7 @@ function Menu_DecPoison()
     if 0 < r2 then
       id2 = JY.Base["\182\211\206\233" .. r2]
       local num = ExecDecPoison(id1, id2)
-      DrawStrBoxWaitKey(string.format("%s \214\208\182\190\179\204\182\200\188\245\201\217 %d", JY.Person[id2].姓名, num), C_ORANGE, CC.StartMenuFontSize)
+      DrawStrBoxWaitKey(string.format("%s \214\208\182\190\179\204\182\200\188\245\201\217 %d", JY.Person[id2].濮撳悕, num), C_ORANGE, CC.StartMenuFontSize)
     end
   end
   Cls()
@@ -3220,7 +3220,7 @@ function Menu_Thing()
           if r == 1 then
             thing[i] = id
             thingnum[i] = JY.Base["\206\239\198\183\202\253\193\191" .. i + 1]
-          elseif JY.Thing[id].类型 == r - 2 then
+          elseif JY.Thing[id].绫诲瀷 == r - 2 then
             thing[num] = id
             thingnum[num] = JY.Base["\206\239\198\183\202\253\193\191" .. i + 1]
             num = num + 1
@@ -3234,7 +3234,7 @@ function Menu_Thing()
         end
         if 0 <= r then
           UseThing(r)
-          if JY.Thing[r].类型 == 0 or JY.Thing[r].类型 == 4 then
+          if JY.Thing[r].绫诲瀷 == 0 or JY.Thing[r].绫诲瀷 == 4 then
             return 1
           end
         end
@@ -3283,13 +3283,13 @@ function SelectThing(thing, thingnum)
           if thing[id] ~= nil and 0 <= thing[id] then
             cur_thing = thing[id]
             local str = JY.Thing[thing[id]]["\195\251\179\198"]
-            if (JY.Thing[thing[id]].类型 == 1 or JY.Thing[thing[id]].类型 == 2) and 0 <= JY.Thing[thing[id]]["\202\185\211\195\200\203"] then
-              str = str .. "(" .. JY.Person[JY.Thing[thing[id]]["\202\185\211\195\200\203"]].姓名 .. ")"
+            if (JY.Thing[thing[id]].绫诲瀷 == 1 or JY.Thing[thing[id]].绫诲瀷 == 2) and 0 <= JY.Thing[thing[id]]["\202\185\211\195\200\203"] then
+              str = str .. "(" .. JY.Person[JY.Thing[thing[id]]["\202\185\211\195\200\203"]].濮撳悕 .. ")"
             end
             str = string.format("%s X %d", str, thingnum[id])
             local str2 = JY.Thing[thing[id]]["\206\239\198\183\203\181\195\247"]
             if thing[id] == 182 then
-              str2 = str2 .. string.format("(\200\203%3d,%3d)", JY.Base.人X, JY.Base.人Y)
+              str2 = str2 .. string.format("(\200\203%3d,%3d)", JY.Base.浜篨, JY.Base.浜篩)
             end
             DrawString(dx + CC.ThingGapOut, y1_1 + CC.MenuBorderPixel, str, C_GOLD, CC.ThingFontSize)
             DrawString(dx + CC.ThingGapOut, y2_1 + CC.MenuBorderPixel, str2, C_ORANGE, CC.ThingFontSize)
@@ -3343,7 +3343,7 @@ function SelectThing(thing, thingnum)
               end
             end
             
-            if 0 < myThing.类型 then
+            if 0 < myThing.绫诲瀷 then
               drawitem("\188\211\201\250\195\252", "\201\250\195\252")
               drawitem("\188\211\201\250\195\252\215\238\180\243\214\181", "\201\250\195\252\215\238\180\243\214\181")
               drawitem("\188\211\214\208\182\190\189\226\182\190", "\214\208\182\190")
@@ -3376,7 +3376,7 @@ function SelectThing(thing, thingnum)
                 DrawStrBox(dx, y3_2 + 2, " \208\167\185\251:", C_RED, myfont)
               end
             end
-            if myThing.类型 == 1 or myThing.类型 == 2 then
+            if myThing.绫诲瀷 == 1 or myThing.绫诲瀷 == 2 then
               if mx ~= dx then
                 mx = dx + 4 * myfont
                 my = my + myfont * 1.7
@@ -3384,7 +3384,7 @@ function SelectThing(thing, thingnum)
               myflag = 1
               local my2 = my
               if -1 < myThing["\189\246\208\222\193\182\200\203\206\239"] then
-                drawitem("\189\246\207\222:" .. JY.Person[myThing["\189\246\208\222\193\182\200\203\206\239"]].姓名)
+                drawitem("\189\246\207\222:" .. JY.Person[myThing["\189\246\208\222\193\182\200\203\206\239"]].濮撳悕)
               end
               drawitem("\208\232\196\218\193\166\208\212\214\202", "\210\245\209\244", {
                 [0] = "\210\245",
@@ -3407,7 +3407,7 @@ function SelectThing(thing, thingnum)
                 DrawStrBox(dx, my2, " \208\232\199\243:", C_RED, myfont)
               end
             end
-            if myThing.类型 == 1 then
+            if myThing.绫诲瀷 == 1 then
               local ia
               for ia = 1, CC.EONum do
                 if CC.ExtraOffense[ia][1] == thing[id] then
@@ -3422,7 +3422,7 @@ function SelectThing(thing, thingnum)
                 end
               end
             end
-            if JY.Thing[thing[id]].类型 == 2 and 0 < JY.Thing[thing[id]]["\193\183\179\246\206\228\185\166"] then
+            if JY.Thing[thing[id]].绫诲瀷 == 2 and 0 < JY.Thing[thing[id]]["\193\183\179\246\206\228\185\166"] then
               do
                 local wgid = JY.Thing[thing[id]]["\193\183\179\246\206\228\185\166"]
                 local wgmc = JY.Wugong[wgid]["\195\251\179\198"]
@@ -3625,11 +3625,11 @@ function DtoSMap()
 end
 
 function DrawSMap(fastdraw)
-  local x0 = JY.SubSceneX + JY.Base.人X1 - 1
-  local y0 = JY.SubSceneY + JY.Base.人Y1 - 1
-  local x = limitX(x0, CC.SceneXMin, CC.SceneXMax) - JY.Base.人X1
-  local y = limitX(y0, CC.SceneYMin, CC.SceneYMax) - JY.Base.人Y1
-  lib.DrawSMap(JY.SubScene, JY.Base.人X1, JY.Base.人Y1, x, y, JY.MyPic)
+  local x0 = JY.SubSceneX + JY.Base.浜篨1 - 1
+  local y0 = JY.SubSceneY + JY.Base.浜篩1 - 1
+  local x = limitX(x0, CC.SceneXMin, CC.SceneXMax) - JY.Base.浜篨1
+  local y = limitX(y0, CC.SceneYMin, CC.SceneYMax) - JY.Base.浜篩1
+  lib.DrawSMap(JY.SubScene, JY.Base.浜篨1, JY.Base.浜篩1, x, y, JY.MyPic)
 end
 
 function LoadRecord(id)
@@ -3853,9 +3853,9 @@ function SaveRecord(id)
   os.remove(CC.S_Filename[id])
   os.remove(CC.D_Filename[id])
   if JY.Status == GAME_SMAP then
-    JY.Base.无用 = JY.SubScene
+    JY.Base.鏃犵敤 = JY.SubScene
   else
-    JY.Base.无用 = -1
+    JY.Base.鏃犵敤 = -1
   end
   Byte.savefile(JY.Data_Base, CC.R_GRPFilename[id], idx[0], idx[1] - idx[0])
   Byte.savefile(JY.Data_Person, CC.R_GRPFilename[id], idx[1], CC.PersonSize * JY.PersonNum)
@@ -4158,8 +4158,8 @@ function ShowMenu(menuItem, numItem, numShow, x1, y1, x2, y2, isBox, isEsc, size
   local i = 0
   local num = 0
   local newNumItem = 0
-  local zbx = JY.Base.人X
-  local zbY = JY.Base.人Y
+  local zbx = JY.Base.浜篨
+  local zbY = JY.Base.浜篩
   local newMenu = {}
   for i = 1, numItem do
     if 0 < menuItem[i][3] then
@@ -4215,7 +4215,7 @@ function ShowMenu(menuItem, numItem, numShow, x1, y1, x2, y2, isBox, isEsc, size
   end
   while true do
     if num ~= 0 then
-      if zbx == JY.Base.人X and zbY == JY.Base.人Y then
+      if zbx == JY.Base.浜篨 and zbY == JY.Base.浜篩 then
         ClsN()
         lib.LoadSur(surid, 0, 0)
       else
@@ -4288,7 +4288,7 @@ function ShowMenu(menuItem, numItem, numShow, x1, y1, x2, y2, isBox, isEsc, size
       if keyPress == VK_SPACE or keyPress == VK_RETURN or ktype == 5 or ktype == 3 and mk then
         if newMenu[current][2] == nil then
           returnValue = newMenu[current][4]
-          if zbx == JY.Base.人X and zbY == JY.Base.人Y then
+          if zbx == JY.Base.浜篨 and zbY == JY.Base.浜篩 then
             lib.LoadSur(surid2, x1, y1)
             break
           end
@@ -4303,7 +4303,7 @@ function ShowMenu(menuItem, numItem, numShow, x1, y1, x2, y2, isBox, isEsc, size
             returnValue = -newMenu[current][4]
             break
           end
-          if zbx == JY.Base.人X and zbY == JY.Base.人Y then
+          if zbx == JY.Base.浜篨 and zbY == JY.Base.浜篩 then
             ClsN()
             lib.LoadSur(surid, 0, 0)
           else
@@ -4441,23 +4441,23 @@ function UseThing(id)
 end
 
 function DefaultUseThing(id)
-  if JY.Thing[id].类型 == 0 then
+  if JY.Thing[id].绫诲瀷 == 0 then
     return UseThing_Type0(id)
-  elseif JY.Thing[id].类型 == 1 then
+  elseif JY.Thing[id].绫诲瀷 == 1 then
     return UseThing_Type1(id)
-  elseif JY.Thing[id].类型 == 2 then
+  elseif JY.Thing[id].绫诲瀷 == 2 then
     return UseThing_Type2(id)
-  elseif JY.Thing[id].类型 == 3 then
+  elseif JY.Thing[id].绫诲瀷 == 3 then
     return UseThing_Type3(id)
-  elseif JY.Thing[id].类型 == 4 then
+  elseif JY.Thing[id].绫诲瀷 == 4 then
     return UseThing_Type4(id)
   end
 end
 
 function UseThing_Type0(id)
   if JY.SubScene >= 0 then
-    local x = JY.Base.人X1 + CC.DirectX[JY.Base["\200\203\183\189\207\242"] + 1]
-    local y = JY.Base.人Y1 + CC.DirectY[JY.Base["\200\203\183\189\207\242"] + 1]
+    local x = JY.Base.浜篨1 + CC.DirectX[JY.Base["\200\203\183\189\207\242"] + 1]
+    local y = JY.Base.浜篩1 + CC.DirectY[JY.Base["\200\203\183\189\207\242"] + 1]
     local d_num = GetS(JY.SubScene, x, y, 3)
     if 0 <= d_num then
       JY.CurrentThing = id
@@ -4649,7 +4649,7 @@ function UseThing_Type2(id)
           Cls(CC.MainSubMenuX, CC.MainSubMenuY, CC.ScreenW, CC.ScreenH)
           if DrawStrBoxYesNo(-1, -1, "\208\222\193\182\180\203\202\233\177\216\208\235\207\200\187\211\181\182\215\212\185\172\163\172\202\199\183\241\200\212\210\170\208\222\193\182?", C_WHITE, CC.DefaultFont) == false then
             return 0
-          elseif JY.Person[personid].姓名 == "szlzw" then
+          elseif JY.Person[personid].濮撳悕 == "szlzw" then
             say("\163\181\163\210\211\251\193\183\201\241\185\166\161\161\187\211\181\182\215\212\185\172")
             say("\163\178\213\226\204\171\178\210\193\203\176\201\163\161\207\200\191\180\191\180\212\217\203\181....\163\200\163\168\183\173\181\189\207\194\210\187\210\179\163\169")
             say("\163\181\163\210\200\244\178\187\215\212\185\172\161\161\210\178\191\201\193\183\185\166")
@@ -4700,7 +4700,7 @@ function UseThing_Type2(id)
           Cls(CC.MainSubMenuX, CC.MainSubMenuY, CC.ScreenW, CC.ScreenH)
           if DrawStrBoxYesNo(-1, -1, "\208\222\193\182\180\203\202\233\177\216\208\235\207\200\187\211\181\182\215\212\185\172\163\172\202\199\183\241\200\212\210\170\208\222\193\182?", C_WHITE, CC.DefaultFont) == false then
             return 0
-          elseif JY.Person[0].姓名 == "szlzw" then
+          elseif JY.Person[0].濮撳悕 == "szlzw" then
             say("\163\181\163\210\211\251\193\183\201\241\185\166\161\161\187\211\181\182\215\212\185\172")
             say("\163\178\213\226\204\171\178\210\193\203\176\201\163\161\207\200\191\180\191\180\212\217\203\181....\163\200\163\168\183\173\181\189\207\194\210\187\210\179\163\169")
             say("\163\181\163\210\200\244\178\187\215\212\185\172\161\161\210\178\191\201\193\183\185\166", 0)
@@ -4765,8 +4765,8 @@ function UseThingEffect(id, personid)
     if sscd > JY.Person[personid]["\202\220\201\203\179\204\182\200"] then
       sscd = JY.Person[personid]["\202\220\201\203\179\204\182\200"]
     end
-    if JY.Person[personid].生命 + add > JY.Person[personid]["\201\250\195\252\215\238\180\243\214\181"] then
-      smadd = JY.Person[personid]["\201\250\195\252\215\238\180\243\214\181"] - JY.Person[personid].生命
+    if JY.Person[personid].鐢熷懡 + add > JY.Person[personid]["\201\250\195\252\215\238\180\243\214\181"] then
+      smadd = JY.Person[personid]["\201\250\195\252\215\238\180\243\214\181"] - JY.Person[personid].鐢熷懡
     else
       smadd = add
     end
@@ -4891,15 +4891,15 @@ function oldCallEvent(eventnum)
 end
 
 function ChangeMMap(x, y, direct)
-  JY.Base.人X = x
-  JY.Base.人Y = y
+  JY.Base.浜篨 = x
+  JY.Base.浜篩 = y
   JY.Base["\200\203\183\189\207\242"] = direct
 end
 
 function ChangeSMap(sceneid, x, y, direct)
   JY.SubScene = sceneid
-  JY.Base.人X1 = x
-  JY.Base.人Y1 = y
+  JY.Base.浜篨1 = x
+  JY.Base.浜篩1 = y
   JY.Base["\200\203\183\189\207\242"] = direct
 end
 
@@ -4916,7 +4916,7 @@ function Cls(x1, y1, x2, y2)
     local zoom = CC.ScreenW / 1280 * 100
     lib.LoadPicture(CC.FirstFile, 0, 0, zoom)
   elseif JY.Status == GAME_MMAP then
-    lib.DrawMMap(JY.Base.人X, JY.Base.人Y, GetMyPic())
+    lib.DrawMMap(JY.Base.浜篨, JY.Base.浜篩, GetMyPic())
   elseif JY.Status == GAME_SMAP then
     DrawSMap()
   elseif JY.Status == GAME_WMAP then
@@ -5053,18 +5053,18 @@ function TalkEx(s, headid, flag)
         for personid = 0, 999 do
           if JY.Person[personid] ~= nil then
             if JY.Person[personid]["\205\183\207\241\180\250\186\197"] == headid then
-              name = JY.Person[personid].姓名
+              name = JY.Person[personid].濮撳悕
               break
             end
           else
             break
           end
         end
-        if (headid == 0 or headid == CC.JSHead) and JY.Person[0].姓名 == "szlzw" then
+        if (headid == 0 or headid == CC.JSHead) and JY.Person[0].濮撳悕 == "szlzw" then
           if existFile(CC.HeadPath .. CC.JSHead .. ".png") then
             JY.Person[0]["\205\183\207\241\180\250\186\197"] = CC.JSHead
             headid = CC.JSHead
-            name = JY.Person[0].姓名
+            name = JY.Person[0].濮撳悕
           else
             JY.Person[0]["\205\183\207\241\180\250\186\197"] = 0
             headid = 0
@@ -5239,7 +5239,7 @@ function instruct_2(thingid, num)
 end
 
 function instruct_2_sub()
-  if JY.Person[0].声望 < 200 then
+  if JY.Person[0].澹版湜 < 200 then
     return
   end
   if instruct_18(189) == true then
@@ -5421,7 +5421,7 @@ end
 function instruct_15()
   JY.Status = GAME_DEAD
   Cls()
-  DrawString(CC.GameOverX, CC.GameOverY, JY.Person[0].姓名, RGB(0, 0, 0), CC.DefaultFont)
+  DrawString(CC.GameOverX, CC.GameOverY, JY.Person[0].濮撳悕, RGB(0, 0, 0), CC.DefaultFont)
   local x = CC.ScreenW - 9 * CC.DefaultFont
   DrawString(x, 10, os.date("%Y-%m-%d %H:%M"), RGB(216, 20, 24), CC.DefaultFont)
   DrawString(x, 10 + CC.DefaultFont + CC.RowPixel, "\212\218\181\216\199\242\181\196\196\179\180\166", RGB(216, 20, 24), CC.DefaultFont)
@@ -5435,29 +5435,29 @@ function instruct_15()
       DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * 2, CC.StartMenuY, "\199\235\201\212\186\242...", C_RED, CC.StartMenuFontSize * 1.3)
       ShowScreen()
       LoadRecord(r)
-      if 0 < JY.Base.无用 then
+      if 0 < JY.Base.鏃犵敤 then
         if JY.Status == GAME_MMAP then
           lib.UnloadMMap()
           lib.PicInit()
         end
         lib.ShowSlow(50, 1)
         JY.Status = GAME_SMAP
-        JY.SubScene = JY.Base.无用
+        JY.SubScene = JY.Base.鏃犵敤
         JY.MmapMusic = -1
         JY.MyPic = GetMyPic()
         Init_SMap(1)
         Game_Cycle()
         break
       end
-      if JY.Base.无用 == 0 then
-        if JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.人X == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.人Y == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
+      if JY.Base.鏃犵敤 == 0 then
+        if JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X1"] - 1 and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y1"] or JY.Base.浜篨 == JY.Scene[0]["\205\226\190\176\200\235\191\218X2"] and JY.Base.浜篩 == JY.Scene[0]["\205\226\190\176\200\235\191\218Y2"] + 1 then
           if JY.Status == GAME_MMAP then
             lib.UnloadMMap()
             lib.PicInit()
           end
           lib.ShowSlow(50, 1)
           JY.Status = GAME_SMAP
-          JY.SubScene = JY.Base.无用
+          JY.SubScene = JY.Base.鏃犵敤
           JY.MmapMusic = -1
           JY.MyPic = GetMyPic()
           Init_SMap(1)
@@ -5507,8 +5507,8 @@ function instruct_18(thingid)
 end
 
 function instruct_19(x, y)
-  JY.Base.人X1 = x
-  JY.Base.人Y1 = y
+  JY.Base.浜篨1 = x
+  JY.Base.浜篩1 = y
   JY.SubSceneX = 0
   JY.SubSceneY = 0
 end
@@ -5709,17 +5709,17 @@ end
 function instruct_30_sub(direct)
   local x, y
   AddMyCurrentPic()
-  x = JY.Base.人X1 + CC.DirectX[direct + 1]
-  y = JY.Base.人Y1 + CC.DirectY[direct + 1]
+  x = JY.Base.浜篨1 + CC.DirectX[direct + 1]
+  y = JY.Base.浜篩1 + CC.DirectY[direct + 1]
   JY.Base["\200\203\183\189\207\242"] = direct
   JY.MyPic = GetMyPic()
   DtoSMap()
   if SceneCanPass(x, y) == true then
-    JY.Base.人X1 = x
-    JY.Base.人Y1 = y
+    JY.Base.浜篨1 = x
+    JY.Base.浜篩1 = y
   end
-  JY.Base.人X1 = limitX(JY.Base.人X1, 1, CC.SWidth - 2)
-  JY.Base.人Y1 = limitX(JY.Base.人Y1, 1, CC.SHeight - 2)
+  JY.Base.浜篨1 = limitX(JY.Base.浜篨1, 1, CC.SWidth - 2)
+  JY.Base.浜篩1 = limitX(JY.Base.浜篩1, 1, CC.SHeight - 2)
   DrawSMap()
   Cls()
   ShowScreen()
@@ -5791,13 +5791,13 @@ function instruct_33(personid, wugongid, flag)
     JY.Person[personid]["\206\228\185\166\181\200\188\18210"] = 0
   end
   if flag == 0 then
-    DrawStrBoxWaitKey(string.format("%s \209\167\187\225\206\228\185\166 %s", JY.Person[personid].姓名, JY.Wugong[wugongid]["\195\251\179\198"]), C_ORANGE, CC.DefaultFont)
+    DrawStrBoxWaitKey(string.format("%s \209\167\187\225\206\228\185\166 %s", JY.Person[personid].濮撳悕, JY.Wugong[wugongid]["\195\251\179\198"]), C_ORANGE, CC.DefaultFont)
   end
 end
 
 function instruct_34(id, value)
   local add, str = AddPersonAttrib(id, "\215\202\214\202", value)
-  DrawStrBoxWaitKey(JY.Person[id].姓名 .. str, C_ORANGE, CC.DefaultFont)
+  DrawStrBoxWaitKey(JY.Person[id].濮撳悕 .. str, C_ORANGE, CC.DefaultFont)
 end
 
 function instruct_35(personid, id, wugongid, wugonglevel)
@@ -5817,7 +5817,7 @@ function instruct_35(personid, id, wugongid, wugonglevel)
     if flag == 0 then
       JY.Person[personid]["\206\228\185\166" .. 1] = wugongid
       JY.Person[personid]["\206\228\185\166\181\200\188\182" .. 1] = wugonglevel
-      DrawStrBoxWaitKey(string.format("%s \209\167\187\225\206\228\185\166 %s", JY.Person[personid].姓名, JY.Wugong[wugongid]["\195\251\179\198"]), C_ORANGE, CC.DefaultFont)
+      DrawStrBoxWaitKey(string.format("%s \209\167\187\225\206\228\185\166 %s", JY.Person[personid].濮撳悕, JY.Wugong[wugongid]["\195\251\179\198"]), C_ORANGE, CC.DefaultFont)
     end
   end
 end
@@ -5964,25 +5964,25 @@ end
 
 function instruct_45(id, value)
   local add, str = AddPersonAttrib(id, "\199\225\185\166", value)
-  DrawStrBoxWaitKey(JY.Person[id].姓名 .. str, C_ORANGE, CC.DefaultFont)
+  DrawStrBoxWaitKey(JY.Person[id].濮撳悕 .. str, C_ORANGE, CC.DefaultFont)
 end
 
 function instruct_46(id, value)
   local add, str = AddPersonAttrib(id, "\196\218\193\166\215\238\180\243\214\181", value)
   AddPersonAttrib(id, "\196\218\193\166", 0)
-  DrawStrBoxWaitKey(JY.Person[id].姓名 .. str, C_ORANGE, CC.DefaultFont)
+  DrawStrBoxWaitKey(JY.Person[id].濮撳悕 .. str, C_ORANGE, CC.DefaultFont)
 end
 
 function instruct_47(id, value)
   local add, str = AddPersonAttrib(id, "\185\165\187\247\193\166", value)
-  DrawStrBoxWaitKey(JY.Person[id].姓名 .. str, C_ORANGE, CC.DefaultFont)
+  DrawStrBoxWaitKey(JY.Person[id].濮撳悕 .. str, C_ORANGE, CC.DefaultFont)
 end
 
 function instruct_48(id, value)
   local add, str = AddPersonAttrib(id, "\201\250\195\252\215\238\180\243\214\181", value)
   AddPersonAttrib(id, "\201\250\195\252", 0)
   if instruct_16(id) == true then
-    DrawStrBoxWaitKey(JY.Person[id].姓名 .. str, C_ORANGE, CC.DefaultFont)
+    DrawStrBoxWaitKey(JY.Person[id].濮撳悕 .. str, C_ORANGE, CC.DefaultFont)
   end
 end
 
@@ -6277,7 +6277,7 @@ function instruct_50(id1, id2, id3, id4, id5, id6, id7)
       id2 = id2 % 4
       if id2 == 0 then
         if id3 == 0 then
-          X50STR[id5] = JY.Person[id4].姓名
+          X50STR[id5] = JY.Person[id4].濮撳悕
         elseif id3 == 1 then
           X50STR[id5] = JY.Thing[id4]["\195\251\179\198"]
         elseif id3 == 2 then
@@ -6287,7 +6287,7 @@ function instruct_50(id1, id2, id3, id4, id5, id6, id7)
         end
       elseif id2 == 1 then
         if id3 == 0 then
-          X50STR[id5] = JY.Person[X50[id4]].姓名
+          X50STR[id5] = JY.Person[X50[id4]].濮撳悕
         elseif id3 == 1 then
           X50STR[id5] = JY.Thing[X50[id4]]["\195\251\179\198"]
         elseif id3 == 2 then
@@ -6459,7 +6459,7 @@ function instruct_52()
 end
 
 function instruct_53()
-  DrawStrBoxWaitKey(string.format("\196\227\207\214\212\218\181\196\201\249\205\251\214\184\202\253\206\170: %d", JY.Person[0].声望), C_ORANGE, CC.DefaultFont)
+  DrawStrBoxWaitKey(string.format("\196\227\207\214\212\218\181\196\201\249\205\251\214\184\202\253\206\170: %d", JY.Person[0].澹版湜), C_ORANGE, CC.DefaultFont)
 end
 
 function instruct_54()
@@ -6481,7 +6481,7 @@ function instruct_55(id, num)
 end
 
 function instruct_56(v)
-  JY.Person[0].声望 = JY.Person[0].声望 + v
+  JY.Person[0].澹版湜 = JY.Person[0].澹版湜 + v
   instruct_2_sub()
 end
 
@@ -6532,7 +6532,7 @@ function instruct_58()
       end
       local warnum = r + i * num1
       WarLoad(warnum + startwar)
-      instruct_1(2854 + warnum, JY.Person[WAR.Data.敌人1]["\205\183\207\241\180\250\186\197"], 0)
+      instruct_1(2854 + warnum, JY.Person[WAR.Data.鏁屼汉1]["\205\183\207\241\180\250\186\197"], 0)
       instruct_0()
       if WarMain(warnum + startwar, 0) == true then
         instruct_0()
@@ -6713,13 +6713,13 @@ function WarSetGlobal()
     WAR.Person[i]["\206\210\183\189"] = true
     WAR.Person[i]["\215\248\177\234X"] = -1
     WAR.Person[i]["\215\248\177\234Y"] = -1
-    WAR.Person[i].死亡 = true
+    WAR.Person[i].姝讳骸 = true
     WAR.Person[i]["\200\203\183\189\207\242"] = -1
     WAR.Person[i]["\204\249\205\188"] = -1
     WAR.Person[i]["\204\249\205\188\192\224\208\205"] = 0
     WAR.Person[i]["\199\225\185\166"] = 0
     WAR.Person[i]["\210\198\182\175\178\189\202\253"] = 0
-    WAR.Person[i].点数 = 0
+    WAR.Person[i].鐐规暟 = 0
     WAR.Person[i]["\190\173\209\233"] = 0
     WAR.Person[i]["\215\212\182\175\209\161\212\241\182\212\202\214"] = -1
   end
@@ -6772,7 +6772,7 @@ function WarMain(warid, isexp)
   if CC.FK == 1 then
     lib.PicLoadFile(CC.MMAPPicFile[1], CC.MMAPPicFile[2], 2)
   end
-  PlayMIDI(WAR.Data.音乐)
+  PlayMIDI(WAR.Data.闊充箰)
   local first = 0
   local warStatus
   JY.ZDHH = 0
@@ -6787,14 +6787,14 @@ function WarMain(warid, isexp)
   end
   local lev = JY.Person[0]["\181\200\188\182"]
   JY.Huhuocs = math.floor(lev / 15)
-  if JY.YXND == 0 and JY.Person[0].姓名 == "szlzw" then
+  if JY.YXND == 0 and JY.Person[0].濮撳悕 == "szlzw" then
     JY.Huhuocs = 0
   end
   JY.WARWF = 0
   JY.WARDF = 0
   for i = 0, WAR.PersonNum - 1 do
     JY.DEADPD[i] = {}
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       if WAR.Person[i]["\206\210\183\189"] then
         JY.WARWF = JY.WARWF + 1
       else
@@ -6805,7 +6805,7 @@ function WarMain(warid, isexp)
   while true do
     for i = 0, WAR.PersonNum - 1 do
       WAR.Person[i]["\204\249\205\188"] = WarCalPersonPic(i)
-      if WAR.Person[i].死亡 == false then
+      if WAR.Person[i].姝讳骸 == false then
         JY.DEADPD[i][1] = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
         JY.DEADPD[i][2] = 0
       end
@@ -6824,7 +6824,7 @@ function WarMain(warid, isexp)
           WAR.AutoFight = 0
         end
       end
-      if WAR.Person[p].死亡 == false then
+      if WAR.Person[p].姝讳骸 == false then
         WAR.CurID = p
         if first == 0 then
           WarDrawMap(0)
@@ -6852,9 +6852,9 @@ function WarMain(warid, isexp)
         warStatus = War_isEnd()
         for j = 0, WAR.PersonNum - 1 do
           if WAR.Person[j]["\200\203\206\239\177\224\186\197"] == 0 and 0 < JY.Huhuocs and 15 <= lev * bshh then
-            if JY.Person[0].外号 == "\206\215\209\253" and 0 >= JY.Huhuolq and WAR.Person[j].死亡 == true and CC.JS == 1 then
-              WAR.Person[j].死亡 = false
-              JY.Person[0].生命 = math.modf(JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] / 2)
+            if JY.Person[0].澶栧彿 == "\206\215\209\253" and 0 >= JY.Huhuolq and WAR.Person[j].姝讳骸 == true and CC.JS == 1 then
+              WAR.Person[j].姝讳骸 = false
+              JY.Person[0].鐢熷懡 = math.modf(JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] / 2)
               JY.Huhuolq = JY.Huhuolq * bshh
               warStatus = 0
               local xgstr = "\206\215\209\253\161\250\183\162\182\175\214\216\201\250\204\216\188\188\163\172\184\180\187\238\193\203\215\212\188\186\163\161"
@@ -6866,7 +6866,7 @@ function WarMain(warid, isexp)
               JY.Huhuocs = JY.Huhuocs - 1
               JY.Huhuolq = JY.Huhuolq * bshh
             end
-            if WAR.Person[j].外号 ~= "\206\215\209\253" then
+            if WAR.Person[j].澶栧彿 ~= "\206\215\209\253" then
               JY.Huhuolq = JY.Huhuolq * bshh
             end
           end
@@ -6928,7 +6928,7 @@ function War_PersonLostLife()
   if CC.BanBen == 0 then
     for i = 0, WAR.PersonNum - 1 do
       local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-      if WAR.Person[i].死亡 == false then
+      if WAR.Person[i].姝讳骸 == false then
         if 0 < JY.Person[pid]["\202\220\201\203\179\204\182\200"] then
           local dec = math.modf(JY.Person[pid]["\202\220\201\203\179\204\182\200"] / 10)
           AddPersonAttrib(pid, "\201\250\195\252", -dec)
@@ -6937,15 +6937,15 @@ function War_PersonLostLife()
           local dec = math.modf(JY.Person[pid]["\214\208\182\190\179\204\182\200"] / 10)
           AddPersonAttrib(pid, "\201\250\195\252", -dec)
         end
-        if 0 >= JY.Person[pid].生命 then
-          JY.Person[pid].生命 = 1
+        if 0 >= JY.Person[pid].鐢熷懡 then
+          JY.Person[pid].鐢熷懡 = 1
         end
       end
     end
   else
     for i = 0, WAR.PersonNum - 1 do
       local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-      if WAR.Person[i].死亡 == false then
+      if WAR.Person[i].姝讳骸 == false then
         if 0 < JY.Person[pid]["\202\220\201\203\179\204\182\200"] then
           local dec = math.modf(JY.Person[pid]["\202\220\201\203\179\204\182\200"] / 10)
           AddPersonAttrib(pid, "\201\250\195\252", math.modf(-dec * (CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"] / 999)))
@@ -6958,8 +6958,8 @@ function War_PersonLostLife()
           end
           AddPersonAttrib(pid, "\201\250\195\252", -dec * duyz)
         end
-        if 0 >= JY.Person[pid].生命 then
-          JY.Person[pid].生命 = 1
+        if 0 >= JY.Person[pid].鐢熷懡 then
+          JY.Person[pid].鐢熷懡 = 1
         end
       end
     end
@@ -6970,7 +6970,7 @@ function War_EndPersonData(isexp, warStatus)
   for i = 0, WAR.PersonNum - 1 do
     local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
     if WAR.Person[i]["\206\210\183\189"] == false then
-      JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+      JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
       JY.Person[pid]["\196\218\193\166"] = JY.Person[pid]["\196\218\193\166\215\238\180\243\214\181"]
       JY.Person[pid]["\204\229\193\166"] = CC.PersonAttribMax["\204\229\193\166"]
       JY.Person[pid]["\202\220\201\203\179\204\182\200"] = 0
@@ -6980,10 +6980,10 @@ function War_EndPersonData(isexp, warStatus)
   for i = 0, WAR.PersonNum - 1 do
     local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
     if WAR.Person[i]["\206\210\183\189"] == true then
-      if JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] then
-        JY.Person[pid].生命 = JY.Person[pid].生命 + math.modf(JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5)
-        if JY.Person[pid].生命 > JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] then
-          JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+      if JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] then
+        JY.Person[pid].鐢熷懡 = JY.Person[pid].鐢熷懡 + math.modf(JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5)
+        if JY.Person[pid].鐢熷懡 > JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] then
+          JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
         end
       end
       if JY.Person[pid]["\196\218\193\166"] < JY.Person[pid]["\196\218\193\166\215\238\180\243\214\181"] then
@@ -7005,7 +7005,7 @@ function War_EndPersonData(isexp, warStatus)
   end
   local liveNum = 0
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i]["\206\210\183\189"] == true and 0 < JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].生命 then
+    if WAR.Person[i]["\206\210\183\189"] == true and 0 < JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].鐢熷懡 then
       liveNum = liveNum + 1
     end
   end
@@ -7015,7 +7015,7 @@ function War_EndPersonData(isexp, warStatus)
   if warStatus == 1 then
     for i = 0, WAR.PersonNum - 1 do
       local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-      if WAR.Person[i]["\206\210\183\189"] == true and 0 < JY.Person[pid].生命 then
+      if WAR.Person[i]["\206\210\183\189"] == true and 0 < JY.Person[pid].鐢熷懡 then
         if pid == 0 then
           WAR.Person[i]["\190\173\209\233"] = (WAR.Person[i]["\190\173\209\233"] + math.modf(WAR.Data["\190\173\209\233"] / liveNum)) * CC.ExpLevel * CC.ExpCS
         else
@@ -7037,7 +7037,7 @@ function War_EndPersonData(isexp, warStatus)
     end
     if WAR.Person[i]["\206\210\183\189"] == true then
       Cls()
-      DrawStrBoxWaitKey(string.format("%s \187\241\181\195\190\173\209\233\181\227\202\253 %d", JY.Person[pid].姓名, WAR.Person[i]["\190\173\209\233"]), C_WHITE, CC.DefaultFont)
+      DrawStrBoxWaitKey(string.format("%s \187\241\181\195\190\173\209\233\181\227\202\253 %d", JY.Person[pid].濮撳悕, WAR.Person[i]["\190\173\209\233"]), C_WHITE, CC.DefaultFont)
       JY.JSEXP = WAR.Person[i]["\190\173\209\233"]
       local r = War_AddPersonLevel(pid)
     end
@@ -7085,12 +7085,12 @@ function War_AddPersonLevel(pid)
     rwsx[i] = 0
   end
   if CC.FKUP == 0 then
-    if JY.Person[pid].姓名 == "szlzw" then
+    if JY.Person[pid].濮撳悕 == "szlzw" then
       local leveladd = tmplevel - JY.Person[pid]["\181\200\188\182"]
       JY.Person[pid]["\181\200\188\182"] = JY.Person[pid]["\181\200\188\182"] + leveladd
       rwsx[1] = (JY.Person[pid]["\201\250\195\252\212\246\179\164"] + 2) * leveladd * 3
       AddPersonAttrib(pid, "\201\250\195\252\215\238\180\243\214\181", rwsx[1])
-      JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+      JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
       JY.Person[pid]["\204\229\193\166"] = CC.PersonAttribMax["\204\229\193\166"]
       JY.Person[pid]["\202\220\201\203\179\204\182\200"] = 0
       JY.Person[pid]["\214\208\182\190\179\204\182\200"] = 0
@@ -7132,7 +7132,7 @@ function War_AddPersonLevel(pid)
       JY.Person[pid]["\181\200\188\182"] = JY.Person[pid]["\181\200\188\182"] + leveladd
       rwsx[1] = (JY.Person[pid]["\201\250\195\252\212\246\179\164"] + Rnd(3)) * leveladd * 3
       AddPersonAttrib(pid, "\201\250\195\252\215\238\180\243\214\181", rwsx[1])
-      JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+      JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
       JY.Person[pid]["\204\229\193\166"] = CC.PersonAttribMax["\204\229\193\166"]
       JY.Person[pid]["\202\220\201\203\179\204\182\200"] = 0
       JY.Person[pid]["\214\208\182\190\179\204\182\200"] = 0
@@ -7173,12 +7173,12 @@ function War_AddPersonLevel(pid)
         end
       end
     end
-  elseif JY.Person[pid].姓名 == "szlzw" then
+  elseif JY.Person[pid].濮撳悕 == "szlzw" then
     local leveladd = tmplevel - JY.Person[pid]["\181\200\188\182"]
     JY.Person[pid]["\181\200\188\182"] = JY.Person[pid]["\181\200\188\182"] + leveladd
     rwsx[1] = (JY.Person[pid]["\201\250\195\252\212\246\179\164"] + 2) * leveladd * 3
     AddPersonAttrib(pid, "\201\250\195\252\215\238\180\243\214\181", rwsx[1])
-    JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+    JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
     JY.Person[pid]["\204\229\193\166"] = CC.PersonAttribMax["\204\229\193\166"]
     JY.Person[pid]["\202\220\201\203\179\204\182\200"] = 0
     JY.Person[pid]["\214\208\182\190\179\204\182\200"] = 0
@@ -7219,7 +7219,7 @@ function War_AddPersonLevel(pid)
     JY.Person[pid]["\181\200\188\182"] = JY.Person[pid]["\181\200\188\182"] + leveladd
     rwsx[1] = (JY.Person[pid]["\201\250\195\252\212\246\179\164"] + Rnd(3)) * leveladd * 3
     AddPersonAttrib(pid, "\201\250\195\252\215\238\180\243\214\181", rwsx[1])
-    JY.Person[pid].生命 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
+    JY.Person[pid].鐢熷懡 = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
     JY.Person[pid]["\204\229\193\166"] = CC.PersonAttribMax["\204\229\193\166"]
     JY.Person[pid]["\202\220\201\203\179\204\182\200"] = 0
     JY.Person[pid]["\214\208\182\190\179\204\182\200"] = 0
@@ -7299,7 +7299,7 @@ function War_AddPersonLevel(pid)
   local x2 = CC.ScreenW / 2 + size * 7
   local y2 = CC.ScreenH - y1
   DrawBox(x1, y1, x2, y2, C_WHITE)
-  DrawString(x1 + size, y1 + ysize * 0, string.format("%-8s", JY.Person[pid].姓名), C_GOLD, size)
+  DrawString(x1 + size, y1 + ysize * 0, string.format("%-8s", JY.Person[pid].濮撳悕), C_GOLD, size)
   DrawString(x1 + size * 6, y1 + ysize * 0, "\201\253\188\182\193\203", C_WHITE, size)
   if JY.Person[pid]["\181\200\188\182"] >= CC.Level then
     DrawString(x1 + size, y1 + ysize * 1, string.format("\181\200\188\182 %4d", JY.Person[pid]["\181\200\188\182"]), C_GOLD, size)
@@ -7519,7 +7519,7 @@ function War_PersonTrainBook(pid)
       local y2 = CC.ScreenH - y1
       Cls()
       DrawBox(x1, y1, x2, y2, C_WHITE)
-      DrawString(x1 + size, y1 + ysize * 0, string.format("%s", p.姓名), C_GOLD, size)
+      DrawString(x1 + size, y1 + ysize * 0, string.format("%s", p.濮撳悕), C_GOLD, size)
       p["\208\222\193\182\181\227\202\253"] = p["\208\222\193\182\181\227\202\253"] - needpoint
       mijilev = mijilev + 1
       if 0 <= wugongid then
@@ -7703,7 +7703,7 @@ function War_PersonTrainDrug(pid)
           instruct_32(newThingID, wpnum)
         end
         Cls()
-        DrawStrBoxWaitKey(string.format("%s \214\198\212\236\179\246%d\184\246%s %s-%d\163\172\202\163\211\224%d%s", p.姓名, wpnum, JY.Thing[newThingID]["\195\251\179\198"], JY.Thing[JY.Thing[thingid]["\208\232\178\196\193\207"]]["\195\251\179\198"], JY.Thing[thingid]["\208\232\210\170\206\239\198\183\202\253\193\191" .. makeID], MaterialNum - JY.Thing[thingid]["\208\232\210\170\206\239\198\183\202\253\193\191" .. makeID], JY.Thing[JY.Thing[thingid]["\208\232\178\196\193\207"]]["\195\251\179\198"]), C_WHITE, CC.DefaultFont)
+        DrawStrBoxWaitKey(string.format("%s \214\198\212\236\179\246%d\184\246%s %s-%d\163\172\202\163\211\224%d%s", p.濮撳悕, wpnum, JY.Thing[newThingID]["\195\251\179\198"], JY.Thing[JY.Thing[thingid]["\208\232\178\196\193\207"]]["\195\251\179\198"], JY.Thing[thingid]["\208\232\210\170\206\239\198\183\202\253\193\191" .. makeID], MaterialNum - JY.Thing[thingid]["\208\232\210\170\206\239\198\183\202\253\193\191" .. makeID], JY.Thing[JY.Thing[thingid]["\208\232\178\196\193\207"]]["\195\251\179\198"]), C_WHITE, CC.DefaultFont)
         instruct_32(JY.Thing[thingid]["\208\232\178\196\193\207"], -JY.Thing[thingid]["\208\232\210\170\206\239\198\183\202\253\193\191" .. makeID])
         p["\206\239\198\183\208\222\193\182\181\227\202\253"] = p["\206\239\198\183\208\222\193\182\181\227\202\253"] - needpoint
       end
@@ -7715,10 +7715,10 @@ function War_isEnd()
   JY.WARWF = 0
   JY.WARDF = 0
   for i = 0, WAR.PersonNum - 1 do
-    if 0 >= JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].生命 then
-      WAR.Person[i].死亡 = true
+    if 0 >= JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].鐢熷懡 then
+      WAR.Person[i].姝讳骸 = true
     end
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       if WAR.Person[i]["\206\210\183\189"] then
         JY.WARWF = JY.WARWF + 1
       else
@@ -7732,7 +7732,7 @@ function War_isEnd()
   local myNum = 0
   local EmenyNum = 0
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       if WAR.Person[i]["\206\210\183\189"] == true then
         myNum = 1
       else
@@ -7759,7 +7759,7 @@ function WarSelectTeam()
         WAR.Person[WAR.PersonNum]["\206\210\183\189"] = true
         WAR.Person[WAR.PersonNum]["\215\248\177\234X"] = WAR.Data["\206\210\183\189X" .. i]
         WAR.Person[WAR.PersonNum]["\215\248\177\234Y"] = WAR.Data["\206\210\183\189Y" .. i]
-        WAR.Person[WAR.PersonNum].死亡 = false
+        WAR.Person[WAR.PersonNum].姝讳骸 = false
         WAR.Person[WAR.PersonNum]["\200\203\183\189\207\242"] = 2
         WAR.PersonNum = WAR.PersonNum + 1
       end
@@ -7791,7 +7791,7 @@ function WarSelectTeam()
       local id = JY.Base["\182\211\206\233" .. i]
       if 0 <= id then
         menu[i][3] = 1
-        local s = JY.Person[id].姓名
+        local s = JY.Person[id].濮撳悕
         if WAR.SelectPerson[i] == 1 then
           menu[i][1] = "\179\246\213\189  " .. s
         else
@@ -7863,7 +7863,7 @@ function WarSelectTeam()
             end
           end
         end
-        WAR.Person[WAR.PersonNum].死亡 = false
+        WAR.Person[WAR.PersonNum].姝讳骸 = false
         WAR.Person[WAR.PersonNum]["\200\203\183\189\207\242"] = 2
         WAR.PersonNum = WAR.PersonNum + 1
         zdyx[i][1] = 2
@@ -7949,7 +7949,7 @@ function WarSelectEnemy()
       WAR.Person[WAR.PersonNum]["\206\210\183\189"] = false
       WAR.Person[WAR.PersonNum]["\215\248\177\234X"] = WAR.Data["\181\208\183\189X" .. i]
       WAR.Person[WAR.PersonNum]["\215\248\177\234Y"] = WAR.Data["\181\208\183\189Y" .. i]
-      WAR.Person[WAR.PersonNum].死亡 = false
+      WAR.Person[WAR.PersonNum].姝讳骸 = false
       WAR.Person[WAR.PersonNum]["\200\203\183\189\207\242"] = 1
       WAR.PersonNum = WAR.PersonNum + 1
     end
@@ -8045,7 +8045,7 @@ function WarSetPerson()
   CleanWarMap(2, -1)
   CleanWarMap(5, -1)
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       SetWarMap(WAR.Person[i]["\215\248\177\234X"], WAR.Person[i]["\215\248\177\234Y"], 2, i)
       SetWarMap(WAR.Person[i]["\215\248\177\234X"], WAR.Person[i]["\215\248\177\234Y"], 5, WAR.Person[i]["\204\249\205\188"])
     end
@@ -8173,19 +8173,19 @@ function War_Manual_Sub()
   if pid == 0 and CC.BanBen == 1 then
     local lev = JY.Person[0]["\181\200\188\182"]
     local hhlev = 15
-    if JY.Person[0].姓名 == "szlzw" then
+    if JY.Person[0].濮撳悕 == "szlzw" then
       hhlev = 30
     end
-    if CC.JS == 1 and JY.Person[0].外号 == "\206\215\209\253" and 0 >= JY.Huhuolq and 0 < JY.Huhuocs and lev >= hhlev then
+    if CC.JS == 1 and JY.Person[0].澶栧彿 == "\206\215\209\253" and 0 >= JY.Huhuolq and 0 < JY.Huhuocs and lev >= hhlev then
       menu[9][3] = 1
     end
-    if CC.JS == 1 and JY.Person[0].姓名 == "szlzw" and JY.YXND == 0 then
+    if CC.JS == 1 and JY.Person[0].濮撳悕 == "szlzw" and JY.YXND == 0 then
       menu[10][3] = 1
     end
-    if CC.JS == 1 and JY.Person[0].姓名 == "szlzw" and JY.YXND == 1 and JY.Person[0]["\181\200\188\182"] > 9 then
+    if CC.JS == 1 and JY.Person[0].濮撳悕 == "szlzw" and JY.YXND == 1 and JY.Person[0]["\181\200\188\182"] > 9 then
       menu[10][3] = 1
     end
-    if CC.JS == 1 and JY.Person[0].姓名 == "szlzw" and JY.YXND == 2 and JY.Person[0]["\181\200\188\182"] > 19 then
+    if CC.JS == 1 and JY.Person[0].濮撳悕 == "szlzw" and JY.YXND == 2 and JY.Person[0]["\181\200\188\182"] > 19 then
       menu[10][3] = 1
     end
   end
@@ -8237,7 +8237,7 @@ function WarShowHead(id)
   DrawBox(x1, y1, x1 + width, y1 + height, C_WHITE)
   local size = CC.DefaultFont
   local hid = p["\205\183\207\241\180\250\186\197"]
-  if hid == 0 and JY.Person[0].姓名 == "szlzw" then
+  if hid == 0 and JY.Person[0].濮撳悕 == "szlzw" then
     if existFile(CC.HeadPath .. CC.JSHead .. ".png") then
       JY.Person[0]["\205\183\207\241\180\250\186\197"] = CC.JSHead
       hid = CC.JSHead
@@ -8282,7 +8282,7 @@ function WarShowHead(id)
   end
   x1 = x1 + CC.PersonStateRowPixel
   y1 = y1 + CC.PersonStateRowPixel * 2 + headhh
-  DrawString(x1, y1, p.姓名, C_WHITE, CC.DefaultFont)
+  DrawString(x1, y1, p.濮撳悕, C_WHITE, CC.DefaultFont)
   DrawString(x1 + w * 5, y1, string.format("%2d\188\182", p["\181\200\188\182"]), C_GOLD, CC.DefaultFont)
   local color
   if p["\202\220\201\203\179\204\182\200"] < 33 then
@@ -8293,7 +8293,7 @@ function WarShowHead(id)
     color = RGB(232, 32, 44)
   end
   DrawString(x1, y1 + h, "\201\250\195\252", C_ORANGE, CC.DefaultFont)
-  DrawString(x1 + w * 2, y1 + h, string.format("%4d", p.生命), color, CC.DefaultFont)
+  DrawString(x1 + w * 2, y1 + h, string.format("%4d", p.鐢熷懡), color, CC.DefaultFont)
   DrawString(x1 + w * 4, y1 + h, "/", C_GOLD, CC.DefaultFont)
   if p["\214\208\182\190\179\204\182\200"] == 0 then
     color = C_GOLD
@@ -8333,34 +8333,34 @@ function WarShowHead(id)
   DrawString(x1 + w * 4, y1 + h * 5, string.format("\183\192 %d", fyl), C_RED, CC.DefaultFont)
   DrawString(x1, y1 + h * 6, string.format("\199\225 %d", qg), C_RED, CC.DefaultFont)
   DrawString(x1 + w * 4, y1 + h * 6, string.format("\202\182 %d", p["\206\228\209\167\179\163\202\182"]), C_RED, CC.DefaultFont)
-  if pid == 0 and JY.Person[pid].外号 == "\200\173\176\212" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\200\173\176\212" and CC.JS == 1 then
     local xgstr = "\200\173\176\212\161\250\198\198\183\192\201\203\186\166\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\189\163\196\167" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\189\163\196\167" and CC.JS == 1 then
     local xgstr = "\189\163\196\167\161\250\202\200\209\170\201\203\186\166\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\181\182\179\213" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\181\182\179\213" and CC.JS == 1 then
     local xgstr = "\181\182\179\213\161\250\210\187\187\247\177\216\201\177\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\204\216\191\241" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\204\216\191\241" and CC.JS == 1 then
     local xgstr = "\204\216\191\241\161\250\177\169\187\247\201\203\186\166\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\201\241\214\250" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\201\241\214\250" and CC.JS == 1 then
     local xgstr = "\201\241\214\250\161\250\204\236\201\241\187\164\204\229\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\206\215\209\253" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\206\215\209\253" and CC.JS == 1 then
     local xgstr = "\206\215\209\253\161\250\195\187\211\208\214\216\201\250\188\188\196\220"
     local lev = JY.Person[0]["\181\200\188\182"]
     local hhlev = 15
-    if 0 < JY.YXND and JY.Person[0].姓名 == "szlzw" then
+    if 0 < JY.YXND and JY.Person[0].濮撳悕 == "szlzw" then
       hhlev = 30
     end
-    if JY.Person[0].姓名 ~= "szlzw" then
+    if JY.Person[0].濮撳悕 ~= "szlzw" then
       if 0 < JY.Huhuolq and 0 < JY.Huhuocs and lev >= hhlev then
         xgstr = "\206\215\209\253\161\250\214\216\201\250\188\188\196\220" .. JY.Huhuolq .. "\187\216\186\207\186\243\188\164\187\238\163\172\202\163\211\224" .. JY.Huhuocs .. "\180\206"
       elseif JY.Huhuolq == 0 and 0 < JY.Huhuocs and lev >= hhlev then
@@ -8383,16 +8383,16 @@ function WarShowHead(id)
     end
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\182\190\205\245" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\182\190\205\245" and CC.JS == 1 then
     local xgstr = "\182\190\205\245\161\250\180\227\182\190\201\203\186\166\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
-  elseif pid == 0 and JY.Person[pid].外号 == "\187\195\211\176" and CC.JS == 1 then
+  elseif pid == 0 and JY.Person[pid].澶栧彿 == "\187\195\211\176" and CC.JS == 1 then
     local xgstr = "\187\195\211\176\161\250\211\176\201\177\188\188\196\220\188\164\187\238"
     local xglen = #xgstr
     DrawString(CC.ScreenW / 2 - CC.DefaultFont * xglen / 4, CC.DefaultFont, xgstr, C_WHITE, CC.DefaultFont)
   end
-  if 0 < JY.YXND and JY.Person[0].姓名 == "szlzw" and JY.Person[pid].外号 == "\179\172\201\241" and CC.JS == 1 then
+  if 0 < JY.YXND and JY.Person[0].濮撳悕 == "szlzw" and JY.Person[pid].澶栧彿 == "\179\172\201\241" and CC.JS == 1 then
     if JY.YXND == 1 then
       if JY.Person[0]["\181\200\188\182"] > 9 then
         local xgstr = "\179\172\201\241\161\250\184\196\177\228\208\205\204\172\188\164\187\238"
@@ -9058,23 +9058,23 @@ function War_Fight_Sub(id, wugongnum, x, y)
               local NGHT = CONFIG.NGHT or 0
               if CC.BanBen == 0 then
                 if NGHT == 0 then
-                  WAR.Person[emeny].点数 = -War_WugongHurtLife(emeny, wugong, level)
+                  WAR.Person[emeny].鐐规暟 = -War_WugongHurtLife(emeny, wugong, level)
                 else
-                  WAR.Person[emeny].点数 = -War_WugongHurtLife1(emeny, wugong, level)
+                  WAR.Person[emeny].鐐规暟 = -War_WugongHurtLife1(emeny, wugong, level)
                 end
                 WAR.Effect = 2
                 SetWarMap(i, j, 4, 2)
               else
                 if NGHT == 0 then
-                  WAR.Person[emeny].点数 = -War_WugongHurtLife_CL(emeny, wugong, level)
+                  WAR.Person[emeny].鐐规暟 = -War_WugongHurtLife_CL(emeny, wugong, level)
                 else
-                  WAR.Person[emeny].点数 = -War_WugongHurtLife1_CL(emeny, wugong, level)
+                  WAR.Person[emeny].鐐规暟 = -War_WugongHurtLife1_CL(emeny, wugong, level)
                 end
                 WAR.Effect = 2
                 SetWarMap(i, j, 4, 2)
               end
             else
-              WAR.Person[emeny].点数 = -War_WugongHurtNeili(emeny, wugong, level)
+              WAR.Person[emeny].鐐规暟 = -War_WugongHurtNeili(emeny, wugong, level)
               SetWarMap(i, j, 4, 3)
               WAR.Effect = 3
             end
@@ -9085,7 +9085,7 @@ function War_Fight_Sub(id, wugongnum, x, y)
     x, y = Movex, Movey
     War_ShowFight(pid, wugong, JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"], level, x, y, JY.Wugong[wugong]["\206\228\185\166\182\175\187\173&\210\244\208\167"])
     for i = 0, WAR.PersonNum - 1 do
-      WAR.Person[i].点数 = 0
+      WAR.Person[i].鐐规暟 = 0
     end
     WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + 2
     if JY.Person[pid]["\206\228\185\166\181\200\188\182" .. wugongnum] < 900 then
@@ -9141,8 +9141,8 @@ function YYZhi(x, y, str, pic, pic2, yy, color, fontsize, xadd, yadd)
   local x0 = 0
   local y0 = 0
   if JY.Status == GAME_SMAP then
-    x0 = JY.Base.人X1
-    y0 = JY.Base.人Y1
+    x0 = JY.Base.浜篨1
+    y0 = JY.Base.浜篩1
     if x0 <= 7 then
       x0 = 8
     end
@@ -9159,8 +9159,8 @@ function YYZhi(x, y, str, pic, pic2, yy, color, fontsize, xadd, yadd)
     x0 = WAR.Person[WAR.CurID]["\215\248\177\234X"]
     y0 = WAR.Person[WAR.CurID]["\215\248\177\234Y"]
   elseif JY.Status == GAME_MMAP then
-    x0 = JY.Base.人X
-    y0 = JY.Base.人Y
+    x0 = JY.Base.浜篨
+    y0 = JY.Base.浜篩
   end
   local xyz = x - x0
   local yyz = y - y0
@@ -9681,8 +9681,8 @@ function War_ShowFight(pid, wugong, wugongtype, level, x, y, eft)
   for i = 0, WAR.PersonNum - 1 do
     local x1 = WAR.Person[i]["\215\248\177\234X"]
     local y1 = WAR.Person[i]["\215\248\177\234Y"]
-    if WAR.Person[i].死亡 == false and 1 < GetWarMap(x1, y1, 4) then
-      local n = WAR.Person[i].点数
+    if WAR.Person[i].姝讳骸 == false and 1 < GetWarMap(x1, y1, 4) then
+      local n = WAR.Person[i].鐐规暟
       HitXY[HitXYNum] = {
         x1,
         y1,
@@ -9752,7 +9752,7 @@ function War_WugongHurtLife(emenyid, wugong, level)
   local emenywuxue = 0
   for i = 0, WAR.PersonNum - 1 do
     local id = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-    if WAR.Person[i].死亡 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] >= CC.WXCS then
+    if WAR.Person[i].姝讳骸 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] >= CC.WXCS then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[i]["\206\210\183\189"] then
         mywuxue = mywuxue + JY.Person[id]["\206\228\209\167\179\163\202\182"]
       else
@@ -9808,10 +9808,10 @@ function War_WugongHurtLife(emenyid, wugong, level)
   if hurt <= 0 then
     hurt = Rnd(8) + 1
   end
-  JY.Person[eid].生命 = JY.Person[eid].生命 - hurt
+  JY.Person[eid].鐢熷懡 = JY.Person[eid].鐢熷懡 - hurt
   WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + math.modf(hurt / 5)
-  if 0 >= JY.Person[eid].生命 then
-    JY.Person[eid].生命 = 0
+  if 0 >= JY.Person[eid].鐢熷懡 then
+    JY.Person[eid].鐢熷懡 = 0
     WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + JY.Person[eid]["\181\200\188\182"] * 10
     if JY.DEADKG == 1 then
       local did
@@ -9822,8 +9822,8 @@ function War_WugongHurtLife(emenyid, wugong, level)
         end
       end
       if JY.DEADPD[did][2] == 0 then
-        local name1 = JY.Person[pid].姓名
-        local name2 = JY.Person[eid].姓名
+        local name1 = JY.Person[pid].濮撳悕
+        local name2 = JY.Person[eid].濮撳悕
         local size = CC.DefaultFont * 1.5
         local str = name1 .. " \187\247\176\220 " .. name2
         local slen = string.len(str)
@@ -9866,7 +9866,7 @@ function War_WugongHurtLife1(emenyid, wugong, level)
   local emenywuxue = 0
   for i = 0, WAR.PersonNum - 1 do
     local id = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-    if WAR.Person[i].死亡 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] >= CC.WXCS then
+    if WAR.Person[i].姝讳骸 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] >= CC.WXCS then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[i]["\206\210\183\189"] then
         mywuxue = mywuxue + JY.Person[id]["\206\228\209\167\179\163\202\182"]
       else
@@ -9955,10 +9955,10 @@ function War_WugongHurtLife1(emenyid, wugong, level)
       end
     end
   end
-  JY.Person[eid].生命 = JY.Person[eid].生命 - hurt
+  JY.Person[eid].鐢熷懡 = JY.Person[eid].鐢熷懡 - hurt
   WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + math.modf(hurt / 5)
-  if 0 >= JY.Person[eid].生命 then
-    JY.Person[eid].生命 = 0
+  if 0 >= JY.Person[eid].鐢熷懡 then
+    JY.Person[eid].鐢熷懡 = 0
     WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + JY.Person[eid]["\181\200\188\182"] * 10
   end
   AddPersonAttrib(eid, "\202\220\201\203\179\204\182\200", math.modf(hurt / 10))
@@ -9988,7 +9988,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
   local emenywuxue = 0
   for i = 0, WAR.PersonNum - 1 do
     local id = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-    if WAR.Person[i].死亡 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] > CC.WXCS then
+    if WAR.Person[i].姝讳骸 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] > CC.WXCS then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[i]["\206\210\183\189"] then
         mywuxue = mywuxue + JY.Person[id]["\206\228\209\167\179\163\202\182"]
       else
@@ -10099,13 +10099,13 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
     defencenum = (jsfyl * 2 + emenywuxue * 3 + nlmax / 25 + wglxfy * 1.5) * (1 - neishang / 200) + zbfyl * 2
   end
   local bsxg = 1
-  if pid == 0 and JY.Person[pid].姓名 == "szlzw" and JY.Wugong[30]["\206\180\214\1702"] ~= 0 and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].濮撳悕 == "szlzw" and JY.Wugong[30]["\206\180\214\1702"] ~= 0 and CC.JS == 1 then
     bsxg = 2
   end
-  if eid == 0 and JY.Person[eid].姓名 == "szlzw" and JY.Wugong[30]["\206\180\214\1702"] ~= 0 and CC.JS == 1 then
+  if eid == 0 and JY.Person[eid].濮撳悕 == "szlzw" and JY.Wugong[30]["\206\180\214\1702"] ~= 0 and CC.JS == 1 then
     bsxg = 2
   end
-  if pid == 0 and JY.Person[pid].外号 == "\200\173\176\212" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 1 and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\200\173\176\212" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 1 and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[pid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev / 2 * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10114,7 +10114,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
     end
     if gailv >= Rnd(100) + 1 then
       defencenum = defencenum - math.modf(defencenum / 2)
-      local xgstr = JY.Person[pid].姓名 .. "\161\250\182\212 " .. JY.Person[eid].姓名 .. " \183\162\182\175\198\198\183\192\185\165\187\247"
+      local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\182\212 " .. JY.Person[eid].濮撳悕 .. " \183\162\182\175\198\198\183\192\185\165\187\247"
       local xglen = #xgstr
       Cls()
       DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
@@ -10143,7 +10143,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
   if hurt <= 0 then
     hurt = Rnd(8) + 1
   end
-  if pid == 0 and JY.Person[pid].外号 == "\189\163\196\167" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 2 and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\189\163\196\167" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 2 and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[pid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev / 2 * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10151,11 +10151,11 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       gailv = 30
     end
     if gailv >= Rnd(100) + 1 then
-      JY.Person[pid].生命 = JY.Person[pid].生命 + hurt + math.modf(hurt * lev / 100 + 1)
-      if JY.Person[pid].生命 > CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"] then
-        JY.Person[pid].生命 = CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"]
+      JY.Person[pid].鐢熷懡 = JY.Person[pid].鐢熷懡 + hurt + math.modf(hurt * lev / 100 + 1)
+      if JY.Person[pid].鐢熷懡 > CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"] then
+        JY.Person[pid].鐢熷懡 = CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"]
       end
-      local xgstr = JY.Person[pid].姓名 .. "\161\250\183\162\182\175\202\200\209\170\185\165\187\247\163\172\201\250\195\252\187\214\184\180 " .. math.modf(hurt * lev / 100 / bsxg + 1)
+      local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\183\162\182\175\202\200\209\170\185\165\187\247\163\172\201\250\195\252\187\214\184\180 " .. math.modf(hurt * lev / 100 / bsxg + 1)
       local xglen = #xgstr
       Cls()
       DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
@@ -10163,16 +10163,16 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       lib.Delay(500)
     end
   end
-  if pid == 0 and JY.Person[pid].外号 == "\187\195\211\176" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\187\195\211\176" and CC.JS == 1 then
     hurt = hurt + math.modf(hurt * JY.Person[pid]["\181\200\188\182"] / 200 * txqh / bsxg) + 1
-    local xgstr = JY.Person[pid].姓名 .. "\161\250\183\162\182\175\211\176\215\211\185\165\187\247\163\172\201\203\186\166\212\246\188\211 " .. math.modf(hurt * JY.Person[pid]["\181\200\188\182"] / 200 * txqh / bsxg) + 1
+    local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\183\162\182\175\211\176\215\211\185\165\187\247\163\172\201\203\186\166\212\246\188\211 " .. math.modf(hurt * JY.Person[pid]["\181\200\188\182"] / 200 * txqh / bsxg) + 1
     local xglen = #xgstr
     Cls()
     DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
     ShowScreen()
     lib.Delay(100)
   end
-  if eid == 0 and JY.Person[eid].外号 == "\187\195\211\176" and CC.JS == 1 then
+  if eid == 0 and JY.Person[eid].澶栧彿 == "\187\195\211\176" and CC.JS == 1 then
     local lev = JY.Person[eid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[eid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev / 2 * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10181,7 +10181,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
     end
     if gailv >= Rnd(100) + 1 then
       hurt = 0
-      local xgstr = JY.Person[eid].姓名 .. "\161\250\183\162\182\175\211\176\215\211\187\216\177\220\163\172" .. JY.Person[pid].姓名 .. " \181\196\185\165\187\247\206\222\208\167"
+      local xgstr = JY.Person[eid].濮撳悕 .. "\161\250\183\162\182\175\211\176\215\211\187\216\177\220\163\172" .. JY.Person[pid].濮撳悕 .. " \181\196\185\165\187\247\206\222\208\167"
       local xglen = #xgstr
       Cls()
       DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
@@ -10189,7 +10189,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       lib.Delay(1000)
     end
   end
-  if pid == 0 and JY.Person[pid].外号 == "\181\182\179\213" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 3 and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\181\182\179\213" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 3 and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[pid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev / 2 * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10197,26 +10197,26 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       gailv = 30
     end
     if gailv >= Rnd(100) + 1 then
-      if JY.Person[eid].生命 * 3 / 2 < JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"] then
-        if hurt < JY.Person[eid].生命 then
-          hurt = JY.Person[eid].生命 + 1
+      if JY.Person[eid].鐢熷懡 * 3 / 2 < JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"] then
+        if hurt < JY.Person[eid].鐢熷懡 then
+          hurt = JY.Person[eid].鐢熷懡 + 1
         end
-        local xgstr = "\181\182\179\213\161\250\182\212 " .. JY.Person[eid].姓名 .. " \210\187\187\247\177\216\201\177"
+        local xgstr = "\181\182\179\213\161\250\182\212 " .. JY.Person[eid].濮撳悕 .. " \210\187\187\247\177\216\201\177"
         local xglen = #xgstr
         DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
         ShowScreen()
         lib.Delay(1000)
-      elseif hurt < math.modf(JY.Person[eid].生命 / 2) then
-        hurt = math.modf(JY.Person[eid].生命 / 2)
-        local xgstr = JY.Person[pid].姓名 .. "\161\250\182\212 " .. JY.Person[eid].姓名 .. " \183\162\182\175\213\182\182\207\201\203\186\166"
+      elseif hurt < math.modf(JY.Person[eid].鐢熷懡 / 2) then
+        hurt = math.modf(JY.Person[eid].鐢熷懡 / 2)
+        local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\182\212 " .. JY.Person[eid].濮撳悕 .. " \183\162\182\175\213\182\182\207\201\203\186\166"
         local xglen = #xgstr
         Cls()
         DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
         ShowScreen()
         lib.Delay(1000)
       else
-        hurt = JY.Person[eid].生命 + 1
-        local xgstr = JY.Person[pid].姓名 .. "\161\250\182\212 " .. JY.Person[eid].姓名 .. " \183\162\182\175\210\187\187\247\177\216\201\177"
+        hurt = JY.Person[eid].鐢熷懡 + 1
+        local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\182\212 " .. JY.Person[eid].濮撳悕 .. " \183\162\182\175\210\187\187\247\177\216\201\177"
         local xglen = #xgstr
         Cls()
         DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
@@ -10225,7 +10225,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       end
     end
   end
-  if pid == 0 and JY.Person[pid].外号 == "\204\216\191\241" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 4 and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\204\216\191\241" and JY.Wugong[wugong]["\206\228\185\166\192\224\208\205"] == 4 and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[pid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev / 2 * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10234,7 +10234,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
     end
     if gailv >= Rnd(100) + 1 then
       hurt = hurt * 2
-      local xgstr = JY.Person[pid].姓名 .. "\161\250\182\212 " .. JY.Person[eid].姓名 .. " \183\162\182\175\177\169\187\247\201\203\186\166"
+      local xgstr = JY.Person[pid].濮撳悕 .. "\161\250\182\212 " .. JY.Person[eid].濮撳悕 .. " \183\162\182\175\177\169\187\247\201\203\186\166"
       local xglen = #xgstr
       Cls()
       DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
@@ -10242,7 +10242,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       lib.Delay(1000)
     end
   end
-  if eid == 0 and JY.Person[eid].外号 == "\201\241\214\250" and CC.JS == 1 then
+  if eid == 0 and JY.Person[eid].澶栧彿 == "\201\241\214\250" and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     local zizhi = 10 - math.modf((JY.Person[eid]["\215\202\214\202"] - 1) / 10)
     local gailv = math.modf(lev * txqh / bsxg) + zizhi + JY.ZCWGCS
@@ -10250,17 +10250,17 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
       gailv = 50
     end
     hurt = hurt - math.modf(hurt * gailv / 100)
-    local xgstr = JY.Person[eid].姓名 .. "\161\250\183\162\182\175\204\236\201\241\187\164\204\229\163\172\201\203\186\166\188\245\201\217 " .. math.modf(hurt * gailv / 100)
+    local xgstr = JY.Person[eid].濮撳悕 .. "\161\250\183\162\182\175\204\236\201\241\187\164\204\229\163\172\201\203\186\166\188\245\201\217 " .. math.modf(hurt * gailv / 100)
     local xglen = #xgstr
     Cls()
     DrawString(CC.ScreenW / 2 - CC.StartMenuFontSize * xglen / 4, CC.ScreenH / 2, xgstr, C_WHITE, CC.StartMenuFontSize)
     ShowScreen()
     lib.Delay(300)
   end
-  JY.Person[eid].生命 = JY.Person[eid].生命 - hurt
+  JY.Person[eid].鐢熷懡 = JY.Person[eid].鐢熷懡 - hurt
   WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + math.modf(hurt / 5)
-  if 0 >= JY.Person[eid].生命 then
-    JY.Person[eid].生命 = 0
+  if 0 >= JY.Person[eid].鐢熷懡 then
+    JY.Person[eid].鐢熷懡 = 0
     WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + JY.Person[eid]["\181\200\188\182"] * 10
     if JY.DEADKG == 1 then
       local did
@@ -10271,8 +10271,8 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
         end
       end
       if JY.DEADPD[did][2] == 0 then
-        local name1 = JY.Person[pid].姓名
-        local name2 = JY.Person[eid].姓名
+        local name1 = JY.Person[pid].濮撳悕
+        local name2 = JY.Person[eid].濮撳悕
         local size = CC.DefaultFont * 1.5
         local str = name1 .. " \187\247\176\220 " .. name2
         local slen = string.len(str)
@@ -10291,7 +10291,7 @@ function War_WugongHurtLife_CL(emenyid, wugong, level)
   local smsx = math.modf(CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"] / 999)
   AddPersonAttrib(eid, "\202\220\201\203\179\204\182\200", math.modf(hurt / 10 / smsx))
   local duye = 0
-  if pid == 0 and JY.Person[pid].外号 == "\182\190\205\245" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\182\190\205\245" and CC.JS == 1 then
     local zizhi = 10 - math.modf((JY.Person[pid]["\215\202\214\202"] - 1) / 10)
     duye = math.modf(JY.Person[pid]["\181\200\188\182"] / bsxg * txqh) + zizhi + JY.ZCWGCS
     if 40 <= duye then
@@ -10324,7 +10324,7 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
   local emenywuxue = 0
   for i = 0, WAR.PersonNum - 1 do
     local id = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
-    if WAR.Person[i].死亡 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] > CC.WXCS then
+    if WAR.Person[i].姝讳骸 == false and JY.Person[id]["\206\228\209\167\179\163\202\182"] > CC.WXCS then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[i]["\206\210\183\189"] then
         mywuxue = mywuxue + JY.Person[id]["\206\228\209\167\179\163\202\182"]
       else
@@ -10419,10 +10419,10 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
   if hurt <= 0 then
     hurt = Rnd(8) + 1
   end
-  if pid == 0 and JY.Person[pid].外号 == "\200\173\176\212" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\200\173\176\212" and CC.JS == 1 then
     hurt = hurt + math.modf(hurt * JY.Person[pid]["\181\200\188\182"] / 200)
   end
-  if eid == 0 and JY.Person[eid].外号 == "\189\163\196\167" and CC.JS == 1 then
+  if eid == 0 and JY.Person[eid].澶栧彿 == "\189\163\196\167" and CC.JS == 1 then
     local lev = JY.Person[eid]["\181\200\188\182"]
     if Rnd(100) + 1 <= math.modf(lev / 2) then
       hurt = 0
@@ -10433,11 +10433,11 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
       lib.Delay(1000)
     end
   end
-  if pid == 0 and JY.Person[pid].外号 == "\181\182\179\213" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\181\182\179\213" and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
-    if Rnd(100) + 1 <= math.modf(lev / 2) and JY.Person[eid].生命 * 2 < JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"] then
-      if hurt < JY.Person[eid].生命 then
-        hurt = JY.Person[eid].生命 + 1
+    if Rnd(100) + 1 <= math.modf(lev / 2) and JY.Person[eid].鐢熷懡 * 2 < JY.Person[eid]["\201\250\195\252\215\238\180\243\214\181"] then
+      if hurt < JY.Person[eid].鐢熷懡 then
+        hurt = JY.Person[eid].鐢熷懡 + 1
       end
       local xgstr = "\181\182\179\213\161\250\210\187\187\247\177\216\201\177"
       local xglen = #xgstr
@@ -10446,7 +10446,7 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
       lib.Delay(1000)
     end
   end
-  if pid == 0 and JY.Person[pid].外号 == "\204\216\191\241" and CC.JS == 1 then
+  if pid == 0 and JY.Person[pid].澶栧彿 == "\204\216\191\241" and CC.JS == 1 then
     local lev = JY.Person[pid]["\181\200\188\182"]
     if Rnd(100) + 1 <= math.modf(lev / 2) then
       hurt = hurt + hurt
@@ -10457,7 +10457,7 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
       lib.Delay(1000)
     end
   end
-  if eid == 0 and JY.Person[eid].外号 == "\201\241\214\250" and CC.JS == 1 then
+  if eid == 0 and JY.Person[eid].澶栧彿 == "\201\241\214\250" and CC.JS == 1 then
     hurt = hurt - math.modf(hurt * JY.Person[pid]["\181\200\188\182"] / 100)
   end
   local htbs = math.modf((CC.PersonAttribMax["\196\218\193\166\215\238\180\243\214\181"] + 1) / 10)
@@ -10477,10 +10477,10 @@ function War_WugongHurtLife1_CL(emenyid, wugong, level)
       end
     end
   end
-  JY.Person[eid].生命 = JY.Person[eid].生命 - hurt
+  JY.Person[eid].鐢熷懡 = JY.Person[eid].鐢熷懡 - hurt
   WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + math.modf(hurt / 5)
-  if 0 > JY.Person[eid].生命 then
-    JY.Person[eid].生命 = 0
+  if 0 > JY.Person[eid].鐢熷懡 then
+    JY.Person[eid].鐢熷懡 = 0
     WAR.Person[WAR.CurID]["\190\173\209\233"] = WAR.Person[WAR.CurID]["\190\173\209\233"] + JY.Person[eid]["\181\200\188\182"] * 10
   end
   AddPersonAttrib(eid, "\202\220\201\203\179\204\182\200", math.modf(hurt / 10))
@@ -10602,24 +10602,24 @@ function War_ExecuteMenu_Sub(x1, y1, flag, thingid)
   if 0 <= emeny then
     if flag == 1 then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[emeny]["\206\210\183\189"] then
-        WAR.Person[emeny].点数 = War_PoisonHurt(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
+        WAR.Person[emeny].鐐规暟 = War_PoisonHurt(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
         SetWarMap(x1, y1, 4, 5)
         WAR.Effect = 5
       end
     elseif flag == 2 then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[emeny]["\206\210\183\189"] then
-        WAR.Person[emeny].点数 = ExecDecPoison(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
+        WAR.Person[emeny].鐐规暟 = ExecDecPoison(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
         SetWarMap(x1, y1, 4, 6)
         WAR.Effect = 6
       end
     elseif flag == 3 then
       if WAR.Person[WAR.CurID]["\206\210\183\189"] == WAR.Person[emeny]["\206\210\183\189"] then
-        WAR.Person[emeny].点数 = ExecDoctor(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
+        WAR.Person[emeny].鐐规暟 = ExecDoctor(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"])
         SetWarMap(x1, y1, 4, 4)
         WAR.Effect = 4
       end
     elseif flag == 4 and WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[emeny]["\206\210\183\189"] then
-      WAR.Person[emeny].点数 = War_AnqiHurt(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"], thingid)
+      WAR.Person[emeny].鐐规暟 = War_AnqiHurt(pid, WAR.Person[emeny]["\200\203\206\239\177\224\186\197"], thingid)
       SetWarMap(x1, y1, 4, 2)
       WAR.Effect = 2
     end
@@ -10637,7 +10637,7 @@ function War_ExecuteMenu_Sub(x1, y1, flag, thingid)
     War_ShowFight(pid, 0, -1, 0, x1, y1, JY.Thing[thingid]["\176\181\198\247\182\175\187\173\177\224\186\197"])
   end
   for i = 0, WAR.PersonNum - 1 do
-    WAR.Person[i].点数 = 0
+    WAR.Person[i].鐐规暟 = 0
   end
   if flag == 4 then
     if 0 <= emeny then
@@ -10669,7 +10669,7 @@ function War_ThingMenu()
   local num = 0
   for i = 0, CC.MyThingNum - 1 do
     local id = JY.Base["\206\239\198\183" .. i + 1]
-    if 0 <= id and (JY.Thing[id].类型 == 3 or JY.Thing[id].类型 == 4) then
+    if 0 <= id and (JY.Thing[id].绫诲瀷 == 3 or JY.Thing[id].绫诲瀷 == 4) then
       thing[num] = id
       thingnum[num] = JY.Base["\206\239\198\183\202\253\193\191" .. i + 1]
       num = num + 1
@@ -10758,11 +10758,11 @@ function War_Huhuo()
   local menunum = 0
   for i = 0, WAR.PersonNum - 1 do
     menu[i + 1] = {
-      JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].姓名,
+      JY.Person[WAR.Person[i]["\200\203\206\239\177\224\186\197"]].濮撳悕,
       nil,
       0
     }
-    if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].死亡 == true then
+    if WAR.Person[i]["\206\210\183\189"] == true and WAR.Person[i].姝讳骸 == true then
       menu[i + 1][3] = 1
       menunum = menunum + 1
     end
@@ -10781,13 +10781,13 @@ function War_Huhuo()
   Cls()
   if 0 < r then
     r = r - 1
-    WAR.Person[r].死亡 = false
+    WAR.Person[r].姝讳骸 = false
     local pid = WAR.Person[r]["\200\203\206\239\177\224\186\197"]
-    JY.Person[pid].生命 = math.modf(JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2)
+    JY.Person[pid].鐢熷懡 = math.modf(JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2)
     WarSetPerson()
     JY.Huhuocs = JY.Huhuocs - 1
     Cls()
-    DrawStrBoxWaitKey(JY.Person[pid].姓名 .. " \184\180\187\238\163\172\188\211\200\235\213\189\182\183\163\161", C_WHITE, CC.DefaultFont)
+    DrawStrBoxWaitKey(JY.Person[pid].濮撳悕 .. " \184\180\187\238\163\172\188\211\200\235\213\189\182\183\163\161", C_WHITE, CC.DefaultFont)
     return 1
   else
     return
@@ -10825,7 +10825,7 @@ function War_Bianshen()
     return
   end
   Cls()
-  if JY.Person[0].外号 == "\179\172\201\241" then
+  if JY.Person[0].澶栧彿 == "\179\172\201\241" then
     local menu = {
       {
         "\200\173\176\212",
@@ -10882,41 +10882,41 @@ function War_Bianshen()
       return
     elseif r == 1 then
       JY.Wugong[30]["\206\180\214\1702"] = 1
-      JY.Person[0].外号 = "\200\173\176\212"
+      JY.Person[0].澶栧彿 = "\200\173\176\212"
       DrawStrBoxWaitKey("\177\228\201\237\200\173\176\212\161\250\198\198\183\192\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 2 then
       JY.Wugong[30]["\206\180\214\1702"] = 2
-      JY.Person[0].外号 = "\189\163\196\167"
+      JY.Person[0].澶栧彿 = "\189\163\196\167"
       DrawStrBoxWaitKey("\177\228\201\237\189\163\196\167\161\250\202\200\209\170\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 3 then
       JY.Wugong[30]["\206\180\214\1702"] = 3
-      JY.Person[0].外号 = "\181\182\179\213"
+      JY.Person[0].澶栧彿 = "\181\182\179\213"
       DrawStrBoxWaitKey("\177\228\201\237\181\182\179\213\161\250\210\187\187\247\177\216\201\177\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 4 then
       JY.Wugong[30]["\206\180\214\1702"] = 4
-      JY.Person[0].外号 = "\204\216\191\241"
+      JY.Person[0].澶栧彿 = "\204\216\191\241"
       DrawStrBoxWaitKey("\177\228\201\237\204\216\191\241\161\250\177\169\187\247\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 5 then
       JY.Wugong[30]["\206\180\214\1702"] = 5
-      JY.Person[0].外号 = "\201\241\214\250"
+      JY.Person[0].澶栧彿 = "\201\241\214\250"
       DrawStrBoxWaitKey("\177\228\201\237\201\241\214\250\161\250\204\236\201\241\187\164\204\229\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 6 then
       JY.Wugong[30]["\206\180\214\1702"] = 6
-      JY.Person[0].外号 = "\206\215\209\253"
+      JY.Person[0].澶栧彿 = "\206\215\209\253"
       DrawStrBoxWaitKey("\177\228\201\237\206\215\209\253\161\250\214\216\201\250\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
       JY.Huhuocs = math.modf(JY.Person[0]["\181\200\188\182"] / 30)
     elseif r == 7 then
       JY.Wugong[30]["\206\180\214\1702"] = 7
-      JY.Person[0].外号 = "\182\190\205\245"
+      JY.Person[0].澶栧彿 = "\182\190\205\245"
       DrawStrBoxWaitKey("\177\228\201\237\182\190\205\245\161\250\180\227\182\190\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
     elseif r == 9 then
       JY.Wugong[30]["\206\180\214\1702"] = 9
-      JY.Person[0].外号 = "\187\195\211\176"
+      JY.Person[0].澶栧彿 = "\187\195\211\176"
       DrawStrBoxWaitKey("\177\228\201\237\187\195\211\176\161\250\211\176\201\177\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
     end
   else
     DrawStrBoxWaitKey("\187\214\184\180\208\205\204\172", C_WHITE, CC.DefaultFont)
-    JY.Person[0].外号 = "\179\172\201\241"
+    JY.Person[0].澶栧彿 = "\179\172\201\241"
     JY.Wugong[30]["\206\180\214\1702"] = 0
   end
   return 1
@@ -10961,30 +10961,30 @@ function War_AutoMenu()
       JY.ATAI[j][1] = pid
       if JY.ATAI[j][2] == 1 then
         atmenu[j] = {
-          "\198\213\205\168  " .. p[j].姓名,
+          "\198\213\205\168  " .. p[j].濮撳悕,
           nil,
           1
         }
       elseif JY.ATAI[j][2] == 2 then
         atmenu[j] = {
-          "\203\192\202\191  " .. p[j].姓名,
+          "\203\192\202\191  " .. p[j].濮撳悕,
           nil,
           1
         }
       elseif JY.ATAI[j][2] == 3 then
         atmenu[j] = {
-          "\187\236\215\211  " .. p[j].姓名,
+          "\187\236\215\211  " .. p[j].濮撳悕,
           nil,
           1
         }
       elseif JY.ATAI[j][2] == 4 then
         atmenu[j] = {
-          "\196\204\194\232  " .. p[j].姓名,
+          "\196\204\194\232  " .. p[j].濮撳悕,
           nil,
           1
         }
       end
-      if WAR.Person[i].死亡 == true then
+      if WAR.Person[i].姝讳骸 == true then
         atmenu[j][3] = 0
       end
       j = j + 1
@@ -11031,28 +11031,28 @@ function War_AutoMenu()
       if r ~= j - 1 then
         if r1 == 1 then
           atmenu[r] = {
-            "\198\213\205\168  " .. p[r].姓名,
+            "\198\213\205\168  " .. p[r].濮撳悕,
             nil,
             1
           }
           JY.ATAI[r][2] = r1
         elseif r1 == 2 then
           atmenu[r] = {
-            "\203\192\202\191  " .. p[r].姓名,
+            "\203\192\202\191  " .. p[r].濮撳悕,
             nil,
             1
           }
           JY.ATAI[r][2] = r1
         elseif r1 == 3 then
           atmenu[r] = {
-            "\187\236\215\211  " .. p[r].姓名,
+            "\187\236\215\211  " .. p[r].濮撳悕,
             nil,
             1
           }
           JY.ATAI[r][2] = r1
         elseif r1 == 4 then
           atmenu[r] = {
-            "\196\204\194\232  " .. p[r].姓名,
+            "\196\204\194\232  " .. p[r].濮撳悕,
             nil,
             1
           }
@@ -11062,28 +11062,28 @@ function War_AutoMenu()
         for i = 1, j - 2 do
           if r1 == 1 then
             atmenu[i] = {
-              "\198\213\205\168  " .. p[i].姓名,
+              "\198\213\205\168  " .. p[i].濮撳悕,
               nil,
               1
             }
             JY.ATAI[i][2] = r1
           elseif r1 == 2 then
             atmenu[i] = {
-              "\203\192\202\191  " .. p[i].姓名,
+              "\203\192\202\191  " .. p[i].濮撳悕,
               nil,
               1
             }
             JY.ATAI[i][2] = r1
           elseif r1 == 3 then
             atmenu[i] = {
-              "\187\236\215\211  " .. p[i].姓名,
+              "\187\236\215\211  " .. p[i].濮撳悕,
               nil,
               1
             }
             JY.ATAI[i][2] = r1
           elseif r1 == 4 then
             atmenu[i] = {
-              "\196\204\194\232  " .. p[i].姓名,
+              "\196\204\194\232  " .. p[i].濮撳悕,
               nil,
               1
             }
@@ -11174,13 +11174,13 @@ function War_Think()
       end
     end
     local rate = -1
-    if JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5 then
+    if JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5 then
       rate = 100
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 4 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 4 then
       rate = 100
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 3 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 3 then
       rate = 80
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2 then
       rate = 40
     end
     if rate > Rnd(100) then
@@ -11199,13 +11199,13 @@ function War_Think()
       end
     end
     local rate = -1
-    if JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5 then
+    if JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 5 then
       rate = 100
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 4 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 4 then
       rate = 100
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 3 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 3 then
       rate = 80
-    elseif JY.Person[pid].生命 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2 then
+    elseif JY.Person[pid].鐢熷懡 < JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] / 2 then
       rate = 40
     end
     if rate > Rnd(100) then
@@ -11407,7 +11407,7 @@ function War_ThinkDrug(flag)
   if WAR.Person[WAR.CurID]["\206\210\183\189"] == true then
     for i = 1, CC.MyThingNum do
       local thingid = JY.Base["\206\239\198\183" .. i]
-      if 0 <= thingid and JY.Thing[thingid].类型 == 3 and 0 < Get_Add(thingid) then
+      if 0 <= thingid and JY.Thing[thingid].绫诲瀷 == 3 and 0 < Get_Add(thingid) then
         r = flag
         break
       end
@@ -11415,7 +11415,7 @@ function War_ThinkDrug(flag)
   else
     for i = 1, 4 do
       local thingid = JY.Person[pid]["\208\175\180\248\206\239\198\183" .. i]
-      if 0 <= thingid and JY.Thing[thingid].类型 == 3 and 0 < Get_Add(thingid) then
+      if 0 <= thingid and JY.Thing[thingid].绫诲瀷 == 3 and 0 < Get_Add(thingid) then
         r = flag
         break
       end
@@ -11433,7 +11433,7 @@ function War_ThinkDoctor()
     return -1
   end
   local rate = -1
-  local v = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] - JY.Person[pid].生命
+  local v = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"] - JY.Person[pid].鐢熷懡
   if JY.Person[pid]["\210\189\193\198\196\220\193\166"] < v / 4 then
     rate = 30
   elseif JY.Person[pid]["\210\189\193\198\196\220\193\166"] < v / 3 then
@@ -11510,7 +11510,7 @@ function War_AutoSelectWugong()
   local mynum = 0
   local enemynum = 0
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       if WAR.Person[i]["\206\210\183\189"] == WAR.Person[WAR.CurID]["\206\210\183\189"] then
         mynum = mynum + 1
       else
@@ -11639,7 +11639,7 @@ function War_AutoSelectEnemy_near()
   local maxDest = math.huge
   local nearid = -1
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[i]["\206\210\183\189"] and WAR.Person[i].死亡 == false then
+    if WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[i]["\206\210\183\189"] and WAR.Person[i].姝讳骸 == false then
       local step = GetWarMap(WAR.Person[i]["\215\248\177\234X"], WAR.Person[i]["\215\248\177\234Y"], 3)
       if maxDest > step then
         nearid = i
@@ -11795,7 +11795,7 @@ function War_AutoCalMaxEnemyMap(wugongid, level)
   end
   if wugongtype == 0 or wugongtype == 3 then
     for n = 0, WAR.PersonNum - 1 do
-      if n ~= WAR.CurID and WAR.Person[n].死亡 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
+      if n ~= WAR.CurID and WAR.Person[n].姝讳骸 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
         local xx = WAR.Person[n]["\215\248\177\234X"]
         local yy = WAR.Person[n]["\215\248\177\234Y"]
         local movestep = War_CalMoveStep(n, movescope, 1)
@@ -11825,7 +11825,7 @@ function War_AutoCalMaxEnemyMap(wugongid, level)
     end
   elseif wugongtype == 1 or wugongtype == 2 then
     for n = 0, WAR.PersonNum - 1 do
-      if n ~= WAR.CurID and WAR.Person[n].死亡 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
+      if n ~= WAR.CurID and WAR.Person[n].姝讳骸 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
         local xx = WAR.Person[n]["\215\248\177\234X"]
         local yy = WAR.Person[n]["\215\248\177\234Y"]
         for direct = 0, 3 do
@@ -11869,7 +11869,7 @@ function War_AutoCalMaxEnemy(x, y, wugongid, level)
         local yy = movestep[i].y[j]
         local enemynum = 0
         for n = 0, WAR.PersonNum - 1 do
-          if n ~= WAR.CurID and WAR.Person[n].死亡 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
+          if n ~= WAR.CurID and WAR.Person[n].姝讳骸 == false and WAR.Person[n]["\206\210\183\189"] ~= WAR.Person[WAR.CurID]["\206\210\183\189"] then
             local x = math.abs(WAR.Person[n]["\215\248\177\234X"] - xx)
             local y = math.abs(WAR.Person[n]["\215\248\177\234Y"] - yy)
             if fightscope >= x and fightscope >= y then
@@ -11956,7 +11956,7 @@ function War_AutoEscape()
       if GetWarMap(i, j, 3) < 128 then
         local minDest = math.huge
         for k = 0, WAR.PersonNum - 1 do
-          if WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[k]["\206\210\183\189"] and WAR.Person[k].死亡 == false then
+          if WAR.Person[WAR.CurID]["\206\210\183\189"] ~= WAR.Person[k]["\206\210\183\189"] and WAR.Person[k].姝讳骸 == false then
             local dx = math.abs(i - WAR.Person[k]["\215\248\177\234X"])
             local dy = math.abs(j - WAR.Person[k]["\215\248\177\234Y"])
             if minDest > dx + dy then
@@ -11979,14 +11979,14 @@ end
 
 function War_AutoEatDrug(flag)
   local pid = WAR.Person[WAR.CurID]["\200\203\206\239\177\224\186\197"]
-  local life = JY.Person[pid].生命
+  local life = JY.Person[pid].鐢熷懡
   local maxlife = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
   local selectid
   local minvalue = math.huge
   local shouldadd, maxattrib, str
   if flag == 2 then
     maxattrib = JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
-    shouldadd = maxattrib - JY.Person[pid].生命
+    shouldadd = maxattrib - JY.Person[pid].鐢熷懡
     str = "\188\211\201\250\195\252"
   elseif flag == 3 then
     maxattrib = JY.Person[pid]["\196\218\193\166\215\238\180\243\214\181"]
@@ -12018,7 +12018,7 @@ function War_AutoEatDrug(flag)
       local thingid = JY.Base["\206\239\198\183" .. i]
       if 0 <= thingid then
         local add = Get_Add(thingid)
-        if JY.Thing[thingid].类型 == 3 and 0 < add then
+        if JY.Thing[thingid].绫诲瀷 == 3 and 0 < add then
           local v = shouldadd - add
           if v < 0 then
             extra = 1
@@ -12036,7 +12036,7 @@ function War_AutoEatDrug(flag)
         local thingid = JY.Base["\206\239\198\183" .. i]
         if 0 <= thingid then
           local add = Get_Add(thingid)
-          if JY.Thing[thingid].类型 == 3 and 0 < add then
+          if JY.Thing[thingid].绫诲瀷 == 3 and 0 < add then
             local v = add - shouldadd
             if 0 <= v and minvalue > v then
               minvalue = v
@@ -12055,7 +12055,7 @@ function War_AutoEatDrug(flag)
       local thingid = JY.Person[pid]["\208\175\180\248\206\239\198\183" .. i]
       if 0 <= thingid then
         local add = Get_Add(thingid)
-        if JY.Thing[thingid].类型 == 3 and 0 < add then
+        if JY.Thing[thingid].绫诲瀷 == 3 and 0 < add then
           local v = shouldadd - add
           if v < 0 then
             extra = 1
@@ -12073,7 +12073,7 @@ function War_AutoEatDrug(flag)
         local thingid = JY.Person[pid]["\208\175\180\248\206\239\198\183" .. i]
         if 0 <= thingid then
           local add = Get_Add(thingid)
-          if JY.Thing[thingid].类型 == 3 and 0 < add then
+          if JY.Thing[thingid].绫诲瀷 == 3 and 0 < add then
             local v = add - shouldadd
             if 0 <= v and minvalue > v then
               minvalue = v
@@ -12176,7 +12176,7 @@ function MSG()
             sx[i] = JY.Scene[i]["\205\226\190\176\200\235\191\218X1"]
             sy[i] = JY.Scene[i]["\205\226\190\176\200\235\191\218Y1"]
             mcstr[i] = JY.Scene[i]["\195\251\179\198"]
-            if not (math.abs(sx[i] - JY.Base.人X) <= 30 and 30 >= math.abs(sy[i] - JY.Base.人Y)) or CONFIG.Operation == 1 and JY.MiniMap == 1 and JY.Status == GAME_MMAP then
+            if not (math.abs(sx[i] - JY.Base.浜篨) <= 30 and 30 >= math.abs(sy[i] - JY.Base.浜篩)) or CONFIG.Operation == 1 and JY.MiniMap == 1 and JY.Status == GAME_MMAP then
             elseif JY.MoveZTime + 3000 >= lib.GetTime() then
               YYZhi(sx[i], sy[i], mcstr[i], 0, 0, 50, C_ORANGE, dtsize)
             elseif JY.MoveZTime + 3000 < lib.GetTime() and JY.MoveZTime + 6000 >= lib.GetTime() then
@@ -12191,10 +12191,10 @@ function MSG()
               mapmcstr[i] = JY.Scene[i]["\195\251\179\198"], 1, 2
               local mmsx = {}
               local mmsy = {}
-              if math.abs(mapsx[i] - JY.Base.人X) <= 200 and math.abs(mapsy[i] - JY.Base.人Y) <= 200 then
+              if math.abs(mapsx[i] - JY.Base.浜篨) <= 200 and math.abs(mapsy[i] - JY.Base.浜篩) <= 200 then
                 local jl = 3
-                mmsx[i] = mapcx + (mapsx[i] - JY.Base.人X) * jl - (mapsy[i] - JY.Base.人Y) * jl
-                mmsy[i] = mapcy + (mapsx[i] - JY.Base.人X) * jl + (mapsy[i] - JY.Base.人Y) * jl
+                mmsx[i] = mapcx + (mapsx[i] - JY.Base.浜篨) * jl - (mapsy[i] - JY.Base.浜篩) * jl
+                mmsy[i] = mapcy + (mapsx[i] - JY.Base.浜篨) * jl + (mapsy[i] - JY.Base.浜篩) * jl
                 local strlen = #mapmcstr[i]
                 local mapsize = CC.DefaultFont * 0.6
                 local zhix = mmsx[i] - mapsize * strlen / 4
@@ -12374,8 +12374,8 @@ function MSG()
               local smsx = {}
               local smsy = {}
               local jl = 5
-              local renx = JY.Base.人X1
-              local reny = JY.Base.人Y1
+              local renx = JY.Base.浜篨1
+              local reny = JY.Base.浜篩1
               if renx < 7 then
                 renx = 7
               elseif 50 < renx then
@@ -12401,50 +12401,50 @@ function MSG()
     end
     if JY.TXKG == 1 then
       if JY.ZLX == nil then
-        JY.ZLX = JY.Base.人X
-        JY.ZLY = JY.Base.人Y
+        JY.ZLX = JY.Base.浜篨
+        JY.ZLY = JY.Base.浜篩
       end
       if JY.ZLBZ == 0 or JY.ZLQH == 1 then
         if JY.Status == GAME_MMAP then
-          JY.ZLX = JY.Base.人X
-          JY.ZLY = JY.Base.人Y
+          JY.ZLX = JY.Base.浜篨
+          JY.ZLY = JY.Base.浜篩
           JY.ZLT = lib.GetTime() + 120000
           JY.ZLBZ = 1
         else
-          JY.ZLX = JY.Base.人X1
-          JY.ZLY = JY.Base.人Y1
+          JY.ZLX = JY.Base.浜篨1
+          JY.ZLY = JY.Base.浜篩1
           JY.ZLT = lib.GetTime() + 120000
           JY.ZLBZ = 1
         end
         JY.ZLQH = 0
       end
       if JY.Status == GAME_MMAP then
-        if JY.ZLBZ == 1 and JY.ZLT < lib.GetTime() and JY.ZLX == JY.Base.人X and JY.ZLY == JY.Base.人Y then
-          YYZhi(JY.Base.人X, JY.Base.人Y, "\213\190\186\220\190\195\192\178\163\161\191\201\210\212\200\195\206\210\182\175\210\187\182\175\194\240\163\191", nil, nil, nil, C_RED, size)
+        if JY.ZLBZ == 1 and JY.ZLT < lib.GetTime() and JY.ZLX == JY.Base.浜篨 and JY.ZLY == JY.Base.浜篩 then
+          YYZhi(JY.Base.浜篨, JY.Base.浜篩, "\213\190\186\220\190\195\192\178\163\161\191\201\210\212\200\195\206\210\182\175\210\187\182\175\194\240\163\191", nil, nil, nil, C_RED, size)
           JY.ZLSHBZ = 1
-        elseif JY.ZLT < lib.GetTime() and (JY.ZLX ~= JY.Base.人X or JY.ZLY ~= JY.Base.人Y) then
+        elseif JY.ZLT < lib.GetTime() and (JY.ZLX ~= JY.Base.浜篨 or JY.ZLY ~= JY.Base.浜篩) then
           if JY.ZLBZ1 == 0 then
             JY.ZLT1 = lib.GetTime() + 5000
             JY.ZLBZ1 = 1
           end
           if JY.ZLBZ1 == 1 and JY.ZLT1 > lib.GetTime() and JY.ZLSHBZ == 1 then
-            YYZhi(JY.Base.人X, JY.Base.人Y, "\215\220\203\227\196\220\182\175\193\203\163\172\192\219\190\205\208\221\207\162\210\187\207\194\176\201\163\161", nil, nil, nil, C_WHITE, size)
+            YYZhi(JY.Base.浜篨, JY.Base.浜篩, "\215\220\203\227\196\220\182\175\193\203\163\172\192\219\190\205\208\221\207\162\210\187\207\194\176\201\163\161", nil, nil, nil, C_WHITE, size)
           else
             JY.ZLBZ1 = 0
             JY.ZLBZ = 0
             JY.ZLSHBZ = 0
           end
         end
-      elseif JY.ZLBZ == 1 and JY.ZLT < lib.GetTime() and JY.ZLX == JY.Base.人X1 and JY.ZLY == JY.Base.人Y1 then
-        YYZhi(JY.Base.人X1, JY.Base.人Y1, "\213\190\186\220\190\195\192\178\163\161\191\201\210\212\200\195\206\210\182\175\210\187\182\175\194\240\163\191", nil, nil, nil, C_RED, size)
+      elseif JY.ZLBZ == 1 and JY.ZLT < lib.GetTime() and JY.ZLX == JY.Base.浜篨1 and JY.ZLY == JY.Base.浜篩1 then
+        YYZhi(JY.Base.浜篨1, JY.Base.浜篩1, "\213\190\186\220\190\195\192\178\163\161\191\201\210\212\200\195\206\210\182\175\210\187\182\175\194\240\163\191", nil, nil, nil, C_RED, size)
         JY.ZLSHBZ = 1
-      elseif JY.ZLT < lib.GetTime() and (JY.ZLX ~= JY.Base.人X1 or JY.ZLY ~= JY.Base.人Y1) then
+      elseif JY.ZLT < lib.GetTime() and (JY.ZLX ~= JY.Base.浜篨1 or JY.ZLY ~= JY.Base.浜篩1) then
         if JY.ZLBZ1 == 0 then
           JY.ZLT1 = lib.GetTime() + 5000
           JY.ZLBZ1 = 1
         end
         if JY.ZLBZ1 == 1 and JY.ZLT1 > lib.GetTime() and JY.ZLSHBZ == 1 then
-          YYZhi(JY.Base.人X1, JY.Base.人Y1, "\215\220\203\227\196\220\182\175\193\203\163\172\192\219\190\205\208\221\207\162\210\187\207\194\176\201\163\161", nil, nil, nil, C_WHITE, size)
+          YYZhi(JY.Base.浜篨1, JY.Base.浜篩1, "\215\220\203\227\196\220\182\175\193\203\163\172\192\219\190\205\208\221\207\162\210\187\207\194\176\201\163\161", nil, nil, nil, C_WHITE, size)
         else
           JY.ZLBZ1 = 0
           JY.ZLBZ = 0
@@ -12540,12 +12540,12 @@ function SCMSG()
     end
     local fontsize = CC.DefaultFont * 0.8
     DrawBox(menuxadd + 0, menuyadd + 0, menuxadd + fontsize * 12.2, menuyadd + fontsize * (4 + zcbl) * 1.1, C_WHITE)
-    DrawString(menuxadd + 0, menuyadd + 0, string.format("%s", JY.Person[0].姓名), C_GOLD, fontsize)
+    DrawString(menuxadd + 0, menuyadd + 0, string.format("%s", JY.Person[0].濮撳悕), C_GOLD, fontsize)
     DrawString(menuxadd + fontsize * 4, menuyadd + 0, string.format("   %-2d\188\182", JY.Person[0]["\181\200\188\182"]), C_GOLD, fontsize)
-    if JY.Person[0].生命 < JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] then
-      DrawString(menuxadd + fontsize * 7, menuyadd + 0, string.format(" %4d/%4d", JY.Person[0].生命, JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]), RGB(255, 192, 203), fontsize)
+    if JY.Person[0].鐢熷懡 < JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] then
+      DrawString(menuxadd + fontsize * 7, menuyadd + 0, string.format(" %4d/%4d", JY.Person[0].鐢熷懡, JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]), RGB(255, 192, 203), fontsize)
     else
-      DrawString(menuxadd + fontsize * 7, menuyadd + 0, string.format(" %4d/%4d", JY.Person[0].生命, JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]), C_GOLD, fontsize)
+      DrawString(menuxadd + fontsize * 7, menuyadd + 0, string.format(" %4d/%4d", JY.Person[0].鐢熷懡, JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]), C_GOLD, fontsize)
     end
     if 0 < JY.Person[0]["\202\220\201\203\179\204\182\200"] then
       DrawString(menuxadd + 0, menuyadd + fontsize * 1.1, string.format("\196\218\201\203 %3d", JY.Person[0]["\202\220\201\203\179\204\182\200"]), RGB(255, 192, 203), fontsize)
@@ -12558,7 +12558,7 @@ function SCMSG()
       DrawString(menuxadd + CC.DefaultFont * 4.3, menuyadd + fontsize * 1.1, string.format("\214\208\182\190 %3d", JY.Person[0]["\214\208\182\190\179\204\182\200"]), C_GOLD, fontsize)
     end
     if CC.BanBen == 0 then
-      DrawString(menuxadd + 0, menuyadd + fontsize * 2.2, string.format("\198\183\181\194 %3s   \201\249\205\251 %3s", JY.Person[0]["\198\183\181\194"], JY.Person[0].声望), C_GOLD, fontsize)
+      DrawString(menuxadd + 0, menuyadd + fontsize * 2.2, string.format("\198\183\181\194 %3s   \201\249\205\251 %3s", JY.Person[0]["\198\183\181\194"], JY.Person[0].澹版湜), C_GOLD, fontsize)
     elseif CC.BanBen == 1 then
       local ndstr
       if JY.YXND == 0 then
@@ -12572,7 +12572,7 @@ function SCMSG()
     elseif CC.BanBen == 2 then
       DrawString(menuxadd + 0, menuyadd + fontsize * 2.2, string.format("\198\183\181\194 %3s   \206\228\179\163 %3s", JY.Person[0]["\198\183\181\194"], JY.Person[0]["\206\228\209\167\179\163\202\182"]), C_GOLD, CC.DefaultFont * 0.8)
     else
-      DrawString(menuxadd + 0, menuyadd + fontsize * 2.2, string.format("\198\183\181\194 %3s   \201\249\205\251 %3s", JY.Person[0]["\198\183\181\194"], JY.Person[0].声望), C_GOLD, CC.DefaultFont * 0.8)
+      DrawString(menuxadd + 0, menuyadd + fontsize * 2.2, string.format("\198\183\181\194 %3s   \201\249\205\251 %3s", JY.Person[0]["\198\183\181\194"], JY.Person[0].澹版湜), C_GOLD, CC.DefaultFont * 0.8)
     end
     if idnum ~= nil then
       DrawString(menuxadd + 0, menuyadd + fontsize * 3.3, string.format("%s%5d", JY.Thing[CC.MoneyID]["\195\251\179\198"], idnum), C_GOLD, CC.DefaultFont * 0.8)
@@ -12580,9 +12580,9 @@ function SCMSG()
     DrawString(menuxadd + CC.DefaultFont * 4.3, menuyadd + fontsize * 3.3, string.format("%s", os.date("%X", os.time())), C_GOLD, CC.DefaultFont * 0.8)
     DrawBox(menuxadd + 0, menuyadd + fontsize * (4 + zcbl) * 1.1, menuxadd + fontsize * 12.2, menuyadd + fontsize * (4 + zcbl + 1.1) * 1.1, C_WHITE)
     if JY.Status == GAME_MMAP then
-      DrawString(menuxadd + 0, menuyadd + fontsize * (4 + zcbl + 0.1) * 1.1, string.format("\180\243\181\216\205\188\163\168%d,%d\163\169", JY.Base.人X, JY.Base.人Y), C_GOLD, CC.DefaultFont * 0.8)
+      DrawString(menuxadd + 0, menuyadd + fontsize * (4 + zcbl + 0.1) * 1.1, string.format("\180\243\181\216\205\188\163\168%d,%d\163\169", JY.Base.浜篨, JY.Base.浜篩), C_GOLD, CC.DefaultFont * 0.8)
     elseif JY.Status == GAME_SMAP then
-      DrawString(menuxadd + 0, menuyadd + fontsize * (4 + zcbl + 0.1) * 1.1, string.format("%s\163\168%d,%d\163\169", JY.Scene[JY.SubScene]["\195\251\179\198"], JY.Base.人X1, JY.Base.人Y1), C_GOLD, fontsize)
+      DrawString(menuxadd + 0, menuyadd + fontsize * (4 + zcbl + 0.1) * 1.1, string.format("%s\163\168%d,%d\163\169", JY.Scene[JY.SubScene]["\195\251\179\198"], JY.Base.浜篨1, JY.Base.浜篩1), C_GOLD, fontsize)
     end
     DrawString(menuxadd + CC.DefaultFont * 6.8, menuyadd + fontsize * (4 + zcbl + 0.1) * 1.1, string.format("\204\236\202\233 %2d", JY.Book), C_GOLD, CC.DefaultFont * 0.8)
     if CC.ZCOPEN == 1 then
@@ -12604,9 +12604,9 @@ function SCMSG()
         DrawString(menuxadd + 0, menuyadd + fontsize * 4.4, "\215\212\180\180\206\228\185\166   \206\222", C_GOLD, CC.DefaultFont * 0.8)
       end
     end
-    if CC.JS == 1 and string.len(JY.Person[0].外号) == 4 then
-      local str1 = string.sub(JY.Person[0].外号, 1, 2)
-      local str2 = string.sub(JY.Person[0].外号, 3, 4)
+    if CC.JS == 1 and string.len(JY.Person[0].澶栧彿) == 4 then
+      local str1 = string.sub(JY.Person[0].澶栧彿, 1, 2)
+      local str2 = string.sub(JY.Person[0].澶栧彿, 3, 4)
       DrawString(menuxadd + CC.DefaultFont * 8, menuyadd + fontsize * 2.2, str1, C_ORANGE, CC.DefaultFont * 0.8)
       DrawString(menuxadd + CC.DefaultFont * 8, menuyadd + fontsize * 3.3, str2, C_ORANGE, CC.DefaultFont * 0.8)
     end
@@ -13421,7 +13421,7 @@ function say(s, pid, flag, name)
   local boxtalkh = boxpich - 27
   local headid = pid
   pid = pid or 0
-  if (headid == 0 or headid == nil) and (name == nil or name == JY.Person[0].姓名) then
+  if (headid == 0 or headid == nil) and (name == nil or name == JY.Person[0].濮撳悕) then
     headid = 280 + GetS(4, 5, 5, 5)
   end
   if flag == nil then
@@ -13431,7 +13431,7 @@ function say(s, pid, flag, name)
       flag = 0
     end
   end
-  name = name or JY.Person[pid].姓名
+  name = name or JY.Person[pid].濮撳悕
   local talkBorder = (pich - talkynum * CC.DefaultFont) / (talkynum + 1)
   local xy = {
     [0] = {
@@ -13619,9 +13619,9 @@ function say(s, pid, flag, name)
       WaitKey()
       lib.Delay(100)
     elseif str == "\163\206" then
-      s = JY.Person[pid].姓名 .. s
+      s = JY.Person[pid].濮撳悕 .. s
     elseif str == "\163\238" then
-      s = JY.Person[0].姓名 .. s
+      s = JY.Person[0].濮撳悕 .. s
     else
       local kz1, kz2 = readstr(str)
       if kz1 == 1 then
@@ -13668,7 +13668,7 @@ function JubenBugFix()
     if JY.Thing[i] == nil then
       JY.AQNUM = j - 1
       break
-    elseif JY.Thing[i].类型 == 4 then
+    elseif JY.Thing[i].绫诲瀷 == 4 then
       JY.AQ[j] = i
       j = j + 1
     end
@@ -13745,7 +13745,7 @@ function JubenBugFix()
       JY.Person[114]["\185\165\187\247\193\166"] = 400
       JY.Person[114]["\183\192\211\249\193\166"] = 400
     end
-    JY.Person[90].外号 = "\182\190\245\245\197\174"
+    JY.Person[90].澶栧彿 = "\182\190\245\245\197\174"
     if GetD(84, 8, 2) == 18 then
       SetD(84, 8, 2, 0)
       SetD(84, 8, 3, 18)
@@ -13777,50 +13777,50 @@ function JubenBugFix()
     end
     JY.Selpstr = {}
     if CC.JS == 1 then
-      if JY.Person[0].姓名 ~= "szlzw" then
-        if JY.Person[0].外号 == "\200\173\176\212" and JY.Wugong[30]["\206\180\214\1701"] == 1 then
+      if JY.Person[0].濮撳悕 ~= "szlzw" then
+        if JY.Person[0].澶栧彿 == "\200\173\176\212" and JY.Wugong[30]["\206\180\214\1701"] == 1 then
           JY.Selpstr[1] = {"\200\173\213\198\185\166\183\242", 1}
           JY.Selpstr[2] = {"\185\165\187\247\193\166", -1}
           JY.Selpstr[3] = {"\183\192\211\249\193\166", 2}
           JY.Selpstr[4] = {"\199\225\185\166", 2}
           DrawStrBoxWaitKey("\200\173\176\212\161\250\198\198\183\192\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\189\163\196\167" and JY.Wugong[30]["\206\180\214\1701"] == 2 then
+        elseif JY.Person[0].澶栧彿 == "\189\163\196\167" and JY.Wugong[30]["\206\180\214\1701"] == 2 then
           JY.Selpstr[1] = {"\211\249\189\163\196\220\193\166", 1}
           JY.Selpstr[2] = {"\185\165\187\247\193\166", 2}
           JY.Selpstr[3] = {"\183\192\211\249\193\166", -2}
           DrawStrBoxWaitKey("\189\163\196\167\161\250\202\200\209\170\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\181\182\179\213" and JY.Wugong[30]["\206\180\214\1701"] == 3 then
+        elseif JY.Person[0].澶栧彿 == "\181\182\179\213" and JY.Wugong[30]["\206\180\214\1701"] == 3 then
           JY.Selpstr[1] = {"\203\163\181\182\188\188\199\201", 1}
           JY.Selpstr[2] = {"\185\165\187\247\193\166", -1}
           JY.Selpstr[3] = {"\183\192\211\249\193\166", 2}
           JY.Selpstr[4] = {"\199\225\185\166", 2}
           DrawStrBoxWaitKey("\181\182\179\213\161\250\210\187\187\247\177\216\201\177\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\204\216\191\241" and JY.Wugong[30]["\206\180\214\1701"] == 4 then
+        elseif JY.Person[0].澶栧彿 == "\204\216\191\241" and JY.Wugong[30]["\206\180\214\1701"] == 4 then
           JY.Selpstr[1] = {"\204\216\202\226\177\248\198\247", 1}
           JY.Selpstr[2] = {"\183\192\211\249\193\166", 4}
           JY.Selpstr[3] = {"\199\225\185\166", -2}
           DrawStrBoxWaitKey("\204\216\191\241\161\250\177\169\187\247\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\201\241\214\250" and JY.Wugong[30]["\206\180\214\1701"] == 5 then
+        elseif JY.Person[0].澶栧彿 == "\201\241\214\250" and JY.Wugong[30]["\206\180\214\1701"] == 5 then
           local lev = JY.Person[0]["\181\200\188\182"]
           JY.Selpstr[1] = {"\185\165\187\247\193\166", 3}
           JY.Selpstr[2] = {"\183\192\211\249\193\166", -2}
           JY.Selpstr[3] = {"\199\225\185\166", -2}
           JY.Selpstr[4] = {"\196\218\193\166\215\238\180\243\214\181", 50}
           DrawStrBoxWaitKey("\201\241\214\250\161\250\204\236\201\241\187\164\204\229\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\206\215\209\253" and JY.Wugong[30]["\206\180\214\1701"] == 6 then
+        elseif JY.Person[0].澶栧彿 == "\206\215\209\253" and JY.Wugong[30]["\206\180\214\1701"] == 6 then
           JY.Selpstr[1] = {"\210\189\193\198\196\220\193\166", 3}
           JY.Selpstr[2] = {"\211\195\182\190\196\220\193\166", 1}
           JY.Selpstr[3] = {"\191\185\182\190\196\220\193\166", 2}
           JY.Selpstr[4] = {"\185\165\187\247\193\166", -1}
           JY.Selpstr[5] = {"\199\225\185\166", 2}
           DrawStrBoxWaitKey("\206\215\209\253\161\250\214\216\201\250\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\182\190\205\245" and JY.Wugong[30]["\206\180\214\1701"] == 7 then
+        elseif JY.Person[0].澶栧彿 == "\182\190\205\245" and JY.Wugong[30]["\206\180\214\1701"] == 7 then
           JY.Selpstr[1] = {"\211\195\182\190\196\220\193\166", 3}
           JY.Selpstr[2] = {"\191\185\182\190\196\220\193\166", 3}
           JY.Selpstr[3] = {"\185\165\187\247\193\166", -1}
           JY.Selpstr[4] = {"\183\192\211\249\193\166", 2}
           DrawStrBoxWaitKey("\182\190\205\245\161\250\180\227\182\190\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 == "\187\195\211\176" and JY.Wugong[30]["\206\180\214\1701"] == 9 then
+        elseif JY.Person[0].澶栧彿 == "\187\195\211\176" and JY.Wugong[30]["\206\180\214\1701"] == 9 then
           JY.Selpstr[1] = {"\185\165\187\247\193\166", -1}
           JY.Selpstr[2] = {"\183\192\211\249\193\166", 2}
           JY.Selpstr[3] = {"\199\225\185\166", 2}
@@ -13829,7 +13829,7 @@ function JubenBugFix()
           DrawStrBoxWaitKey("\204\216\202\226\189\199\201\171\161\250\191\170\198\244\202\167\176\220", C_RED, CC.DefaultFont)
           CC.JS = 0
         end
-      elseif JY.Person[0].姓名 == "szlzw" and JY.Wugong[30]["\206\180\214\1701"] == 8 then
+      elseif JY.Person[0].濮撳悕 == "szlzw" and JY.Wugong[30]["\206\180\214\1701"] == 8 then
         if 0 < JY.YXND then
           if JY.YXND == 0 then
             DrawStrBoxWaitKey("\177\228\201\237\208\205\204\172\161\250\191\170\198\244", C_WHITE, CC.DefaultFont)
@@ -13840,30 +13840,30 @@ function JubenBugFix()
           end
         end
         if JY.Wugong[30]["\206\180\214\1702"] == 1 then
-          JY.Person[0].外号 = "\200\173\176\212"
+          JY.Person[0].澶栧彿 = "\200\173\176\212"
           DrawStrBoxWaitKey("\177\228\201\237\200\173\176\212\161\250\198\198\183\192\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 2 then
-          JY.Person[0].外号 = "\189\163\196\167"
+          JY.Person[0].澶栧彿 = "\189\163\196\167"
           DrawStrBoxWaitKey("\177\228\201\237\189\163\196\167\161\250\202\200\209\170\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 3 then
-          JY.Person[0].外号 = "\181\182\179\213"
+          JY.Person[0].澶栧彿 = "\181\182\179\213"
           DrawStrBoxWaitKey("\177\228\201\237\181\182\179\213\161\250\210\187\187\247\177\216\201\177\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 4 then
-          JY.Person[0].外号 = "\204\216\191\241"
+          JY.Person[0].澶栧彿 = "\204\216\191\241"
           DrawStrBoxWaitKey("\177\228\201\237\204\216\191\241\161\250\177\169\187\247\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 5 then
-          JY.Person[0].外号 = "\201\241\214\250"
+          JY.Person[0].澶栧彿 = "\201\241\214\250"
           DrawStrBoxWaitKey("\177\228\201\237\201\241\214\250\161\250\204\236\201\241\187\164\204\229\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 6 then
-          JY.Person[0].外号 = "\206\215\209\253"
+          JY.Person[0].澶栧彿 = "\206\215\209\253"
           DrawStrBoxWaitKey("\177\228\201\237\206\215\209\253\161\250\214\216\201\250\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 7 then
-          JY.Person[0].外号 = "\182\190\205\245"
+          JY.Person[0].澶栧彿 = "\182\190\205\245"
           DrawStrBoxWaitKey("\177\228\201\237\182\190\205\245\161\250\180\227\182\190\201\203\186\166\191\170\198\244", C_WHITE, CC.DefaultFont)
         elseif JY.Wugong[30]["\206\180\214\1702"] == 9 then
-          JY.Person[0].外号 = "\187\195\211\176"
+          JY.Person[0].澶栧彿 = "\187\195\211\176"
           DrawStrBoxWaitKey("\177\228\201\237\187\195\211\176\161\250\211\176\201\177\188\188\196\220\191\170\198\244", C_WHITE, CC.DefaultFont)
-        elseif JY.Person[0].外号 ~= "\179\172\201\241" then
+        elseif JY.Person[0].澶栧彿 ~= "\179\172\201\241" then
           DrawStrBoxWaitKey("\204\216\202\226\189\199\201\171\161\250\191\170\198\244\202\167\176\220", C_RED, CC.DefaultFont)
           CC.JS = 0
         end
@@ -13884,8 +13884,8 @@ function JubenBugFix()
     else
       instruct_3(22, 8, -2, -2, 0, -2, -2, -2, -2, -2, -2, -2, -2)
     end
-    JY.Thing[197].类型 = 2
-    JY.Thing[37].类型 = 4
+    JY.Thing[197].绫诲瀷 = 2
+    JY.Thing[37].绫诲瀷 = 4
     JY.Thing[33]["\188\211\183\192\211\249\193\166"] = 2
     if instruct_18(46) == false then
       JY.Person[2]["\208\175\180\248\206\239\198\1831"] = 46
@@ -14794,11 +14794,11 @@ function My_Enter_SubScene(sceneid, x, y, direct)
   JY.SubScene = sceneid
   local flag = 1
   if x == -1 and y == -1 then
-    JY.Base.人X1 = JY.Scene[sceneid]["\200\235\191\218X"]
-    JY.Base.人Y1 = JY.Scene[sceneid]["\200\235\191\218Y"]
+    JY.Base.浜篨1 = JY.Scene[sceneid]["\200\235\191\218X"]
+    JY.Base.浜篩1 = JY.Scene[sceneid]["\200\235\191\218Y"]
   else
-    JY.Base.人X1 = x
-    JY.Base.人Y1 = y
+    JY.Base.浜篨1 = x
+    JY.Base.浜篩1 = y
     flag = 0
   end
   if -1 < direct then
@@ -14815,11 +14815,11 @@ function My_Enter_SubScene(sceneid, x, y, direct)
   JY.MyPic = GetMyPic()
   local sid = JY.Scene[sceneid]["\204\248\215\170\179\161\190\176"]
   if sid < 0 or 0 >= JY.Scene[sid]["\205\226\190\176\200\235\191\218X1"] and 0 >= JY.Scene[sid]["\205\226\190\176\200\235\191\218Y1"] then
-    JY.Base.人X = JY.Scene[sceneid]["\205\226\190\176\200\235\191\218X1"]
-    JY.Base.人Y = JY.Scene[sceneid]["\205\226\190\176\200\235\191\218Y1"]
+    JY.Base.浜篨 = JY.Scene[sceneid]["\205\226\190\176\200\235\191\218X1"]
+    JY.Base.浜篩 = JY.Scene[sceneid]["\205\226\190\176\200\235\191\218Y1"]
   else
-    JY.Base.人X = JY.Scene[sid]["\205\226\190\176\200\235\191\218X1"]
-    JY.Base.人Y = JY.Scene[sid]["\205\226\190\176\200\235\191\218Y1"]
+    JY.Base.浜篨 = JY.Scene[sid]["\205\226\190\176\200\235\191\218X1"]
+    JY.Base.浜篩 = JY.Scene[sid]["\205\226\190\176\200\235\191\218Y1"]
   end
   Init_SMap(flag)
   if flag == 0 then
@@ -14836,20 +14836,20 @@ function New_Enter_SubScene(sceneid, x, y)
   lib.ShowSlow(50, 1)
   local i = 1
   if lib.GetMMap(x1, y1 + i, 3) == 0 and lib.GetMMap(x1, y1 + i, 4) == 0 then
-    JY.Base.人X = x1
-    JY.Base.人Y = y1 + i
+    JY.Base.浜篨 = x1
+    JY.Base.浜篩 = y1 + i
     JY.Base["\200\203\183\189\207\242"] = 0
   elseif lib.GetMMap(x1, y1 - i, 3) == 0 and lib.GetMMap(x1, y1 - i, 4) == 0 then
-    JY.Base.人X = x1
-    JY.Base.人Y = y1 - i
+    JY.Base.浜篨 = x1
+    JY.Base.浜篩 = y1 - i
     JY.Base["\200\203\183\189\207\242"] = 3
   elseif lib.GetMMap(x1 + i, y1, 3) == 0 and lib.GetMMap(x1 + i, y1, 4) == 0 then
-    JY.Base.人X = x1 + i
-    JY.Base.人Y = y1
+    JY.Base.浜篨 = x1 + i
+    JY.Base.浜篩 = y1
     JY.Base["\200\203\183\189\207\242"] = 2
   elseif lib.GetMMap(x1 - i, y1, 3) == 0 and lib.GetMMap(x1 - i, y1, 4) == 0 then
-    JY.Base.人X = x1 - i
-    JY.Base.人Y = y1
+    JY.Base.浜篨 = x1 - i
+    JY.Base.浜篩 = y1
     JY.Base["\200\203\183\189\207\242"] = 1
   end
   Cls()
@@ -15910,11 +15910,11 @@ function walkto(xx, yy, x, y, flag)
     [0] = 0
   }
   if JY.Status == GAME_SMAP then
-    x = x or JY.Base.人X1
-    y = y or JY.Base.人Y1
+    x = x or JY.Base.浜篨1
+    y = y or JY.Base.浜篩1
   elseif JY.Status == GAME_MMAP then
-    x = x or JY.Base.人X
-    y = y or JY.Base.人Y
+    x = x or JY.Base.浜篨
+    y = y or JY.Base.浜篩
   end
   xx, yy = xx + x, yy + y
   if JY.Status == GAME_SMAP and SceneCanPass(xx, yy) == false then
@@ -16128,7 +16128,7 @@ function SaveList(ins)
     idx[i] = Byte.get32(idxData, 4 * (i - 1))
   end
   local table_struct = {}
-  table_struct.姓名 = {
+  table_struct.濮撳悕 = {
     idx[1] + 8,
     2,
     10
@@ -16138,7 +16138,7 @@ function SaveList(ins)
     0,
     2
   }
-  table_struct.无用 = {
+  table_struct.鏃犵敤 = {
     idx[0] + 2,
     0,
     2
@@ -16299,8 +16299,8 @@ function XueTiao(x, y, xadd, yadd, minnum, maxnum, lmmax, color1, color2, yad)
   local x0 = 0
   local y0 = 0
   if JY.Status == GAME_SMAP then
-    x0 = JY.Base.人X1
-    y0 = JY.Base.人Y1
+    x0 = JY.Base.浜篨1
+    y0 = JY.Base.浜篩1
     if x0 <= 7 then
       x0 = 8
     end
@@ -16317,8 +16317,8 @@ function XueTiao(x, y, xadd, yadd, minnum, maxnum, lmmax, color1, color2, yad)
     x0 = WAR.Person[WAR.CurID]["\215\248\177\234X"]
     y0 = WAR.Person[WAR.CurID]["\215\248\177\234Y"]
   elseif JY.Status == GAME_MMAP then
-    x0 = JY.Base.人X
-    y0 = JY.Base.人Y
+    x0 = JY.Base.浜篨
+    y0 = JY.Base.浜篩
   end
   local xyz = x - x0
   local yyz = y - y0
@@ -16403,10 +16403,10 @@ end
 
 function ShowXT()
   for i = 0, WAR.PersonNum - 1 do
-    if WAR.Person[i].死亡 == false then
+    if WAR.Person[i].姝讳骸 == false then
       local pid = WAR.Person[i]["\200\203\206\239\177\224\186\197"]
       local size = CC.DefaultFont * 0.8 * CONFIG.Zoom / 100 / 2
-      local rwsm = JY.Person[pid].生命
+      local rwsm = JY.Person[pid].鐢熷懡
       local rwsm1 = "/" .. JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
       local xx = WAR.Person[i]["\215\248\177\234X"]
       local yy = WAR.Person[i]["\215\248\177\234Y"]
@@ -16415,9 +16415,9 @@ function ShowXT()
       local yoff = math.modf(size * 0.8)
       if 0 < rwsm then
         if WAR.Person[i]["\206\210\183\189"] == false then
-          XueTiao(xx, yy, xad, yad, JY.Person[pid].生命, JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"], CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"], nil, nil, yoff)
+          XueTiao(xx, yy, xad, yad, JY.Person[pid].鐢熷懡, JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"], CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"], nil, nil, yoff)
         else
-          XueTiao(xx, yy, xad, yad, JY.Person[pid].生命, JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"], CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"], C_WHITE, RGB(0, 0, 200), yoff)
+          XueTiao(xx, yy, xad, yad, JY.Person[pid].鐢熷懡, JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"], CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"], C_WHITE, RGB(0, 0, 200), yoff)
         end
       end
     end
@@ -16428,7 +16428,7 @@ function ShowZhi(x, y)
   local pid = WAR.Person[GetWarMap(x, y, 2)]["\200\203\206\239\177\224\186\197"]
   local size = CC.DefaultFont * CONFIG.Zoom / 100 / 2
   local zhisize = math.modf(size * 0.6)
-  local rwsm = JY.Person[pid].生命
+  local rwsm = JY.Person[pid].鐢熷懡
   local rwsm1 = "/" .. JY.Person[pid]["\201\250\195\252\215\238\180\243\214\181"]
   local yoff = -math.modf(size * 0.6)
   YYZhi(x, y, nil, 0, 0, 180)
@@ -16503,7 +16503,7 @@ end
 function wdtest()
   JY.Person[0]["\196\218\193\166\215\238\180\243\214\181"] = CC.PersonAttribMax["\196\218\193\166\215\238\180\243\214\181"]
   JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"] = CC.PersonAttribMax["\201\250\195\252\215\238\180\243\214\181"]
-  JY.Person[0].生命 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
+  JY.Person[0].鐢熷懡 = JY.Person[0]["\201\250\195\252\215\238\180\243\214\181"]
   JY.Person[0]["\196\218\193\166"] = JY.Person[0]["\196\218\193\166\215\238\180\243\214\181"]
   JY.Person[0]["\185\165\187\247\193\166"] = CC.PersonAttribMax["\185\165\187\247\193\166"]
   JY.Person[0]["\183\192\211\249\193\166"] = CC.PersonAttribMax["\183\192\211\249\193\166"]
@@ -16519,7 +16519,7 @@ function wdtest()
   JY.Person[0]["\176\181\198\247\188\188\199\201"] = CC.PersonAttribMax["\176\181\198\247\188\188\199\201"]
   JY.Person[0]["\206\228\209\167\179\163\202\182"] = CC.PersonAttribMax["\206\228\209\167\179\163\202\182"]
   JY.Person[0]["\201\250\195\252\212\246\179\164"] = 7
-  JY.Person[0].外号 = "\179\172\201\241"
+  JY.Person[0].澶栧彿 = "\179\172\201\241"
   JY.Person[0]["\196\218\193\166\208\212\214\202"] = 2
   JY.Person[0]["\202\220\201\203\179\204\182\200"] = 0
   JY.Person[0]["\214\208\182\190\179\204\182\200"] = 0

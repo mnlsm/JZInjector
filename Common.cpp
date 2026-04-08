@@ -69,9 +69,8 @@ BOOL Common::CenterAndActivateChildWindow(HWND hWndChild, HWND hWndParent)
     int x = rectParent.left + (parentWidth - childWidth) / 2;
     int y = rectParent.top + (parentHeight - childHeight) / 2;
 
-
-    int center_x = (rectParent.right - rectParent.left) / 2;
-    int center_y = (rectParent.bottom - rectParent.top) / 2;
+    int center_x = rectParent.left + parentWidth / 2;
+    int center_y = rectParent.top + parentHeight / 2;
     x = center_x - childWidth / 2;
     y = center_y - childHeight / 2;
 

@@ -135,9 +135,11 @@ private:
 
 };
 
+extern const char* k_init_lua_code0;
 extern const char* k_init_lua_code;
 extern const char* k_update_lua_code;
 extern const char* k_update_person_data_code;
+
 
 
 //gongji, CC.PersonAttribMax["\185\165\187\247\193\166"]
