@@ -121,7 +121,7 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int code) {
     result.push_back(std::make_pair<std::wstring, int>(L"小无相功", 0x4B));
     result.push_back(std::make_pair<std::wstring, int>(L"洗遂经", 0x010C));
     result.push_back(std::make_pair<std::wstring, int>(L"吸星大法", 0x41));
-    result.push_back(std::make_pair<std::wstring, int>(L"化功大法", 0x57));
+    result.push_back(std::make_pair<std::wstring, int>(L"神木王鼎", 0x42));
  /*
     result.push_back(std::make_pair<std::wstring, int>(L"袈裟伏魔功", 0x0107));
     result.push_back(std::make_pair<std::wstring, int>(L"万花剑法", 0x83));

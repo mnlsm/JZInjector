@@ -215,6 +215,8 @@ void CompositeDialog::UpdateUiFromCheatData(CheatData& cheatData) {
 void CompositeDialog::UpdateDelegateCheatData() {
     int index = m_comboPersons.GetCurSel();
     if (index < 0) return;
+    GetDlgItem(ID_APP_ABOUT).EnableWindow(FALSE);
+
     CheatData cheatData;
     CComVariant v;
     m_treePropertys.GetItemValue(m_hItemDengJi, &v);
@@ -267,4 +269,5 @@ void CompositeDialog::UpdateDelegateCheatData() {
         }
     }
     m_delegate->UpdateCheatData(this, cheatData);
+    GetDlgItem(ID_APP_ABOUT).EnableWindow(TRUE);
 }
