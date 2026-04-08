@@ -2,3 +2,5 @@ release*/
 debug*/
 .vs/
 bin/
+*.aps
+

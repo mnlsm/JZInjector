@@ -54,6 +54,7 @@ private:
     HTREEITEM m_hItemDengJi, m_hItemMiJi, m_hItemZuiZhi, m_hItemWuPin;
 
     //HTREEITEM m_hItemPersonZiZhi, m_hItemPersonWuChang;
+    HTREEITEM m_hItemPersonWuChang;
     HTREEITEM m_hItemPerson;
     HTREEITEM m_hItemPersonXiuLian;
     std::array<HTREEITEM, PersonData::WUGONG_COUNT> m_hItemPersonWuGongs;

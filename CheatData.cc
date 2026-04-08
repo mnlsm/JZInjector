@@ -1,6 +1,17 @@
 #include "pch.h"
 #include "CheatData.h"
 
+
+bool EnvData::is_valid_status() {
+    return (this->Status == STATUS_GAME_MMAP 
+        || this->Status == STATUS_GAME_SMAP);
+}
+
+bool EnvData::is_valid_banben() {
+    return (this->BanBen == BANBEN_1028);
+}
+
+
 PersonData::PersonData() {
     init();
 }

@@ -250,6 +250,7 @@ void InjectorImpl::refresh_person_lua_code(CheatData& data) {
 
     Common::string_replace(code, "$000", std::to_string(personData.jyqxz_person_id()));
     Common::string_replace(code, "$100", std::to_string(personData.jyqxz_person_xiulian()));
+    Common::string_replace(code, "$101", std::to_string(personData.jyqxz_person_wuchang()));
     auto wugongs = personData.jyqxz_person_sort_wugongs();
     for (size_t i = 0; i < wugongs.size(); i++) {
         std::string key = "$" + std::to_string(200 + i);
@@ -307,7 +308,7 @@ void InjectorImpl::CheckMainWindow(HWND hwnd, UINT message) {
 
 void InjectorImpl::ShowSettingDlg(HWND hwnd) {
     EnvData evData = GetLuaEnvData();
-    if (evData.Status != EnvData::STATUS_GAME_MMAP || evData.WugongNum != 166) {
+    if (!evData.is_valid_banben() || !evData.is_valid_status()) {
         return;
     }
     CompositeDialog& compositeCtrl = mDialogEx;
@@ -376,8 +377,8 @@ EnvData InjectorImpl::GetLuaEnvData() {
     }
     LOG_INFO() << "InjectorImpl::GetLuaEnvData, result.banben=" 
                << result.BanBen << ", result.status=" << result.Status
-        << ", result.WugongNum=" << result.WugongNum
-        ;
+               << ", result.WugongNum=" << result.WugongNum
+               ;
     return result;
 }
 
@@ -390,6 +391,10 @@ void InjectorImpl::GetPersonData(PersonData& personData) {
             if (lua_istable_ex(lua_state_, -1)) {
                 orig_lua_getfield(lua_state_, -1, "xlid");
                 personData.jyqxz_person_xiulian() = (int)lua_tonumber_ex(lua_state_, -1);
+                lua_pop_ex(lua_state_, 1);
+
+                orig_lua_getfield(lua_state_, -1, "wuchang");
+                personData.jyqxz_person_wuchang() = (int)lua_tonumber_ex(lua_state_, -1);
                 lua_pop_ex(lua_state_, 1);
 
                 for (int i = 1; i <= 10; i++) {
@@ -405,6 +410,7 @@ void InjectorImpl::GetPersonData(PersonData& personData) {
     LOG_INFO() << "InjectorImpl::GetPersonData"
                << ", personData.jyqxz_person_id()=" << personData.jyqxz_person_id() 
                << ", personData.jyqxz_person_xiulian()=" << personData.jyqxz_person_xiulian()
+               << ", personData.jyqxz_person_wuchang()=" << personData.jyqxz_person_wuchang()
                << ", wugongs.size()=" << wugongs.size()
                ;
 }

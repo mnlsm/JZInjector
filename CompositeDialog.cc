@@ -19,77 +19,7 @@ LRESULT CompositeDialog::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /
 
     InitUi();
 
-    /*
-    m_comboPersons.Attach(GetDlgItem(IDC_COMBO1));
-
-
-    m_images.Create(IDB_PROPERTYTREE, 16, 1, RGB(255, 0, 255));
-    m_treePropertys.SubclassWindow(GetDlgItem(IDC_TREE1));
-    m_treePropertys.SetImageList(m_images, TVSIL_NORMAL);
-    //m_treePropertys.SetExtendedTreeStyle(PTS_EX_NOCOLLAPSE);
-
-   
-    std::vector<std::wstring> labels = { L"等级爆洗:", L"秘籍爆洗:", L"最值调整:" };
-    std::vector<std::wstring> colors = { L"关闭爆洗", L"普通爆洗", L"快速爆洗", L"全能超人" };
-    std::vector<std::wstring> sizes = { L"关闭爆洗", L"普通爆洗" };
-    std::vector<std::wstring> styles = { L"关闭调整", L"上调25%", L"上调50%" };
-   
-
-
-    HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("物品、爆洗")), 13, 13, TVI_ROOT);
-    if (true) {
-        LPCTSTR pList[] = { L"关闭爆洗", L"普通爆洗", L"快速爆洗", L"全能超人" , NULL };
-        m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("等级爆洗"), pList), 12, 12, hItem);
-    }
-    if (true) {
-        LPCTSTR pList[] = { L"关闭爆洗", L"普通爆洗" , NULL };
-        m_hItemMiJi = m_treePropertys.InsertItem(PropCreateList(_T("秘籍爆洗"), pList), 12, 12, hItem);
-    }
-    if (true) {
-        LPCTSTR pList[] = { L"关闭调整", L"上调25%", L"上调50%" , NULL };
-        m_hItemZuiZhi = m_treePropertys.InsertItem(PropCreateList(_T("最值调整"), pList), 12, 12, hItem);
-    }
-
-    if (true) {
-        LPCTSTR pList[] = { L"关闭调整", L"开启调整", NULL };
-        m_hItemZuiZhi = m_treePropertys.InsertItem(PropCreateList(_T("物品调整"), pList), 12, 12, hItem);
-    }
-
-    hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("人物属性")), 13, 13, TVI_ROOT);
-
-
-   
-    LPCTSTR pList[] = { _T("White"), _T("Brown"), _T("Pink"), _T("Yellow"), NULL };
-    HTREEITEM hItem, hName, hOpt;
-    hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("Accessibility")), 13, 13, TVI_ROOT);
-    m_treePropertys.InsertItem(PropCreateCheckmark(_T("Always expand ALT text for images")), 0, 0, hItem);
-    m_treePropertys.InsertItem(PropCreateCheckmark(_T("Move system caret with focus changes")), 0, 0, hItem);
-
-    hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("When searching")), 10, 10, TVI_ROOT);
-    hOpt = m_treePropertys.InsertItem(PropCreateOptionCheck(_T("Display results, and go to most likely site")), 0, 0, hItem);
-    m_treePropertys.InsertItem(PropCreateOptionCheck(_T("Do not search from the Address bar"), true), 0, 0, hItem);
-    hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("Misc")), 13, 13, TVI_ROOT);
-    hName = m_treePropertys.InsertItem(PropCreateSimple(_T("Name"), _T("Donald")), 11, 11, hItem);
-    m_treePropertys.InsertItem(PropCreateSimple(_T("Male"), true), 12, 12, hItem);
-    m_treePropertys.InsertItem(PropCreateList(_T("Skin"), pList), 12, 12, hItem);
-
-    TCHAR szBuffer[256];
-    m_treePropertys.GetItemText(hName, szBuffer, 256);
-    m_treePropertys.SetItemData(hName, 1234);
-    LPARAM lParam = m_treePropertys.GetItemData(hName); lParam;
-    TVITEM item = { 0 };
-    item.hItem = hName;
-    item.mask = TVIF_PARAM;
-    m_treePropertys.GetItem(&item);
-    CComVariant v;
-    m_treePropertys.GetItemValue(hName, &v);
-    v = L"Donald Duck";
-    m_treePropertys.SetItemValue(hName, &v);
-
-    BOOL bCheck = m_treePropertys.GetCheckState(hOpt);
-    m_treePropertys.SetCheckState(hOpt, TRUE);
-    bCheck = m_treePropertys.GetCheckState(hOpt);
-    */
+    CenterWindow();
 
     //m_treePropertys.EnableItem(hName, FALSE);
     //m_treePropertys.EnableItem(hOpt, FALSE);
@@ -178,6 +108,15 @@ void CompositeDialog::InitUi() {
     }
     */
     if (true) {
+        m_hItemPersonWuChang = m_treePropertys.InsertItem(PropCreateList(_T("武学常识")), 12, 12, hItem);
+        CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonWuChang);
+        for (size_t i = 0; i <= 100; i++) {
+            list->AddListItem(std::to_wstring(i).c_str(), i);
+        }
+        CComVariant v(0, VT_I4);
+        m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
+    }
+    if (true) {
         m_hItemPersonXiuLian = m_treePropertys.InsertItem(PropCreateList(_T("修炼秘籍")), 12, 12, hItem);
     }
     if (true) {
@@ -231,6 +170,12 @@ void CompositeDialog::UpdateUiFromCheatData(CheatData& cheatData) {
         m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
     }
     */
+    if (true) {
+        size_t val = cheatData.person().jyqxz_person_wuchang();
+        if (val > 100) val = 0;
+        v = CComVariant(val, VT_UI4);
+        m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
+    }
     if (true) {
         int val = -1, index = 0;
         auto xiuLianData = MiscData::GetXiuLian(cheatData.person().jyqxz_person_xiulian());
@@ -303,6 +248,11 @@ void CompositeDialog::UpdateDelegateCheatData() {
     }
     v.Clear();
     */
+    if (true) {
+        CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonWuChang);
+        cheatData.person().jyqxz_person_wuchang() = list->GetListItemData();
+    }
+    v.Clear();
     if (true) {
         CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonXiuLian);
         cheatData.person().jyqxz_person_xiulian() = list->GetListItemData();

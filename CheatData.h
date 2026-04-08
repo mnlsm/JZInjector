@@ -7,6 +7,14 @@ public:
 
 public:
 	static const int STATUS_GAME_MMAP = 2;
+	static const int STATUS_GAME_SMAP = 4;
+	static const int BANBEN_1028 = 5;
+
+
+public:
+	bool is_valid_status();
+	bool is_valid_banben();
+
 
 public:
 	int Status = 0;

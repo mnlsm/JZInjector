@@ -309,16 +309,21 @@ function Fucker_AdjustPropsMaxValue()
     War_PrintTrace(string.format("maxvalue_shuadao = %d", jyqxz_baoxi_maxvalue_dict["shuadao"]));
     War_PrintTrace(string.format("maxvalue_teshu = %d", jyqxz_baoxi_maxvalue_dict["teshu"]));
     War_PrintTrace(string.format("maxvalue_anqi = %d", jyqxz_baoxi_maxvalue_dict["anqi"]));
-    War_PrintTrace(string.format("maxvalue_multi = %f", multi));
+    War_PrintTrace(string.format("maxvalue_multi = %d", 100 * multi));
 
     return; 
 end
 
 function Fucker_AdjustWuPins()
-    War_PrintTrace("Fucker_AdjustWuPins Begin, jyqxz_adjust_wupin=%d", jyqxz_adjust_wupin);
+    War_PrintTrace("Fucker_AdjustWuPins Begin, CC.BanBen=%d, jyqxz_adjust_wupin=%d", 
+        CC.BanBen, jyqxz_adjust_wupin);
     if jyqxz_adjust_wupin < 1 then
         return;
     end
+    if CC.BanBen ~= 5 then
+        return;
+    end 
+
     Fucker_AdjustWuPin(0xae, 9999);
     Fucker_AdjustWuPin(0xd1, 9999);
     Fucker_AdjustWuPin(0xd2, 9999);
@@ -352,7 +357,6 @@ function Fucker_GetEnvData()
     local result = {};
 
     result.BanBen = CC.BanBen;
-    result.BanBen = 0;
     result.Status = JY.Status;
     result.WugongNum = JY.WugongNum 
 
@@ -363,6 +367,7 @@ function Fucker_GetPersonData(pid)
    local result = {};
    local p = JY.Person[pid];
    result["xlid"] = p["\208\222\193\182\206\239\198\183"];
+   result["wuchang"] = p["\206\228\209\167\179\163\202\182"];
    for i = 1, 10 do
      result["wugong"..i] = p["\206\228\185\166" .. i];
    end   
@@ -373,6 +378,7 @@ end
 function Fucker_UpdatePersonData(person_cheatdata)
    local p = JY.Person[person_cheatdata.pid]
    p["\208\222\193\182\206\239\198\183"] = person_cheatdata.xlid;
+   p["\206\228\209\167\179\163\202\182"] = person_cheatdata.wuchang;
    for i = 1, 10 do
       p["\206\228\185\166" .. i] = person_cheatdata["wugong"..i];
       p["\206\228\185\166\181\200\188\182" .. i] = 999;
@@ -404,6 +410,8 @@ const char* k_update_person_data_code = R"(
 
     jyqxz_person_cheatdata_dict.pid = $000;
     jyqxz_person_cheatdata_dict.xlid = $100;
+    jyqxz_person_cheatdata_dict.wuchang = $101; 
+
     jyqxz_person_cheatdata_dict.wugong1 = $200;
     jyqxz_person_cheatdata_dict.wugong2 = $201;
     jyqxz_person_cheatdata_dict.wugong3 = $202;
