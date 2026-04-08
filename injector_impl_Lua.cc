@@ -13,7 +13,7 @@ const char* k_init_lua_code0 = R"(
     jyqxz_baoxi_maxvalue_dict = {};
     jyqxz_person_cheatdata_dict = {};
 
-    jyqxz_trace_data_on_load = 0;
+    jyqxz_trace_data_on_load = 1;
 
     function War_PrintTrace(str)
         if jyqxz_trace_log > 0 then
@@ -116,7 +116,7 @@ LoadRecord = function(id)
       War_PrintTrace(string.format("index=%d, id=%02X, count=%d", newnum + 1, newthing[newnum][1], newthing[newnum][2]));
     end
     War_PrintTrace("----------------------------------------------------------------------------------------------");
-    traceAllPersonData();
+    --traceAllPersonData();
     --traceAllWuPinData();
     --traceAllWuGongData();
     jyqxz_trace_data_on_load = jyqxz_trace_data_on_load + 1;
