@@ -53,7 +53,6 @@
     <ClInclude Include="pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="CompositeControl.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ui\PropertyItem.h">
       <Filter>ui</Filter>
@@ -102,7 +101,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="CompositeControl.cc" />
     <ClCompile Include="CompositeDialog.cc">
       <Filter>src</Filter>
     </ClCompile>

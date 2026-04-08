@@ -179,7 +179,6 @@
   <ItemGroup>
     <ClInclude Include="CheatData.h" />
     <ClInclude Include="Common.h" />
-    <ClInclude Include="CompositeControl.h" />
     <ClInclude Include="CompositeDialog.h" />
     <ClInclude Include="FileLogger.h" />
     <ClInclude Include="framework.h" />
@@ -200,7 +199,6 @@
   <ItemGroup>
     <ClCompile Include="CheatData.cc" />
     <ClCompile Include="Common.cpp" />
-    <ClCompile Include="CompositeControl.cc" />
     <ClCompile Include="CompositeDialog.cc" />
     <ClCompile Include="data\legend.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

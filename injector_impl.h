@@ -1,7 +1,6 @@
 #pragma once
 #include "JZInjector.h"
 #include "framework.h"
-#include "CompositeControl.h"
 #include "CompositeDialog.h"
 #include "HookMgr.h"
 #include "CheatData.h"
@@ -131,7 +130,6 @@ private:
 
 	HWND mainWnd_ = NULL;
 	HINSTANCE hInst_;
-	CCompositeControl mDialog;
 	CompositeDialog mDialogEx;
 	int m_nHotKeyId = 0x7FFFFFAA;
 
