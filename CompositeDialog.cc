@@ -64,7 +64,7 @@ LRESULT CompositeDialog::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl
 void CompositeDialog::InitUi() {
     m_comboPersons.Attach(GetDlgItem(IDC_COMBO1));
 
-    auto personData = PersonData::GetPersons();
+    auto personData = PersonData::GetPersons(false);
     for (auto& person : personData) {
         int index = m_comboPersons.AddString(person.first.c_str());
         m_comboPersons.SetItemData(index, person.second);
@@ -129,8 +129,8 @@ void CompositeDialog::InitUi() {
 
 
 void CompositeDialog::UpdateUi(bool reset) {
-    int index = m_comboPersons.GetCurSel();
     m_updatingUi = true;
+    int index = m_comboPersons.GetCurSel();
     if (index < 0 || reset) {
         m_comboPersons.SetCurSel(0);
         index = m_comboPersons.GetCurSel();
@@ -138,7 +138,7 @@ void CompositeDialog::UpdateUi(bool reset) {
     CheatData data;
     data.person().jyqxz_person_id() = m_comboPersons.GetItemData(index);
     m_delegate->GetCheatData(this, data);
-    UpdateUiFromCheatData(data);
+    UpdateUiFromCheatData(reset, data);
     m_updatingUi = false;
 
     m_treePropertys.SetFocus();
@@ -146,7 +146,16 @@ void CompositeDialog::UpdateUi(bool reset) {
 }
 
 
-void CompositeDialog::UpdateUiFromCheatData(CheatData& cheatData) {
+void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
+    if (reset) {
+        m_comboPersons.ResetContent();
+        auto personData = PersonData::GetPersons(true);
+        for (auto& person : personData) {
+            int index = m_comboPersons.AddString(person.first.c_str());
+            m_comboPersons.SetItemData(index, person.second);
+        }
+        m_comboPersons.SetCurSel(0);
+    }
     CComVariant v(cheatData.misc().jyqxz_baoxi_dengji(), VT_I4);
     m_treePropertys.SetItemValue(m_hItemDengJi, &v);
     v = CComVariant(cheatData.misc().jyqxz_baoxi_wugong(), VT_I4);
@@ -175,6 +184,7 @@ void CompositeDialog::UpdateUiFromCheatData(CheatData& cheatData) {
         if (val > 100) val = 0;
         v = CComVariant(val, VT_UI4);
         m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
+        m_treePropertys.EnableItem(m_hItemPersonWuChang, (cheatData.person().jyqxz_person_id() == 0));
     }
     if (true) {
         int val = -1, index = 0;
@@ -196,7 +206,7 @@ void CompositeDialog::UpdateUiFromCheatData(CheatData& cheatData) {
         auto wugongs = cheatData.person().jyqxz_person_wugongs();
         for (int i = 0; i < m_hItemPersonWuGongs.size(); i++) {
             int val = -1, index = 0;
-            auto wugongData = MiscData::GetWuGong(wugongs[i]);
+            auto wugongData = MiscData::GetWuGong(cheatData.person().jyqxz_person_id(), wugongs[i]);
             CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonWuGongs[i]);
             list->RemoveAll();
             for (auto& d : wugongData) {

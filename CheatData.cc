@@ -43,7 +43,7 @@ std::vector<int> PersonData::jyqxz_person_sort_wugongs() {
 }
 
 
-std::vector<std::pair<std::wstring, int>> PersonData::GetPersons() {
+std::vector<std::pair<std::wstring, int>> PersonData::GetPersons(bool filter_duiyou) {
     std::vector<std::pair<std::wstring, int>> result;
     result.push_back(std::make_pair<std::wstring, int>(L"主角", 0x00));
     result.push_back(std::make_pair<std::wstring, int>(L"祖千秋", 0x58));
@@ -99,9 +99,25 @@ std::vector<std::pair<std::wstring, int>> PersonData::GetPersons() {
     result.push_back(std::make_pair<std::wstring, int>(L"霍都", 0x54));
     result.push_back(std::make_pair<std::wstring, int>(L"贝海石", 0x55));
 //    result.push_back(std::make_pair<std::wstring, int>(L"老顽童", 0x40));
+
+    if (filter_duiyou) {
+        std::set<int> duiyous;
+        duiyous.insert(jyqxz_person_duiyous().begin(), jyqxz_person_duiyous().end());
+        for (int i = result.size() - 1; i >= 0; i--) {
+            if (result[i].second == 0) continue;
+            if (duiyous.find(result[i].second) == duiyous.cend()) {
+                result.erase(result.begin() + i);
+            }
+        }
+    }
     return result;
 }
 
+
+std::vector<int>& PersonData::jyqxz_person_duiyous() {
+    static std::vector<int> s_duiyous;
+    return s_duiyous;
+}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -118,12 +134,12 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int code) {
     result.push_back(std::make_pair<std::wstring, int>(L"胡青牛医术", 0xBD));
     result.push_back(std::make_pair<std::wstring, int>(L"药王神篇", 0xC1));
     result.push_back(std::make_pair<std::wstring, int>(L"左右互搏", 0xEB));
+/*
     result.push_back(std::make_pair<std::wstring, int>(L"易筋经", 0x55));
     result.push_back(std::make_pair<std::wstring, int>(L"小无相功", 0x4B));
     result.push_back(std::make_pair<std::wstring, int>(L"洗遂经", 0x010C));
     result.push_back(std::make_pair<std::wstring, int>(L"吸星大法", 0x41));
     result.push_back(std::make_pair<std::wstring, int>(L"神木王鼎", 0x42));
- /*
     result.push_back(std::make_pair<std::wstring, int>(L"袈裟伏魔功", 0x0107));
     result.push_back(std::make_pair<std::wstring, int>(L"万花剑法", 0x83));
     result.push_back(std::make_pair<std::wstring, int>(L"九阳真经", 0x53));
@@ -133,7 +149,6 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int code) {
     result.push_back(std::make_pair<std::wstring, int>(L"幻阴指", 0x5E));
     result.push_back(std::make_pair<std::wstring, int>(L"燃木刀法", 0x89));
 */
-
     bool found = false;
     for (auto& item : result) {
         if (item.second == code) {
@@ -155,22 +170,24 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int code) {
     return result;
 }
 
-std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int code) {
+std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int pid, int code) {
     std::vector<std::pair<std::wstring, int>> result;
     result.push_back(std::make_pair<std::wstring, int>(L"      ", 0x0000));
-    result.push_back(std::make_pair<std::wstring, int>(L"百战天龙", 0x7A));
-    result.push_back(std::make_pair<std::wstring, int>(L"黑极浮图", 0x72));
-    result.push_back(std::make_pair<std::wstring, int>(L"乾坤太极", 0x78));
-    result.push_back(std::make_pair<std::wstring, int>(L"烈焰天刀", 0x7D));
-    result.push_back(std::make_pair<std::wstring, int>(L"狂风绝技", 0x7E));
-    result.push_back(std::make_pair<std::wstring, int>(L"瑜伽密乘", 0x76));
-    result.push_back(std::make_pair<std::wstring, int>(L"逆时行舟", 0x75));
-    result.push_back(std::make_pair<std::wstring, int>(L"妙手空空", 0x73));
-    result.push_back(std::make_pair<std::wstring, int>(L"重阳尊决", 0x77));
-    result.push_back(std::make_pair<std::wstring, int>(L"地狱葵花", 0x74));
-    result.push_back(std::make_pair<std::wstring, int>(L"皇玺剑印", 0x7C));
-    result.push_back(std::make_pair<std::wstring, int>(L"天下无狗", 0x7F));
-    result.push_back(std::make_pair<std::wstring, int>(L"武中无相", 0x79));
+    if (pid <= 0) {
+        result.push_back(std::make_pair<std::wstring, int>(L"百战天龙", 0x7A));
+        result.push_back(std::make_pair<std::wstring, int>(L"黑极浮图", 0x72));
+        result.push_back(std::make_pair<std::wstring, int>(L"乾坤太极", 0x78));
+        result.push_back(std::make_pair<std::wstring, int>(L"烈焰天刀", 0x7D));
+        result.push_back(std::make_pair<std::wstring, int>(L"狂风绝技", 0x7E));
+        result.push_back(std::make_pair<std::wstring, int>(L"瑜伽密乘", 0x76));
+        result.push_back(std::make_pair<std::wstring, int>(L"逆时行舟", 0x75));
+        result.push_back(std::make_pair<std::wstring, int>(L"妙手空空", 0x73));
+        result.push_back(std::make_pair<std::wstring, int>(L"重阳尊决", 0x77));
+        result.push_back(std::make_pair<std::wstring, int>(L"地狱葵花", 0x74));
+        result.push_back(std::make_pair<std::wstring, int>(L"皇玺剑印", 0x7C));
+        result.push_back(std::make_pair<std::wstring, int>(L"天下无狗", 0x7F));
+        result.push_back(std::make_pair<std::wstring, int>(L"武中无相", 0x79));
+    }
     bool found = false;
     for (auto& item : result) {
         if (item.second == code) {

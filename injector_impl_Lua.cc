@@ -54,74 +54,84 @@ const char* k_init_lua_code0 = R"(
        War_PrintTrace("----traceAllWuGongData End------");     
     end 
 
+    function GetTeamPersons()
+      local persons = {};
+      for i = 1, CC.TeamNum do
+        persons["duiyou"..i] = JY.Base["\182\211\206\233" .. i];
+        if JY.Base["\182\211\206\233" .. i] < 0 then
+           persons["duiyou"..i] = -1;
+        end
+      end
+      return persons
+    end
+
+    Raw_LoadRecord = LoadRecord;
+
+    LoadRecord = function(id)
+        Raw_LoadRecord(id);
+        if jyqxz_trace_data_on_load > 0 then
+           return;
+        end
+        local data = Byte.create(24)
+        Byte.loadfile(data, CC.R_IDXFilename[0], 0, 24)
+        local idx = {}
+        idx[0] = 0
+        for i = 1, 6 do
+          idx[i] = Byte.get32(data, 4 * (i - 1))
+        end
+        War_PrintTrace(string.format("idx[0]=0, idx[1]=%f, idx[2]=%f, idx[3]=%f, idx[4]=%f, idx[5]=%f, idx[6]=%f" 
+              ,idx[1], idx[2], idx[3], idx[4], idx[5], idx[6]));
+        War_PrintTrace(string.format("JY.PersonNum = %f, CC.PersonSize=%f", JY.PersonNum, CC.PersonSize));
+        War_PrintTrace(string.format("JY.ThingNum = %f, CC.ThingSize=%f", JY.ThingNum, CC.ThingSize));
+        War_PrintTrace(string.format("JY.SceneNum = %f, CC.SceneSize=%f", JY.SceneNum, CC.SceneSize));
+        War_PrintTrace(string.format("JY.WugongNum = %f, CC.WugongSize=%f", JY.WugongNum, CC.WugongSize));
+        War_PrintTrace(string.format("JY.ShopNum = %f, CC.ShopSize=%f", JY.ShopNum, CC.ShopSize));
+        War_PrintTrace("----------------------------------------------------------------------------------------------");
+
+        local newthing = {}
+        local i, j
+        local thnum = 0
+        for i = 0, CC.MyThingNum - 1 do
+          if 0 > JY.Base["\206\239\198\183" .. i + 1] then
+            thnum = i
+            break
+          end
+        end
+        local newnum = 0
+        for i = 0, CC.MyThingNum do
+          newthing[i] = {}
+          for j = 0, CC.MyThingNum do
+            if 0 > JY.Base["\206\239\198\183" .. j + 1] then
+              break
+            end
+            if JY.Base["\206\239\198\183" .. j + 1] == i then
+              newthing[newnum][1] = JY.Base["\206\239\198\183" .. j + 1]
+              newthing[newnum][2] = JY.Base["\206\239\198\183\202\253\193\191" .. j + 1]
+              newnum = newnum + 1
+              break
+            end
+          end
+          if newnum == thnum then
+            break
+          end
+        end
+        War_PrintTrace(string.format("thnum = %f, newnum=%f", thnum, newnum));
+        for newnum = 0, thnum - 1 do
+    --      JY.Base["\206\239\198\183" .. newnum + 1] = newthing[newnum][1]
+    --      JY.Base["\206\239\198\183\202\253\193\191" .. newnum + 1] = newthing[newnum][2]
+          War_PrintTrace(string.format("index=%d, id=%02X, count=%d", newnum + 1, newthing[newnum][1], newthing[newnum][2]));
+        end
+        War_PrintTrace("----------------------------------------------------------------------------------------------");
+        --traceAllPersonData();
+        --traceAllWuPinData();
+        --traceAllWuGongData();
+        jyqxz_trace_data_on_load = jyqxz_trace_data_on_load + 1;
+    end
 
 )";
 
 const char* k_init_lua_code = R"(
 
-Raw_LoadRecord = LoadRecord;
-
-LoadRecord = function(id)
-    Raw_LoadRecord(id);
-    if jyqxz_trace_data_on_load > 0 then
-       return;
-    end
-    local data = Byte.create(24)
-    Byte.loadfile(data, CC.R_IDXFilename[0], 0, 24)
-    local idx = {}
-    idx[0] = 0
-    for i = 1, 6 do
-      idx[i] = Byte.get32(data, 4 * (i - 1))
-    end
-    War_PrintTrace(string.format("idx[0]=0, idx[1]=%f, idx[2]=%f, idx[3]=%f, idx[4]=%f, idx[5]=%f, idx[6]=%f" 
-          ,idx[1], idx[2], idx[3], idx[4], idx[5], idx[6]));
-    War_PrintTrace(string.format("JY.PersonNum = %f, CC.PersonSize=%f", JY.PersonNum, CC.PersonSize));
-    War_PrintTrace(string.format("JY.ThingNum = %f, CC.ThingSize=%f", JY.ThingNum, CC.ThingSize));
-    War_PrintTrace(string.format("JY.SceneNum = %f, CC.SceneSize=%f", JY.SceneNum, CC.SceneSize));
-    War_PrintTrace(string.format("JY.WugongNum = %f, CC.WugongSize=%f", JY.WugongNum, CC.WugongSize));
-    War_PrintTrace(string.format("JY.ShopNum = %f, CC.ShopSize=%f", JY.ShopNum, CC.ShopSize));
-    War_PrintTrace("----------------------------------------------------------------------------------------------");
-
-    local newthing = {}
-    local i, j
-    local thnum = 0
-    for i = 0, CC.MyThingNum - 1 do
-      if 0 > JY.Base["\206\239\198\183" .. i + 1] then
-        thnum = i
-        break
-      end
-    end
-    local newnum = 0
-    for i = 0, CC.MyThingNum do
-      newthing[i] = {}
-      for j = 0, CC.MyThingNum do
-        if 0 > JY.Base["\206\239\198\183" .. j + 1] then
-          break
-        end
-        if JY.Base["\206\239\198\183" .. j + 1] == i then
-          newthing[newnum][1] = JY.Base["\206\239\198\183" .. j + 1]
-          newthing[newnum][2] = JY.Base["\206\239\198\183\202\253\193\191" .. j + 1]
-          newnum = newnum + 1
-          break
-        end
-      end
-      if newnum == thnum then
-        break
-      end
-    end
-    War_PrintTrace(string.format("thnum = %f, newnum=%f", thnum, newnum));
-    for newnum = 0, thnum - 1 do
---      JY.Base["\206\239\198\183" .. newnum + 1] = newthing[newnum][1]
---      JY.Base["\206\239\198\183\202\253\193\191" .. newnum + 1] = newthing[newnum][2]
-      War_PrintTrace(string.format("index=%d, id=%02X, count=%d", newnum + 1, newthing[newnum][1], newthing[newnum][2]));
-    end
-    War_PrintTrace("----------------------------------------------------------------------------------------------");
-    --traceAllPersonData();
-    --traceAllWuPinData();
-    --traceAllWuGongData();
-    jyqxz_trace_data_on_load = jyqxz_trace_data_on_load + 1;
-end
-      
 Raw_War_AddPersonLevel = War_AddPersonLevel;
 War_AddPersonLevel = function(pid)
     War_PrintTrace("War_AddPersonLevel called");
@@ -419,8 +429,16 @@ function Fucker_GetPersonData(pid)
    result["wuchang"] = p["\206\228\209\167\179\163\202\182"];
    for i = 1, 10 do
      result["wugong"..i] = p["\206\228\185\166" .. i];
-   end   
-   War_PrintTrace(string.format("Fucker_GetPersonData called, pid=%d, result.xlid=%d", pid, result["xlid"])); 
+   end 
+   result["duiyou_count"] = CC.TeamNum; 
+   for i = 1, CC.TeamNum do
+        result["duiyou"..i] = JY.Base["\182\211\206\233" .. i];
+        if JY.Base["\182\211\206\233" .. i] < 0 then
+            result["duiyou"..i] = -1;
+        end
+   end
+   War_PrintTrace(string.format("Fucker_GetPersonData called, pid=%d, result.xlid=%d"
+       , pid, result["xlid"])); 
    return result;
 end
 

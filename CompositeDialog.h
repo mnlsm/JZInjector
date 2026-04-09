@@ -43,7 +43,7 @@ public:
 
 private:
     void InitUi();
-    void UpdateUiFromCheatData(CheatData& cheatData);
+    void UpdateUiFromCheatData(bool reset, CheatData& cheatData);
     void UpdateDelegateCheatData();
 
 private:

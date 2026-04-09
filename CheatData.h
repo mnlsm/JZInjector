@@ -24,7 +24,8 @@ public:
 
 
 class PersonData : 
-	protected std::tuple<int, std::string, int, int, int, std::vector<int>> {
+	protected std::tuple<int, std::string, int, int, int, 
+		std::vector<int>> {
 public:
 	PersonData();
 	~PersonData() = default;
@@ -32,8 +33,8 @@ public:
 public:
 	enum {WUGONG_COUNT = 10};
 public:
-	static std::vector<std::pair<std::wstring, int>> GetPersons();
-
+	static std::vector<std::pair<std::wstring, int>> GetPersons(bool filter_duiyou);
+	static std::vector<int>& jyqxz_person_duiyous();
 
 public:
 	inline int& jyqxz_person_id() { return std::get<0>(*this); }
@@ -44,6 +45,9 @@ public:
 	inline int& jyqxz_person_xiulian() { return std::get<4>(*this); }
 	std::vector<int>& jyqxz_person_wugongs();
 	std::vector<int> jyqxz_person_sort_wugongs();
+	
+
+
 
 private:
 	void init();
@@ -59,7 +63,7 @@ public:
 
 public:
 	static std::vector<std::pair<std::wstring, int>> GetXiuLian(int code);
-	static std::vector<std::pair<std::wstring, int>> GetWuGong(int code);
+	static std::vector<std::pair<std::wstring, int>> GetWuGong(int pid, int code);
 
 	static const std::unordered_map<int, std::wstring>& GetAllWuPin();
 	static const std::unordered_map<int, std::wstring>& GetAllWuGong();

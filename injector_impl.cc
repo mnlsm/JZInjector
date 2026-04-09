@@ -395,6 +395,9 @@ EnvData InjectorImpl::GetLuaEnvData() {
 void InjectorImpl::GetPersonData(PersonData& personData) {
     auto& wugongs = personData.jyqxz_person_wugongs();
     wugongs.clear();
+    auto& duiyous = PersonData::jyqxz_person_duiyous();
+    duiyous.clear();
+    int duiyou_count = 0;
     if (CallLuaFunction(lua_state_, "Fucker_GetPersonData")) {
         orig_lua_pushinteger(lua_state_, personData.jyqxz_person_id());
         if (lua_pcall_ex(lua_state_, 1, 1, 0) == LUA_OK) {
@@ -413,6 +416,17 @@ void InjectorImpl::GetPersonData(PersonData& personData) {
                     wugongs.push_back((int)lua_tonumber_ex(lua_state_, -1));
                     lua_pop_ex(lua_state_, 1);
                 }
+
+                orig_lua_getfield(lua_state_, -1, "duiyou_count");
+                duiyou_count = (int)lua_tonumber_ex(lua_state_, -1);
+                lua_pop_ex(lua_state_, 1);
+                for (int i = 1; i <= duiyou_count; i++) {
+                    std::string key = "duiyou" + std::to_string(i);
+                    orig_lua_getfield(lua_state_, -1, key.c_str());
+                    duiyous.push_back((int)lua_tonumber_ex(lua_state_, -1));
+                    lua_pop_ex(lua_state_, 1);
+                }
+
             }
             lua_pop_ex(lua_state_, 1);
         }
@@ -422,6 +436,7 @@ void InjectorImpl::GetPersonData(PersonData& personData) {
                << ", personData.jyqxz_person_xiulian()=" << personData.jyqxz_person_xiulian()
                << ", personData.jyqxz_person_wuchang()=" << personData.jyqxz_person_wuchang()
                << ", wugongs.size()=" << wugongs.size()
+               << ", duiyou_count=" << duiyou_count
                ;
 }
 
