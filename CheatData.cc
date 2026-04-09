@@ -700,9 +700,9 @@ void MiscData::write_config_file(const char* config_filepath) {
 
 void MiscData::init() {
     jyqxz_trace_log() = 1;
-    jyqxz_baoxi_dengji() = 2;
+    jyqxz_baoxi_dengji() = 0;
     jyqxz_baoxi_wugong() = 0;
-    jyqxz_baoxi_maxvalue() = 1;
+    jyqxz_baoxi_maxvalue() = 0;
 
     jyqxz_adjust_wupin() = 0;
 }
