@@ -176,7 +176,7 @@ War_AddPersonLevel = function(pid)
     end
     for i = 1, CC.Level do
       tmpExp[i] = CC.Exp[i];
-      CC.Exp[i] = math.modf(CC.Exp[i] / 5);  
+      CC.Exp[i] = math.modf(CC.Exp[i] / 100);  
     end
     JY.Person[pid]["\215\202\214\202"] = use_clever;
     local raw_ret = Raw_War_AddPersonLevel(pid);
@@ -384,14 +384,18 @@ function Fucker_AdjustWuPins()
     if jyqxz_adjust_wupin < 1 then
         return;
     end
+    --YB
     if CC.BanBen == 0 then
         Fucker_AdjustWuPin(174, 9999);
-        Fucker_AdjustWuPin(1, 9999);
+        Fucker_AdjustWuPin(19, 9999);
+        Fucker_AdjustWuPin(29, 9999);
+        Fucker_AdjustWuPin(32, 9999);
         Fucker_AdjustWuPin(102, 9999);
         Fucker_AdjustWuPin(171, 9999);
         return;
     end 
     
+    --CL
     if CC.BanBen == 1 then
         Fucker_AdjustWuPin(174, 9999);
         Fucker_AdjustWuPin(12, 9999);
@@ -401,15 +405,21 @@ function Fucker_AdjustWuPins()
         return;
     end
 
+    --ZZJH
     if CC.BanBen == 2 then
         Fucker_AdjustWuPin(174, 9999);
         Fucker_AdjustWuPin(199, 5000);
         Fucker_AdjustWuPin(20, 9999);
         Fucker_AdjustWuPin(40, 9999);
+        Fucker_AdjustWuPin(11, 9999);
         Fucker_AdjustWuPin(15, 9999);
+        --for i = 0, JY.ThingNum do
+        --    Fucker_AdjustWuPin(i, 100);
+        --end
         return;
     end
 
+    --XMB
     if CC.BanBen == 3 then
         Fucker_AdjustWuPin(174, 9999); 
         Fucker_AdjustWuPin(19, 9999); 
@@ -421,6 +431,7 @@ function Fucker_AdjustWuPins()
         return;
     end
 
+    --TSJ
     if CC.BanBen == 4 then
         Fucker_AdjustWuPin(174, 9999); 
         Fucker_AdjustWuPin(12, 9999); 
@@ -431,6 +442,7 @@ function Fucker_AdjustWuPins()
         return;
     end
     
+    --CL1028
     if CC.BanBen == 5 then
         Fucker_AdjustWuPin(0xae, 9999);
         Fucker_AdjustWuPin(0xd1, 9999);

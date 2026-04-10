@@ -90,48 +90,50 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int banben, int c
     std::vector<std::pair<std::wstring, int>> result;
     result.push_back(std::make_pair<std::wstring, int>(L"      ", -1));
     if (banben == EnvData::BANBEN_YB) {
-        result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êé", 50));
-        result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 53));
         result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 91));
         result.push_back(std::make_pair<std::wstring, int>(L"Ì«Ğş¾­", 60));
+        result.push_back(std::make_pair<std::wstring, int>(L"Áè²¨Î¢²½", 47));
+        result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êé", 50));
+        result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 53));
         result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 79));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÅÑôÕæ¾­", 95));
         result.push_back(std::make_pair<std::wstring, int>(L"¿û»¨±¦µä", 93));
     } else if (banben == EnvData::BANBEN_CL) {
+        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 235));
         result.push_back(std::make_pair<std::wstring, int>(L"Ê³ÉñÃØ¼®", 220));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÆÉñÃØ¼®", 221));
         result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êõ", 189));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 193));
-        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 235));
     } else if (banben == EnvData::BANBEN_ZZJH) {
+        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 102));
+        result.push_back(std::make_pair<std::wstring, int>(L"Ì«ĞşÉñ¹¦", 114));
         result.push_back(std::make_pair<std::wstring, int>(L"×ÓÎçÕë¾Ä¾­", 42));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 46));
-        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 102));
         result.push_back(std::make_pair<std::wstring, int>(L"Áè²¨Î¢²½", 62));
-        result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 79));
-        result.push_back(std::make_pair<std::wstring, int>(L"½µÁúÊ®°ËÕÆ", 48));
-        result.push_back(std::make_pair<std::wstring, int>(L"Ñªµ¶¾­", 98));
+        result.push_back(std::make_pair<std::wstring, int>(L"ÉñÕÕ¾­", 47));
+        result.push_back(std::make_pair<std::wstring, int>(L"Ò×½î¾­", 60));
+        result.push_back(std::make_pair<std::wstring, int>(L"ÎäÄÂÒÅÊé", 69));
     } else if (banben == EnvData::BANBEN_XMB) {
+        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 91));
         result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êé", 50));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 53));
-        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 91));
         result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 79));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÅÑôÕæ¾­", 95));
         result.push_back(std::make_pair<std::wstring, int>(L"¿û»¨±¦µä", 93));
     } else if (banben == EnvData::BANBEN_TSJ) {
+        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 235));
         result.push_back(std::make_pair<std::wstring, int>(L"Ê³ÉñÃØ¼®", 220));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÆÉñÃØ¼®", 221));
         result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êõ", 189));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 193));
-        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 235));
         result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 316));
         result.push_back(std::make_pair<std::wstring, int>(L"´ò¹·°ô·¨", 403));
     } else if (banben == EnvData::BANBEN_CL1028) {
+        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 0xEB));
         result.push_back(std::make_pair<std::wstring, int>(L"Ê³ÉñÃØ¼®", 0xDC));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÆÉñÃØ¼®", 0xDD));
         result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êõ", 0xBD));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 0xC1));
-        result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 0xEB));
     }
 
     bool found = false;
@@ -161,6 +163,7 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int banben, int pi
     if (pid <= 0) {
         if (banben == EnvData::BANBEN_YB) {
             result.push_back(std::make_pair<std::wstring, int>(L"Ò°ÇòÈ­", 1));
+            result.push_back(std::make_pair<std::wstring, int>(L"Ì«ĞşÉñ¹¦", 23));
         } else if (banben == EnvData::BANBEN_CL) {
             result.push_back(std::make_pair<std::wstring, int>(L"Ò°ÇòÈ­", 109));
             result.push_back(std::make_pair<std::wstring, int>(L"ÉñÉ½½£·¨", 110));
@@ -168,7 +171,7 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int banben, int pi
             result.push_back(std::make_pair<std::wstring, int>(L" ëÔÂÁ÷¿Õ", 112));
         } else if (banben == EnvData::BANBEN_ZZJH) {
             result.push_back(std::make_pair<std::wstring, int>(L"ÁùÂöÉñ½£", 61));
-            result.push_back(std::make_pair<std::wstring, int>(L"ÎüĞÇ´ó·¨", 60));
+            result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 33));
         } else if (banben == EnvData::BANBEN_XMB) {
             result.push_back(std::make_pair<std::wstring, int>(L"½µÁúÊ®°ËÕÆ", 25));
             result.push_back(std::make_pair<std::wstring, int>(L"ºÚ¼¶¸¡Í¼", 99));

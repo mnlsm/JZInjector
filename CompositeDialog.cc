@@ -77,7 +77,7 @@ void CompositeDialog::InitUi() {
     m_treePropertys.SetImageList(m_images, TVSIL_NORMAL);
 
 
-    HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("物品、爆洗")), 13, 13, TVI_ROOT);
+    HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("爆洗、物品")), 13, 13, TVI_ROOT);
     if (true) {
         LPCTSTR pList[] = { L"关闭爆洗", L"普通爆洗", L"快速爆洗", L"全能超人" , NULL };
         m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("等级爆洗"), pList), 12, 12, hItem);
@@ -109,6 +109,9 @@ void CompositeDialog::InitUi() {
     }
     */
     if (true) {
+        m_hItemPersonXiuLian = m_treePropertys.InsertItem(PropCreateList(_T("修炼秘籍")), 12, 12, hItem);
+    }
+    if (true) {
         m_hItemPersonWuChang = m_treePropertys.InsertItem(PropCreateList(_T("武学常识")), 12, 12, hItem);
         CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonWuChang);
         for (size_t i = 0; i <= 100; i++) {
@@ -116,9 +119,6 @@ void CompositeDialog::InitUi() {
         }
         CComVariant v(0, VT_I4);
         m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
-    }
-    if (true) {
-        m_hItemPersonXiuLian = m_treePropertys.InsertItem(PropCreateList(_T("修炼秘籍")), 12, 12, hItem);
     }
     if (true) {
         for (int i = 0; i < m_hItemPersonWuGongs.size(); i++) {
