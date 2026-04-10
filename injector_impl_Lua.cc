@@ -13,7 +13,7 @@ const char* k_init_lua_code0 = R"(
     jyqxz_baoxi_maxvalue_dict = {};
     jyqxz_person_cheatdata_dict = {};
 
-    jyqxz_trace_data_on_load = 0;
+    jyqxz_trace_data_on_load = 1;
 
     function War_PrintTrace(str)
         if jyqxz_trace_log > 0 then
