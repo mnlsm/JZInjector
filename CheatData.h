@@ -33,8 +33,19 @@ public:
 public:
 	enum {WUGONG_COUNT = 10};
 public:
-	static std::vector<std::pair<std::wstring, int>> GetPersons(bool filter_duiyou);
 	static std::vector<int>& jyqxz_person_duiyous();
+
+public:
+	static std::vector<std::pair<std::wstring, int>> GetPersons(bool filter_duiyou);
+
+private:
+	static std::vector<std::pair<std::wstring, int>> GetPersons_YB();
+	static std::vector<std::pair<std::wstring, int>> GetPersons_CL();
+	static std::vector<std::pair<std::wstring, int>> GetPersons_CL1028();
+	static std::vector<std::pair<std::wstring, int>> GetPersons_TSJ();
+	static std::vector<std::pair<std::wstring, int>> GetPersons_XMB();
+	static std::vector<std::pair<std::wstring, int>> GetPersons_ZZJH();
+	
 
 public:
 	inline int& jyqxz_person_id() { return std::get<0>(*this); }
@@ -46,9 +57,6 @@ public:
 	std::vector<int>& jyqxz_person_wugongs();
 	std::vector<int> jyqxz_person_sort_wugongs();
 	
-
-
-
 private:
 	void init();
 };
@@ -67,6 +75,25 @@ public:
 
 	static const std::unordered_map<int, std::wstring>& GetAllWuPin();
 	static const std::unordered_map<int, std::wstring>& GetAllWuGong();
+
+private:
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_YB();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_CL();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_CL1028();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_TSJ();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_XMB();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin_ZZJH();
+
+
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_YB();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_CL();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_CL1028();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_TSJ();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_XMB();
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong_ZZJH();
+
+
+
 
 
 public:

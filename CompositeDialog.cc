@@ -63,13 +63,14 @@ LRESULT CompositeDialog::OnCancel(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl
 
 void CompositeDialog::InitUi() {
     m_comboPersons.Attach(GetDlgItem(IDC_COMBO1));
-
+    /*
     auto personData = PersonData::GetPersons(false);
     for (auto& person : personData) {
         int index = m_comboPersons.AddString(person.first.c_str());
         m_comboPersons.SetItemData(index, person.second);
     }
     m_comboPersons.SetCurSel(0);
+    */
 
     m_images.Create(IDB_PROPERTYTREE, 16, 1, RGB(255, 0, 255));
     m_treePropertys.SubclassWindow(GetDlgItem(IDC_TREE1));
@@ -130,13 +131,15 @@ void CompositeDialog::InitUi() {
 
 void CompositeDialog::UpdateUi(bool reset) {
     m_updatingUi = true;
-    int index = m_comboPersons.GetCurSel();
-    if (index < 0 || reset) {
-        m_comboPersons.SetCurSel(0);
-        index = m_comboPersons.GetCurSel();
+    int person_id = 0;
+    if (m_comboPersons.GetCount() <= 0 || reset) {
+        person_id = 0;
+    } else {
+        int index = m_comboPersons.GetCurSel();
+        person_id = m_comboPersons.GetItemData(index);
     }
     CheatData data;
-    data.person().jyqxz_person_id() = m_comboPersons.GetItemData(index);
+    data.person().jyqxz_person_id() = person_id;
     m_delegate->GetCheatData(this, data);
     UpdateUiFromCheatData(reset, data);
     m_updatingUi = false;
@@ -147,7 +150,7 @@ void CompositeDialog::UpdateUi(bool reset) {
 
 
 void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
-    if (reset) {
+    if (reset || m_comboPersons.GetCount() <= 0) {
         m_comboPersons.ResetContent();
         auto personData = PersonData::GetPersons(true);
         for (auto& person : personData) {

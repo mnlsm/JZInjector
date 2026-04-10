@@ -16,6 +16,12 @@
     <Filter Include="res">
       <UniqueIdentifier>{48dff80c-1645-4ddf-a390-b8f8e0b20ed9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{0dfa585d-f3b0-4c70-acc5-be5bed691193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\data">
+      <UniqueIdentifier>{faf86017-8a7d-465f-a9a9-aa2a72d024e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\jyconst_raw.lua">
@@ -71,14 +77,14 @@
     <ClInclude Include="ui\PropertyTree.h">
       <Filter>ui</Filter>
     </ClInclude>
-    <ClInclude Include="CompositeDialog.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="CheatData.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>res</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeDialog.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="CheatData.h">
+      <Filter>src\data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,10 +113,28 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="CompositeDialog.cc">
-      <Filter>src</Filter>
+      <Filter>src\ui</Filter>
     </ClCompile>
     <ClCompile Include="CheatData.cc">
-      <Filter>src</Filter>
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_clzr.cc">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_clzr1028.cc">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_tsj.cc">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_xmb.cc">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_yb.cc">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatData_zzjh.cc">
+      <Filter>src\data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -198,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CheatData.cc" />
+    <ClCompile Include="CheatData_clzr.cc" />
+    <ClCompile Include="CheatData_clzr1028.cc" />
+    <ClCompile Include="CheatData_tsj.cc" />
+    <ClCompile Include="CheatData_xmb.cc" />
+    <ClCompile Include="CheatData_yb.cc" />
+    <ClCompile Include="CheatData_zzjh.cc" />
     <ClCompile Include="Common.cpp" />
     <ClCompile Include="CompositeDialog.cc" />
     <ClCompile Include="data\legend.c">

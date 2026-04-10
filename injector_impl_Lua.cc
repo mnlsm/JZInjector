@@ -13,7 +13,7 @@ const char* k_init_lua_code0 = R"(
     jyqxz_baoxi_maxvalue_dict = {};
     jyqxz_person_cheatdata_dict = {};
 
-    jyqxz_trace_data_on_load = 1;
+    jyqxz_trace_data_on_load = 0;
 
     function War_PrintTrace(str)
         if jyqxz_trace_log > 0 then
@@ -64,10 +64,10 @@ const char* k_init_lua_code0 = R"(
       end
       return persons
     end
-
+ 
     Raw_LoadRecord = LoadRecord;
-
     LoadRecord = function(id)
+        War_PrintTrace("LoadRecord Called");
         Raw_LoadRecord(id);
         if jyqxz_trace_data_on_load > 0 then
            return;
@@ -122,11 +122,12 @@ const char* k_init_lua_code0 = R"(
           War_PrintTrace(string.format("index=%d, id=%02X, count=%d", newnum + 1, newthing[newnum][1], newthing[newnum][2]));
         end
         War_PrintTrace("----------------------------------------------------------------------------------------------");
-        --traceAllPersonData();
-        --traceAllWuPinData();
-        --traceAllWuGongData();
+        traceAllPersonData();
+        traceAllWuPinData();
+        traceAllWuGongData();
         jyqxz_trace_data_on_load = jyqxz_trace_data_on_load + 1;
     end
+
 
 )";
 
@@ -465,11 +466,9 @@ const char* k_update_lua_code = R"(
     jyqxz_baoxi_dengji = $002;
     jyqxz_baoxi_wugong = $003;
     jyqxz_baoxi_maxvalue = $004;
-    jyqxz_adjust_wupin = $005;
     jyqxz_baoxi_use_clever = 1;
 
     Fucker_AdjustPropsMaxValue();
-    Fucker_AdjustWuPins(); 
 )";
 
 const char* k_update_person_data_code = R"(
@@ -493,4 +492,8 @@ const char* k_update_person_data_code = R"(
     Fucker_UpdatePersonData(jyqxz_person_cheatdata_dict);
 
     jyqxz_person_cheatdata_dict = {};
+
+    jyqxz_adjust_wupin = $300;
+    Fucker_AdjustWuPins(); 
+
 )";

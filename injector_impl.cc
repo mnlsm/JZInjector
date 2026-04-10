@@ -232,7 +232,6 @@ void InjectorImpl::refresh_settings_lua_code(CheatData& data) {
     Common::string_replace(code, "$002", std::to_string(data.misc().jyqxz_baoxi_dengji()));
     Common::string_replace(code, "$003", std::to_string(data.misc().jyqxz_baoxi_wugong()));
     Common::string_replace(code, "$004", std::to_string(data.misc().jyqxz_baoxi_maxvalue()));
-    Common::string_replace(code, "$005", std::to_string(data.misc().jyqxz_adjust_wupin()));
     int lua_ret; std::string errmsg;
     std::tie(lua_ret, errmsg) = lua_dostring_ex(lua_state_, code.c_str());
     LOG_INFO() << "refresh_settings_lua_code, lua_ret=" << lua_ret
@@ -266,6 +265,7 @@ void InjectorImpl::refresh_person_lua_code(CheatData& data) {
         std::string key = "$" + std::to_string(200 + i);
         Common::string_replace(code, key.c_str(), std::to_string(wugongs[i]));
     }
+    Common::string_replace(code, "$300", std::to_string(data.misc().jyqxz_adjust_wupin()));
     int lua_ret; std::string errmsg;
     std::tie(lua_ret, errmsg) = lua_dostring_ex(lua_state_, code.c_str());
     LOG_INFO() << "refresh_person_lua_code, lua_ret=" << lua_ret
