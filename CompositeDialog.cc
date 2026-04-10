@@ -152,7 +152,7 @@ void CompositeDialog::UpdateUi(bool reset) {
 void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
     if (reset || m_comboPersons.GetCount() <= 0) {
         m_comboPersons.ResetContent();
-        auto personData = PersonData::GetPersons(true);
+        auto personData = PersonData::GetPersons(cheatData.env().BanBen, true);
         for (auto& person : personData) {
             int index = m_comboPersons.AddString(person.first.c_str());
             m_comboPersons.SetItemData(index, person.second);
@@ -191,7 +191,8 @@ void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
     }
     if (true) {
         int val = -1, index = 0;
-        auto xiuLianData = MiscData::GetXiuLian(cheatData.person().jyqxz_person_xiulian());
+        auto xiuLianData = MiscData::GetXiuLian(cheatData.env().BanBen, 
+                cheatData.person().jyqxz_person_xiulian());
         CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonXiuLian);
         list->RemoveAll();
         for (auto& d : xiuLianData) {
@@ -209,7 +210,8 @@ void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
         auto wugongs = cheatData.person().jyqxz_person_wugongs();
         for (int i = 0; i < m_hItemPersonWuGongs.size(); i++) {
             int val = -1, index = 0;
-            auto wugongData = MiscData::GetWuGong(cheatData.person().jyqxz_person_id(), wugongs[i]);
+            auto wugongData = MiscData::GetWuGong(cheatData.env().BanBen, 
+                cheatData.person().jyqxz_person_id(), wugongs[i]);
             CPropertyListItem* list = (CPropertyListItem*)m_treePropertys.GetItemProperty(m_hItemPersonWuGongs[i]);
             list->RemoveAll();
             for (auto& d : wugongData) {

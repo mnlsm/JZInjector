@@ -442,10 +442,12 @@ void InjectorImpl::GetPersonData(PersonData& personData) {
 
 
 void InjectorImpl::OnUiHide(CompositeDialog* caller) {
+/*
     MiscData md;
     md.read_config_file(config_filepath_.c_str());
     md.jyqxz_adjust_wupin() = 0;
     md.write_config_file(config_filepath_.c_str());
+*/
     ::SetFocus(mainWnd_);
 }
 

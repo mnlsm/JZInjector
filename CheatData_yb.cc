@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "CheatData.h"
 
-std::vector<std::pair<std::wstring, int>> PersonData::GetPersons_YB() {
-    std::vector<std::pair<std::wstring, int>> result;
+const std::vector<std::pair<std::wstring, int>>& PersonData::GetPersons_YB() {
+    static std::vector<std::pair<std::wstring, int>> result;
+    if (!result.empty()) return result;
     result.push_back(std::make_pair<std::wstring, int>(L"Ö÷½Ç", 0x00));
     result.push_back(std::make_pair<std::wstring, int>(L"ºúì³", 0x01));
     result.push_back(std::make_pair<std::wstring, int>(L"³ÌÁéËØ", 0x02));
@@ -328,6 +329,8 @@ std::vector<std::pair<std::wstring, int>> PersonData::GetPersons_YB() {
 
 const std::unordered_map<int, std::wstring>& MiscData::GetAllWuPin_YB() {
     static std::unordered_map<int, std::wstring> s_datas;
+    if (!s_datas.empty()) return s_datas;
+    s_datas[0] = L"¿µ±¶ÌØ";
     s_datas[1] = L"¾«ÆøÍè";
     s_datas[2] = L"°×á°ÊÏ¼¦¾«";
     s_datas[3] = L"Ğ¡»¹µ¤";
@@ -527,13 +530,13 @@ const std::unordered_map<int, std::wstring>& MiscData::GetAllWuPin_YB() {
     s_datas[197] = L"Æ¤ÒÂ";
     s_datas[198] = L"ÎŞÓÃ";
     s_datas[199] = L"×îáá";
-    s_datas[0] = L"¿µ±¶ÌØ";
     return s_datas;
 }
 
 const std::unordered_map<int, std::wstring>& MiscData::GetAllWuGong_YB() {
     static std::unordered_map<int, std::wstring> s_datas;
-    //s_datas[0] = L"ÆÕÍ¨¹¥»÷";
+    if (!s_datas.empty()) return s_datas;
+    s_datas[0] = L"ÆÕÍ¨¹¥»÷";
     s_datas[1] = L"Ò°ÇòÈ­";
     s_datas[2] = L"Îäµ±³¤È­";
     s_datas[3] = L"ÂŞººÈ­";

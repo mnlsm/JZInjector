@@ -2,8 +2,9 @@
 #include "CheatData.h"
 
 
-std::vector<std::pair<std::wstring, int>> PersonData::GetPersons_CL1028() {
-    std::vector<std::pair<std::wstring, int>> result;
+const std::vector<std::pair<std::wstring, int>>& PersonData::GetPersons_CL1028() {
+    static std::vector<std::pair<std::wstring, int>> result;
+    if (!result.empty()) return result;
     result.push_back(std::make_pair<std::wstring, int>(L"主角", 0x00));
     result.push_back(std::make_pair<std::wstring, int>(L"祖千秋", 0x58));
     result.push_back(std::make_pair<std::wstring, int>(L"人厨子", 0x59));
@@ -62,6 +63,8 @@ std::vector<std::pair<std::wstring, int>> PersonData::GetPersons_CL1028() {
 
 const std::unordered_map<int, std::wstring>& MiscData::GetAllWuPin_CL1028() {
     static std::unordered_map<int, std::wstring> s_datas;
+    if (!s_datas.empty()) return s_datas;
+    s_datas[0] = L"小还丹";
     s_datas[1] = L"天香续命膏";
     s_datas[2] = L"黑玉断续膏";
     s_datas[3] = L"白云熊胆丸";
@@ -342,12 +345,13 @@ const std::unordered_map<int, std::wstring>& MiscData::GetAllWuPin_CL1028() {
     s_datas[278] = L"道德";
     s_datas[279] = L"传送卷";
     s_datas[280] = L"传送卷";
-    s_datas[0] = L"小还丹";
     return s_datas;
 }
 
 const std::unordered_map<int, std::wstring>& MiscData::GetAllWuGong_CL1028() {
     static std::unordered_map<int, std::wstring> s_datas;
+    if (!s_datas.empty()) return s_datas;
+    s_datas[0] = L"普通攻击";
     s_datas[1] = L"罗汉拳";
     s_datas[2] = L"逍遥游";
     s_datas[3] = L"五毒神掌";
@@ -513,8 +517,6 @@ const std::unordered_map<int, std::wstring>& MiscData::GetAllWuGong_CL1028() {
     s_datas[163] = L"凌波微步";
     s_datas[164] = L"神行百变";
     s_datas[165] = L"泥鳅功";
-    //s_datas[0] = L"普通攻击";
-
     return s_datas;
 }
 

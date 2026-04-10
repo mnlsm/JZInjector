@@ -8,7 +8,14 @@ public:
 public:
 	static const int STATUS_GAME_MMAP = 2;
 	static const int STATUS_GAME_SMAP = 4;
-	static const int BANBEN_1028 = 5;
+
+	//0原版 1苍龙  2再战江湖  3台湾乡民  4天书劫	 5苍龙1028
+	static const int BANBEN_YB = 0;
+	static const int BANBEN_CL = 1;
+	static const int BANBEN_ZZJH = 2;
+	static const int BANBEN_XMB = 3;
+	static const int BANBEN_TSJ = 4;
+	static const int BANBEN_CL1028 = 5;
 
 
 public:
@@ -36,15 +43,15 @@ public:
 	static std::vector<int>& jyqxz_person_duiyous();
 
 public:
-	static std::vector<std::pair<std::wstring, int>> GetPersons(bool filter_duiyou);
+	static std::vector<std::pair<std::wstring, int>> GetPersons(int banben, bool filter_duiyou);
 
 private:
-	static std::vector<std::pair<std::wstring, int>> GetPersons_YB();
-	static std::vector<std::pair<std::wstring, int>> GetPersons_CL();
-	static std::vector<std::pair<std::wstring, int>> GetPersons_CL1028();
-	static std::vector<std::pair<std::wstring, int>> GetPersons_TSJ();
-	static std::vector<std::pair<std::wstring, int>> GetPersons_XMB();
-	static std::vector<std::pair<std::wstring, int>> GetPersons_ZZJH();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_YB();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_CL();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_CL1028();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_TSJ();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_XMB();
+	static const std::vector<std::pair<std::wstring, int>>& GetPersons_ZZJH();
 	
 
 public:
@@ -70,11 +77,11 @@ public:
 	~MiscData() = default;
 
 public:
-	static std::vector<std::pair<std::wstring, int>> GetXiuLian(int code);
-	static std::vector<std::pair<std::wstring, int>> GetWuGong(int pid, int code);
+	static std::vector<std::pair<std::wstring, int>> GetXiuLian(int banben, int code);
+	static std::vector<std::pair<std::wstring, int>> GetWuGong(int banben, int pid, int code);
 
-	static const std::unordered_map<int, std::wstring>& GetAllWuPin();
-	static const std::unordered_map<int, std::wstring>& GetAllWuGong();
+	static const std::unordered_map<int, std::wstring>& GetAllWuPin(int banben);
+	static const std::unordered_map<int, std::wstring>& GetAllWuGong(int banben);
 
 private:
 	static const std::unordered_map<int, std::wstring>& GetAllWuPin_YB();

@@ -384,16 +384,61 @@ function Fucker_AdjustWuPins()
     if jyqxz_adjust_wupin < 1 then
         return;
     end
-    if CC.BanBen ~= 5 then
+    if CC.BanBen == 0 then
+        Fucker_AdjustWuPin(174, 9999);
+        Fucker_AdjustWuPin(1, 9999);
+        Fucker_AdjustWuPin(102, 9999);
+        Fucker_AdjustWuPin(171, 9999);
         return;
     end 
+    
+    if CC.BanBen == 1 then
+        Fucker_AdjustWuPin(174, 9999);
+        Fucker_AdjustWuPin(12, 9999);
+        Fucker_AdjustWuPin(32, 9999);
+        Fucker_AdjustWuPin(209, 9999);
+        Fucker_AdjustWuPin(210, 9999);
+        return;
+    end
 
-    Fucker_AdjustWuPin(0xae, 9999);
-    Fucker_AdjustWuPin(0xd1, 9999);
-    Fucker_AdjustWuPin(0xd2, 9999);
-    Fucker_AdjustWuPin(0x0c, 9999);
-    Fucker_AdjustWuPin(32, 9999);
-    --Fucker_AdjustWuPin(8, 9999);
+    if CC.BanBen == 2 then
+        Fucker_AdjustWuPin(174, 9999);
+        Fucker_AdjustWuPin(199, 5000);
+        Fucker_AdjustWuPin(20, 9999);
+        Fucker_AdjustWuPin(40, 9999);
+        Fucker_AdjustWuPin(15, 9999);
+        return;
+    end
+
+    if CC.BanBen == 3 then
+        Fucker_AdjustWuPin(174, 9999); 
+        Fucker_AdjustWuPin(19, 9999); 
+        Fucker_AdjustWuPin(35, 9999); 
+        Fucker_AdjustWuPin(102, 9999); 
+        Fucker_AdjustWuPin(171, 9999); 
+        Fucker_AdjustWuPin(172, 9999); 
+        Fucker_AdjustWuPin(186, 9999); 
+        return;
+    end
+
+    if CC.BanBen == 4 then
+        Fucker_AdjustWuPin(174, 9999); 
+        Fucker_AdjustWuPin(12, 9999); 
+        Fucker_AdjustWuPin(17, 9999); 
+        Fucker_AdjustWuPin(32, 9999); 
+        Fucker_AdjustWuPin(209, 9999); 
+        Fucker_AdjustWuPin(210, 9999); 
+        return;
+    end
+    
+    if CC.BanBen == 5 then
+        Fucker_AdjustWuPin(0xae, 9999);
+        Fucker_AdjustWuPin(0xd1, 9999);
+        Fucker_AdjustWuPin(0xd2, 9999);
+        Fucker_AdjustWuPin(0x0c, 9999);
+        Fucker_AdjustWuPin(32, 9999);
+        return;
+    end 
     War_PrintTrace("Fucker_AdjustWuPins End");
 end
 
