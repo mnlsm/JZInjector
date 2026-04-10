@@ -79,20 +79,20 @@ void CompositeDialog::InitUi() {
 
     HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("爆洗、物品")), 13, 13, TVI_ROOT);
     if (true) {
-        LPCTSTR pList[] = { L"关闭爆洗", L"普通爆洗", L"快速爆洗", L"全能超人" , NULL };
+        LPCTSTR pList[] = { L"关闭", L"普通", L"快速", L"全能" , NULL };
         m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("等级爆洗"), pList), 12, 12, hItem);
     }
     if (true) {
-        LPCTSTR pList[] = { L"关闭爆洗", L"普通爆洗" , NULL };
+        LPCTSTR pList[] = { L"默认", L"快速" , NULL };
         m_hItemMiJi = m_treePropertys.InsertItem(PropCreateList(_T("秘籍爆洗"), pList), 12, 12, hItem);
     }
     if (true) {
-        LPCTSTR pList[] = { L"关闭调整", L"上调25%", L"上调50%" , NULL };
+        LPCTSTR pList[] = { L"关闭", L"上调25%", L"上调50%" , NULL };
         m_hItemZuiZhi = m_treePropertys.InsertItem(PropCreateList(_T("最值调整"), pList), 12, 12, hItem);
     }
 
     if (true) {
-        LPCTSTR pList[] = { L"关闭调整", L"开启调整", NULL };
+        LPCTSTR pList[] = { L"关闭", L"开启", NULL };
         m_hItemWuPin = m_treePropertys.InsertItem(PropCreateList(_T("物品调整"), pList), 12, 12, hItem);
     }
 
