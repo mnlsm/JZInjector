@@ -77,18 +77,18 @@ void CompositeDialog::InitUi() {
     m_treePropertys.SetImageList(m_images, TVSIL_NORMAL);
 
 
-    HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("爆洗、物品")), 13, 13, TVI_ROOT);
+    HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("提速、最值、物品")), 13, 13, TVI_ROOT);
     if (true) {
-        LPCTSTR pList[] = { L"关闭", L"普通", L"快速", L"全能" , NULL };
-        m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("等级爆洗"), pList), 12, 12, hItem);
+        LPCTSTR pList[] = { L"默认", L"普通", L"快速", L"全能" , NULL };
+        m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("升级提速"), pList), 12, 12, hItem);
     }
     if (true) {
-        LPCTSTR pList[] = { L"默认", L"快速" , NULL };
-        m_hItemMiJi = m_treePropertys.InsertItem(PropCreateList(_T("秘籍爆洗"), pList), 12, 12, hItem);
+        LPCTSTR pList[] = { L"默认", L"快速" , L"极速" ,NULL };
+        m_hItemMiJi = m_treePropertys.InsertItem(PropCreateList(_T("修炼提速"), pList), 12, 12, hItem);
     }
     if (true) {
-        LPCTSTR pList[] = { L"关闭", L"上调25%", L"上调50%" , NULL };
-        m_hItemZuiZhi = m_treePropertys.InsertItem(PropCreateList(_T("最值调整"), pList), 12, 12, hItem);
+        LPCTSTR pList[] = { L"默认", L"上调25%", L"上调50%" , NULL };
+        m_hItemZuiZhi = m_treePropertys.InsertItem(PropCreateList(_T("最值设定"), pList), 12, 12, hItem);
     }
 
     if (true) {
@@ -187,7 +187,7 @@ void CompositeDialog::UpdateUiFromCheatData(bool reset, CheatData& cheatData) {
         if (val > 100) val = 0;
         v = CComVariant(val, VT_UI4);
         m_treePropertys.SetItemValue(m_hItemPersonWuChang, &v);
-        m_treePropertys.EnableItem(m_hItemPersonWuChang, (cheatData.person().jyqxz_person_id() == 0));
+        //m_treePropertys.EnableItem(m_hItemPersonWuChang, (cheatData.person().jyqxz_person_id() == 0));
     }
     if (true) {
         int val = -1, index = 0;

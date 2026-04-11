@@ -54,6 +54,21 @@ const char* k_init_lua_code0 = R"(
        War_PrintTrace("----traceAllWuGongData End------");     
     end 
 
+    function War_IsPersonInTeam(pid)
+        local result = 0;
+        local teamnum = GetTeamNum();
+        for i = 1, teamnum do
+            if JY.Base["\182\211\206\233" .. i] == pid then
+                result = 1;
+                break;
+            end
+        end
+        if result < 1 then
+            War_PrintTrace(string.format("npc_person, pid = 0x%04x", pid));
+        end
+        return result;
+    end
+
     function GetTeamPersons()
       local persons = {};
       for i = 1, CC.TeamNum do
@@ -65,6 +80,106 @@ const char* k_init_lua_code0 = R"(
       return persons
     end
  
+    function War_AdjustPersonPropMinValue(pid)
+        local min_value = 25;  
+        if JY.Person[pid]["\210\189\193\198\196\220\193\166"] < min_value then
+           JY.Person[pid]["\210\189\193\198\196\220\193\166"] = min_value; 
+        end
+        if JY.Person[pid]["\211\195\182\190\196\220\193\166"] < min_value then
+           JY.Person[pid]["\211\195\182\190\196\220\193\166"] = min_value; 
+        end
+        if JY.Person[pid]["\189\226\182\190\196\220\193\166"] < min_value then
+           JY.Person[pid]["\189\226\182\190\196\220\193\166"] = min_value; 
+        end
+        if JY.Person[pid]["\200\173\213\198\185\166\183\242"] < min_value then
+           JY.Person[pid]["\200\173\213\198\185\166\183\242"] = min_value; 
+        end
+        if JY.Person[pid]["\211\249\189\163\196\220\193\166"] < min_value then
+           JY.Person[pid]["\211\249\189\163\196\220\193\166"] = min_value; 
+        end    
+        if JY.Person[pid]["\203\163\181\182\188\188\199\201"] < min_value then
+           JY.Person[pid]["\203\163\181\182\188\188\199\201"] = min_value; 
+        end    
+        if JY.Person[pid]["\204\216\202\226\177\248\198\247"] < min_value then
+           JY.Person[pid]["\204\216\202\226\177\248\198\247"] = min_value; 
+        end    
+        if JY.Person[pid]["\176\181\198\247\188\188\199\201"] < min_value then
+           JY.Person[pid]["\176\181\198\247\188\188\199\201"] = min_value; 
+        end 
+    end
+
+    function Fucker_AdjustPropsMaxValue()
+        if rawget(jyqxz_baoxi_maxvalue_dict, "gongji") == nil then
+            jyqxz_baoxi_maxvalue_dict["gongji"] = CC.PersonAttribMax["\185\165\187\247\193\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "fangyu") == nil then
+            jyqxz_baoxi_maxvalue_dict["fangyu"] = CC.PersonAttribMax["\183\192\211\249\193\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "qinggong") == nil then
+            jyqxz_baoxi_maxvalue_dict["qinggong"] = CC.PersonAttribMax["\199\225\185\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "yiliao") == nil then
+            jyqxz_baoxi_maxvalue_dict["yiliao"] = CC.PersonAttribMax["\210\189\193\198\196\220\193\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "yongdu") == nil then
+            jyqxz_baoxi_maxvalue_dict["yongdu"] = CC.PersonAttribMax["\211\195\182\190\196\220\193\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "jiedu") == nil then
+            jyqxz_baoxi_maxvalue_dict["jiedu"] = CC.PersonAttribMax["\189\226\182\190\196\220\193\166"];  
+        end    
+        if rawget(jyqxz_baoxi_maxvalue_dict, "quanzhang") == nil then
+            jyqxz_baoxi_maxvalue_dict["quanzhang"] = CC.PersonAttribMax["\200\173\213\198\185\166\183\242"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "yujian") == nil then
+            jyqxz_baoxi_maxvalue_dict["yujian"] = CC.PersonAttribMax["\211\249\189\163\196\220\193\166"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "shuadao") == nil then
+            jyqxz_baoxi_maxvalue_dict["shuadao"] = CC.PersonAttribMax["\203\163\181\182\188\188\199\201"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "teshu") == nil then
+            jyqxz_baoxi_maxvalue_dict["teshu"] = CC.PersonAttribMax["\204\216\202\226\177\248\198\247"];  
+        end
+        if rawget(jyqxz_baoxi_maxvalue_dict, "anqi") == nil then
+            jyqxz_baoxi_maxvalue_dict["anqi"] = CC.PersonAttribMax["\176\181\198\247\188\188\199\201"];  
+        end
+        local multi = 1.0;
+        if jyqxz_baoxi_maxvalue >= 1 then
+            multi = 1.25;
+        end 
+        if jyqxz_baoxi_maxvalue >= 2 then
+            multi = 1.50;
+        end 
+        CC.PersonAttribMax["\185\165\187\247\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["gongji"]);
+        CC.PersonAttribMax["\183\192\211\249\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["fangyu"]);
+        CC.PersonAttribMax["\199\225\185\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["qinggong"]);
+    
+        CC.PersonAttribMax["\210\189\193\198\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yiliao"]);
+        CC.PersonAttribMax["\211\195\182\190\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yongdu"]);  
+        CC.PersonAttribMax["\189\226\182\190\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["jiedu"]);  
+
+        CC.PersonAttribMax["\200\173\213\198\185\166\183\242"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["quanzhang"]);  
+        CC.PersonAttribMax["\211\249\189\163\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yujian"]);  
+        CC.PersonAttribMax["\203\163\181\182\188\188\199\201"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["shuadao"]);  
+        CC.PersonAttribMax["\204\216\202\226\177\248\198\247"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["teshu"]);  
+        CC.PersonAttribMax["\176\181\198\247\188\188\199\201"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["anqi"]);  
+
+        War_PrintTrace(string.format("maxvalue_gongji = %d", jyqxz_baoxi_maxvalue_dict["gongji"]));
+        War_PrintTrace(string.format("maxvalue_fangyu = %d", jyqxz_baoxi_maxvalue_dict["fangyu"]));
+        War_PrintTrace(string.format("maxvalue_qinggong = %d", jyqxz_baoxi_maxvalue_dict["qinggong"]));
+        War_PrintTrace(string.format("maxvalue_yiliao = %d", jyqxz_baoxi_maxvalue_dict["yiliao"]));
+        War_PrintTrace(string.format("maxvalue_yongdu = %d", jyqxz_baoxi_maxvalue_dict["yongdu"]));
+        War_PrintTrace(string.format("maxvalue_jiedu = %d", jyqxz_baoxi_maxvalue_dict["jiedu"]));
+        War_PrintTrace(string.format("maxvalue_quanzhang = %d", jyqxz_baoxi_maxvalue_dict["quanzhang"]));
+        War_PrintTrace(string.format("maxvalue_yujian = %d", jyqxz_baoxi_maxvalue_dict["yujian"]));
+        War_PrintTrace(string.format("maxvalue_shuadao = %d", jyqxz_baoxi_maxvalue_dict["shuadao"]));
+        War_PrintTrace(string.format("maxvalue_teshu = %d", jyqxz_baoxi_maxvalue_dict["teshu"]));
+        War_PrintTrace(string.format("maxvalue_anqi = %d", jyqxz_baoxi_maxvalue_dict["anqi"]));
+        War_PrintTrace(string.format("maxvalue_multi = %d", 100 * multi));
+
+        return; 
+    end
+
+
     Raw_LoadRecord = LoadRecord;
     LoadRecord = function(id)
         War_PrintTrace("LoadRecord Called");
@@ -264,118 +379,24 @@ War_PersonTrainBook = function(pid)
     end
 end
 
-function War_IsPersonInTeam(pid)
-    local result = 0;
-    local teamnum = GetTeamNum();
-    for i = 1, teamnum do
-        if JY.Base["\182\211\206\233" .. i] == pid then
-            result = 1;
-            break;
-        end
+Raw_TrainNeedExp = TrainNeedExp;
+TrainNeedExp = function(pid)
+    --War_PrintTrace(string.format("TrainNeedExp called 0, pid=%s, jyqxz_baoxi_wugong=%d", pid, jyqxz_baoxi_wugong));
+    if War_IsPersonInTeam(pid) < 1 then        
+        return Raw_TrainNeedExp(pid);
     end
-    if result < 1 then
-        War_PrintTrace(string.format("npc_person, pid = 0x%04x", pid));
+    if jyqxz_baoxi_wugong < 2 then        
+        return Raw_TrainNeedExp(pid);
     end
-    return result;
-end
-
-function War_AdjustPersonPropMinValue(pid)
-    local min_value = 25;  
-    if JY.Person[pid]["\210\189\193\198\196\220\193\166"] < min_value then
-       JY.Person[pid]["\210\189\193\198\196\220\193\166"] = min_value; 
-    end
-    if JY.Person[pid]["\211\195\182\190\196\220\193\166"] < min_value then
-       JY.Person[pid]["\211\195\182\190\196\220\193\166"] = min_value; 
-    end
-    if JY.Person[pid]["\189\226\182\190\196\220\193\166"] < min_value then
-       JY.Person[pid]["\189\226\182\190\196\220\193\166"] = min_value; 
-    end
-    if JY.Person[pid]["\200\173\213\198\185\166\183\242"] < min_value then
-       JY.Person[pid]["\200\173\213\198\185\166\183\242"] = min_value; 
-    end
-    if JY.Person[pid]["\211\249\189\163\196\220\193\166"] < min_value then
-       JY.Person[pid]["\211\249\189\163\196\220\193\166"] = min_value; 
-    end    
-    if JY.Person[pid]["\203\163\181\182\188\188\199\201"] < min_value then
-       JY.Person[pid]["\203\163\181\182\188\188\199\201"] = min_value; 
-    end    
-    if JY.Person[pid]["\204\216\202\226\177\248\198\247"] < min_value then
-       JY.Person[pid]["\204\216\202\226\177\248\198\247"] = min_value; 
-    end    
-    if JY.Person[pid]["\176\181\198\247\188\188\199\201"] < min_value then
-       JY.Person[pid]["\176\181\198\247\188\188\199\201"] = min_value; 
-    end 
-end
-
-function Fucker_AdjustPropsMaxValue()
-    if rawget(jyqxz_baoxi_maxvalue_dict, "gongji") == nil then
-        jyqxz_baoxi_maxvalue_dict["gongji"] = CC.PersonAttribMax["\185\165\187\247\193\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "fangyu") == nil then
-        jyqxz_baoxi_maxvalue_dict["fangyu"] = CC.PersonAttribMax["\183\192\211\249\193\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "qinggong") == nil then
-        jyqxz_baoxi_maxvalue_dict["qinggong"] = CC.PersonAttribMax["\199\225\185\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "yiliao") == nil then
-        jyqxz_baoxi_maxvalue_dict["yiliao"] = CC.PersonAttribMax["\210\189\193\198\196\220\193\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "yongdu") == nil then
-        jyqxz_baoxi_maxvalue_dict["yongdu"] = CC.PersonAttribMax["\211\195\182\190\196\220\193\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "jiedu") == nil then
-        jyqxz_baoxi_maxvalue_dict["jiedu"] = CC.PersonAttribMax["\189\226\182\190\196\220\193\166"];  
-    end    
-    if rawget(jyqxz_baoxi_maxvalue_dict, "quanzhang") == nil then
-        jyqxz_baoxi_maxvalue_dict["quanzhang"] = CC.PersonAttribMax["\200\173\213\198\185\166\183\242"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "yujian") == nil then
-        jyqxz_baoxi_maxvalue_dict["yujian"] = CC.PersonAttribMax["\211\249\189\163\196\220\193\166"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "shuadao") == nil then
-        jyqxz_baoxi_maxvalue_dict["shuadao"] = CC.PersonAttribMax["\203\163\181\182\188\188\199\201"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "teshu") == nil then
-        jyqxz_baoxi_maxvalue_dict["teshu"] = CC.PersonAttribMax["\204\216\202\226\177\248\198\247"];  
-    end
-    if rawget(jyqxz_baoxi_maxvalue_dict, "anqi") == nil then
-        jyqxz_baoxi_maxvalue_dict["anqi"] = CC.PersonAttribMax["\176\181\198\247\188\188\199\201"];  
-    end
-    local multi = 1.0;
-    if jyqxz_baoxi_maxvalue >= 1 then
-        multi = 1.25;
-    end 
-    if jyqxz_baoxi_maxvalue >= 2 then
-        multi = 1.50;
-    end 
-    CC.PersonAttribMax["\185\165\187\247\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["gongji"]);
-    CC.PersonAttribMax["\183\192\211\249\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["fangyu"]);
-    CC.PersonAttribMax["\199\225\185\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["qinggong"]);
-    
-    CC.PersonAttribMax["\210\189\193\198\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yiliao"]);
-    CC.PersonAttribMax["\211\195\182\190\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yongdu"]);  
-    CC.PersonAttribMax["\189\226\182\190\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["jiedu"]);  
-
-    CC.PersonAttribMax["\200\173\213\198\185\166\183\242"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["quanzhang"]);  
-    CC.PersonAttribMax["\211\249\189\163\196\220\193\166"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["yujian"]);  
-    CC.PersonAttribMax["\203\163\181\182\188\188\199\201"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["shuadao"]);  
-    CC.PersonAttribMax["\204\216\202\226\177\248\198\247"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["teshu"]);  
-    CC.PersonAttribMax["\176\181\198\247\188\188\199\201"] = math.floor(multi * jyqxz_baoxi_maxvalue_dict["anqi"]);  
-
-    War_PrintTrace(string.format("maxvalue_gongji = %d", jyqxz_baoxi_maxvalue_dict["gongji"]));
-    War_PrintTrace(string.format("maxvalue_fangyu = %d", jyqxz_baoxi_maxvalue_dict["fangyu"]));
-    War_PrintTrace(string.format("maxvalue_qinggong = %d", jyqxz_baoxi_maxvalue_dict["qinggong"]));
-    War_PrintTrace(string.format("maxvalue_yiliao = %d", jyqxz_baoxi_maxvalue_dict["yiliao"]));
-    War_PrintTrace(string.format("maxvalue_yongdu = %d", jyqxz_baoxi_maxvalue_dict["yongdu"]));
-    War_PrintTrace(string.format("maxvalue_jiedu = %d", jyqxz_baoxi_maxvalue_dict["jiedu"]));
-    War_PrintTrace(string.format("maxvalue_quanzhang = %d", jyqxz_baoxi_maxvalue_dict["quanzhang"]));
-    War_PrintTrace(string.format("maxvalue_yujian = %d", jyqxz_baoxi_maxvalue_dict["yujian"]));
-    War_PrintTrace(string.format("maxvalue_shuadao = %d", jyqxz_baoxi_maxvalue_dict["shuadao"]));
-    War_PrintTrace(string.format("maxvalue_teshu = %d", jyqxz_baoxi_maxvalue_dict["teshu"]));
-    War_PrintTrace(string.format("maxvalue_anqi = %d", jyqxz_baoxi_maxvalue_dict["anqi"]));
-    War_PrintTrace(string.format("maxvalue_multi = %d", 100 * multi));
-
-    return; 
+    local thingid = JY.Person[pid]["\208\222\193\182\206\239\198\183"];
+    local exp = JY.Thing[thingid]["\208\232\190\173\209\233"];
+    --War_PrintTrace(string.format("TrainNeedExp called 1, pid=%s,thingid=%d,exp=%d,raw_exp=%d", pid, thingid, exp, JY.Thing[thingid]["\208\232\190\173\209\233"]));
+    JY.Thing[thingid]["\208\232\190\173\209\233"] = (exp / 10) + 1;    
+    local r = Raw_TrainNeedExp(pid);
+    --War_PrintTrace(string.format("TrainNeedExp called 2, pid=%s,thingid=%d,exp=%d,raw_exp=%d", pid, thingid, exp, JY.Thing[thingid]["\208\232\190\173\209\233"]));
+    JY.Thing[thingid]["\208\232\190\173\209\233"] = exp; 
+    --War_PrintTrace(string.format("TrainNeedExp called 3, pid=%s,thingid=%d,exp=%d,raw_exp=%d", pid, thingid, exp, JY.Thing[thingid]["\208\232\190\173\209\233"]));
+    return r;     
 end
 
 function Fucker_AdjustWuPins()
@@ -413,21 +434,21 @@ function Fucker_AdjustWuPins()
         Fucker_AdjustWuPin(40, 9999);
         Fucker_AdjustWuPin(11, 9999);
         Fucker_AdjustWuPin(15, 9999);
-        --for i = 0, JY.ThingNum do
-        --    Fucker_AdjustWuPin(i, 100);
-        --end
         return;
     end
 
     --XMB
     if CC.BanBen == 3 then
+        --for i = 0, JY.ThingNum do
+        --    Fucker_AdjustWuPin(i, 1);
+        --end
         Fucker_AdjustWuPin(174, 9999); 
         Fucker_AdjustWuPin(19, 9999); 
-        Fucker_AdjustWuPin(35, 9999); 
+        Fucker_AdjustWuPin(31, 9999); 
         Fucker_AdjustWuPin(102, 9999); 
         Fucker_AdjustWuPin(171, 9999); 
         Fucker_AdjustWuPin(172, 9999); 
-        Fucker_AdjustWuPin(186, 9999); 
+        Fucker_AdjustWuPin(186, 200); 
         return;
     end
 

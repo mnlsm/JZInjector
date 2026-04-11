@@ -117,9 +117,13 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int banben, int c
         result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 91));
         result.push_back(std::make_pair<std::wstring, int>(L"ºúÇàÅ£Ò½Êé", 50));
         result.push_back(std::make_pair<std::wstring, int>(L"Ò©ÍõÉñÆª", 53));
-        result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 79));
+        result.push_back(std::make_pair<std::wstring, int>(L"Áè²¨Î¢²½", 47));
+        result.push_back(std::make_pair<std::wstring, int>(L"Ê®°ËÄàÅ¼", 41));
+        result.push_back(std::make_pair<std::wstring, int>(L"Ò×½î¾­", 43));
+        result.push_back(std::make_pair<std::wstring, int>(L"¶·×ªĞÇÒÆ", 74));
+        result.push_back(std::make_pair<std::wstring, int>(L"ÉñÄ¾Íõ¶¦", 65));
         result.push_back(std::make_pair<std::wstring, int>(L"¾ÅÑôÕæ¾­", 95));
-        result.push_back(std::make_pair<std::wstring, int>(L"¿û»¨±¦µä", 93));
+        result.push_back(std::make_pair<std::wstring, int>(L"ÁùÂöÉñ½£", 206));
     } else if (banben == EnvData::BANBEN_TSJ) {
         result.push_back(std::make_pair<std::wstring, int>(L"×óÓÒ»¥²«", 235));
         result.push_back(std::make_pair<std::wstring, int>(L"Ê³ÉñÃØ¼®", 220));
@@ -173,8 +177,6 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int banben, int pi
             result.push_back(std::make_pair<std::wstring, int>(L"ÁùÂöÉñ½£", 61));
             result.push_back(std::make_pair<std::wstring, int>(L"¶À¹Â¾Å½£", 33));
         } else if (banben == EnvData::BANBEN_XMB) {
-            result.push_back(std::make_pair<std::wstring, int>(L"½µÁúÊ®°ËÕÆ", 25));
-            result.push_back(std::make_pair<std::wstring, int>(L"ºÚ¼¶¸¡Í¼", 99));
             result.push_back(std::make_pair<std::wstring, int>(L"ÌìÄ§¼«ÀÖ", 107));
         } else if (banben == EnvData::BANBEN_TSJ) {
             result.push_back(std::make_pair<std::wstring, int>(L"Ñ©»¨Éñ½£", 397));

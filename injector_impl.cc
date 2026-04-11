@@ -131,6 +131,8 @@ bool InjectorImpl::Start(lua_State* l) {
     config_filepath_ = exe_path_ + "\\JZInjector.ini";
     log_filepath_ = exe_path_ + "\\JZInjector.log";
     ::DeleteFileA(log_filepath_.c_str());
+    std::string debug_file = exe_path_ + "\\debug.log";
+    ::DeleteFileA(debug_file.c_str());
 #ifdef DEBUGLOG
     FileLogger::getInstance().init(log_filepath_,
         FileLogger::LogLevel::DEB, false);
