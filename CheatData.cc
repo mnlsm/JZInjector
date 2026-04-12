@@ -130,8 +130,12 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetXiuLian(int banben, int c
         result.push_back(std::make_pair<std::wstring, int>(L"酒神秘籍", 221));
         result.push_back(std::make_pair<std::wstring, int>(L"胡青牛医术", 189));
         result.push_back(std::make_pair<std::wstring, int>(L"药王神篇", 193));
-        result.push_back(std::make_pair<std::wstring, int>(L"独孤九剑", 316));
-        result.push_back(std::make_pair<std::wstring, int>(L"打狗棒法", 403));
+        result.push_back(std::make_pair<std::wstring, int>(L"洗髓经", 97));
+        result.push_back(std::make_pair<std::wstring, int>(L"素霓神功", 112));
+        result.push_back(std::make_pair<std::wstring, int>(L"泥鳅功", 183));
+        result.push_back(std::make_pair<std::wstring, int>(L"五毒五仙手", 237));
+        result.push_back(std::make_pair<std::wstring, int>(L"独孤剑髓", 313));
+        result.push_back(std::make_pair<std::wstring, int>(L"金刚伏魔鞭", 402));
     } else if (banben == EnvData::BANBEN_CL1028) {
         result.push_back(std::make_pair<std::wstring, int>(L"左右互搏", 0xEB));
         result.push_back(std::make_pair<std::wstring, int>(L"食神秘籍", 0xDC));
@@ -179,8 +183,7 @@ std::vector<std::pair<std::wstring, int>> MiscData::GetWuGong(int banben, int pi
         } else if (banben == EnvData::BANBEN_XMB) {
             result.push_back(std::make_pair<std::wstring, int>(L"天魔极乐", 107));
         } else if (banben == EnvData::BANBEN_TSJ) {
-            result.push_back(std::make_pair<std::wstring, int>(L"雪花神剑", 397));
-            result.push_back(std::make_pair<std::wstring, int>(L"降龙十八掌", 96));
+            result.push_back(std::make_pair<std::wstring, int>(L"葵花神针", 259));
         } else if (banben == EnvData::BANBEN_CL1028) {
             result.push_back(std::make_pair<std::wstring, int>(L"百战天龙", 0x7A));
             result.push_back(std::make_pair<std::wstring, int>(L"黑极浮图", 0x72));

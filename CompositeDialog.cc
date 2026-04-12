@@ -79,11 +79,11 @@ void CompositeDialog::InitUi() {
 
     HTREEITEM hItem = m_treePropertys.InsertItem(PropCreateReadOnlyItem(_T("提速、最值、物品")), 13, 13, TVI_ROOT);
     if (true) {
-        LPCTSTR pList[] = { L"默认", L"普通", L"快速", L"全能" , NULL };
+        LPCTSTR pList[] = { L"默认", L"快速", L"爆洗", L"全能" , NULL };
         m_hItemDengJi = m_treePropertys.InsertItem(PropCreateList(_T("升级提速"), pList), 12, 12, hItem);
     }
     if (true) {
-        LPCTSTR pList[] = { L"默认", L"快速" , L"极速" ,NULL };
+        LPCTSTR pList[] = { L"默认", L"快速" /*, L"爆洗"*/ ,NULL };
         m_hItemMiJi = m_treePropertys.InsertItem(PropCreateList(_T("修炼提速"), pList), 12, 12, hItem);
     }
     if (true) {

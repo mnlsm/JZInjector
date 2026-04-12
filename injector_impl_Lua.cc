@@ -254,6 +254,9 @@ War_AddPersonLevel = function(pid)
     if War_IsPersonInTeam(pid) < 1 then        
         return Raw_War_AddPersonLevel(pid);
     end
+    if jyqxz_baoxi_dengji < 1 then
+        return Raw_War_AddPersonLevel(pid);
+    end
     local tmplevel = JY.Person[pid]["\181\200\188\182"];
     local tmp_clever = JY.Person[pid]["\215\202\214\202"]
     local use_clever = tmp_clever
@@ -262,26 +265,13 @@ War_AddPersonLevel = function(pid)
         use_clever = 100;
     end
     War_PrintTrace(string.format("tmp_clever=%d, use_clever=%d", tmp_clever, use_clever));
-    if jyqxz_baoxi_dengji < 1 then
-        JY.Person[pid]["\215\202\214\202"] = use_clever;
-        for i = 1, CC.Level do
-          tmpExp[i] = CC.Exp[i];
-          CC.Exp[i] = math.modf(CC.Exp[i] / 100);  
-        end
-        local result = Raw_War_AddPersonLevel(pid);
-        JY.Person[pid]["\215\202\214\202"] = tmp_clever;
-        for i = 1, CC.Level do
-          CC.Exp[i] = tmpExp[i];
-        end
-        return result; 
-    end
     War_PrintTrace(string.format("tmplevel=%d", tmplevel));
     War_PrintTrace(string.format("CC.Level=%d", CC.Level));  
     War_PrintTrace(string.format("GetTeamNum()=%d", GetTeamNum()));  
     War_PrintTrace(string.format("War_IsPersonInTeam(%d)=%d", pid, War_IsPersonInTeam(pid)));  
     if tmplevel >= CC.Level then
         tmplevel = CC.Level;
-        JY.Person[pid]["\181\200\188\182"] = CC.Level - 1;
+        --JY.Person[pid]["\181\200\188\182"] = CC.Level - 1;
         if jyqxz_baoxi_dengji > 1 or JY.Person[pid]["\181\200\188\182"] < 1 then
             JY.Person[pid]["\181\200\188\182"] = 1;
         end
@@ -291,7 +281,7 @@ War_AddPersonLevel = function(pid)
     end
     for i = 1, CC.Level do
       tmpExp[i] = CC.Exp[i];
-      CC.Exp[i] = math.modf(CC.Exp[i] / 100);  
+      CC.Exp[i] = math.modf(CC.Exp[i] / 150) + 1;  
     end
     JY.Person[pid]["\215\202\214\202"] = use_clever;
     local raw_ret = Raw_War_AddPersonLevel(pid);
@@ -321,7 +311,7 @@ War_PersonTrainBook = function(pid)
         use_clever = 100;
     end
     War_PrintTrace(string.format("War_PersonTrainBook called 1, pid=%s, tmp_clever=%d, use_clever=%d", pid, tmp_clever, use_clever)); 
-    if jyqxz_baoxi_wugong < 1 then
+    if jyqxz_baoxi_wugong < 2 then
         JY.Person[pid]["\215\202\214\202"] = use_clever;
         Raw_War_PersonTrainBook(pid);
         JY.Person[pid]["\215\202\214\202"] = tmp_clever;
@@ -385,13 +375,13 @@ TrainNeedExp = function(pid)
     if War_IsPersonInTeam(pid) < 1 then        
         return Raw_TrainNeedExp(pid);
     end
-    if jyqxz_baoxi_wugong < 2 then        
+    if jyqxz_baoxi_wugong < 1 then        
         return Raw_TrainNeedExp(pid);
     end
     local thingid = JY.Person[pid]["\208\222\193\182\206\239\198\183"];
     local exp = JY.Thing[thingid]["\208\232\190\173\209\233"];
     --War_PrintTrace(string.format("TrainNeedExp called 1, pid=%s,thingid=%d,exp=%d,raw_exp=%d", pid, thingid, exp, JY.Thing[thingid]["\208\232\190\173\209\233"]));
-    JY.Thing[thingid]["\208\232\190\173\209\233"] = (exp / 10) + 1;    
+    JY.Thing[thingid]["\208\232\190\173\209\233"] = (exp / 200) + 1;    
     local r = Raw_TrainNeedExp(pid);
     --War_PrintTrace(string.format("TrainNeedExp called 2, pid=%s,thingid=%d,exp=%d,raw_exp=%d", pid, thingid, exp, JY.Thing[thingid]["\208\232\190\173\209\233"]));
     JY.Thing[thingid]["\208\232\190\173\209\233"] = exp; 
@@ -439,9 +429,6 @@ function Fucker_AdjustWuPins()
 
     --XMB
     if CC.BanBen == 3 then
-        --for i = 0, JY.ThingNum do
-        --    Fucker_AdjustWuPin(i, 1);
-        --end
         Fucker_AdjustWuPin(174, 9999); 
         Fucker_AdjustWuPin(19, 9999); 
         Fucker_AdjustWuPin(31, 9999); 
@@ -454,9 +441,12 @@ function Fucker_AdjustWuPins()
 
     --TSJ
     if CC.BanBen == 4 then
+        --for i = 0, JY.ThingNum - 1 do
+        --    Fucker_AdjustWuPin(i, 1);
+        --end
         Fucker_AdjustWuPin(174, 9999); 
         Fucker_AdjustWuPin(12, 9999); 
-        Fucker_AdjustWuPin(17, 9999); 
+        Fucker_AdjustWuPin(17, 5); 
         Fucker_AdjustWuPin(32, 9999); 
         Fucker_AdjustWuPin(209, 9999); 
         Fucker_AdjustWuPin(210, 9999); 
@@ -544,7 +534,7 @@ const char* k_update_lua_code = R"(
     jyqxz_baoxi_dengji = $002;
     jyqxz_baoxi_wugong = $003;
     jyqxz_baoxi_maxvalue = $004;
-    jyqxz_baoxi_use_clever = 1;
+    jyqxz_baoxi_use_clever = 0;
 
     Fucker_AdjustPropsMaxValue();
 )";
